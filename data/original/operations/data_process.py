@@ -8,8 +8,8 @@ pedidos = df[['PedidoID', 'ClienteID', 'VendedorID', 'Data']].drop_duplicates()
 pedidos.columns = ['id', 'cliente_id', 'vendedor_id', 'data']
 
 # Tabela 2: Clientes
-clientes = df[['ClienteID', 'ClienteNome', 'ClienteContato', 'ClienteCidade', 'ClientePaísID']].drop_duplicates()
-clientes.columns = ['id', 'nome', 'contato', 'cidade', 'pais_id']
+clientes = df[['ClienteID','ClientePaísID', 'ClienteNome', 'ClienteContato', 'ClienteCidade']].drop_duplicates()
+clientes.columns = ['id', 'pais_id', 'nome', 'contato', 'cidade']
 
 # Tabela 3: Países
 paises = df[['ClientePaísID', 'ClientePaís']].drop_duplicates()

@@ -40,10 +40,10 @@ CREATE TABLE vendedores (
 
 CREATE TABLE clientes (
     id SERIAL PRIMARY KEY,
+    pais_id CHAR(3),
     nome VARCHAR(255) NOT NULL,
     contato VARCHAR(255),
     cidade VARCHAR(255),
-    pais_id TEXT,
     FOREIGN KEY (pais_id) REFERENCES paises(id) ON DELETE CASCADE
 );
 

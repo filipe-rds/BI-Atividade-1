@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict mJo9dG0kdTLHcjgeO3CBLY46GDX8VQhKdI6WrQPG8tpBukuAJcSfo5AhNMoyToT
+\restrict MeWiGNgscBP3u63Cd1snykZc9CJvr0SE95xZ2bQXHdMTXTVc4QaS0YIG9hHg00B
 
 -- Dumped from database version 17.6 (Debian 17.6-1.pgdg13+1)
 -- Dumped by pg_dump version 17.6 (Debian 17.6-1.pgdg13+1)
@@ -64,10 +64,10 @@ ALTER SEQUENCE public.categorias_id_seq OWNED BY public.categorias.id;
 
 CREATE TABLE public.clientes (
     id integer NOT NULL,
+    pais_id character(3),
     nome character varying(255) NOT NULL,
     contato character varying(255),
-    cidade character varying(255),
-    pais_id text
+    cidade character varying(255)
 );
 
 
@@ -399,97 +399,97 @@ COPY public.categorias (id, nome, descricao) FROM stdin;
 -- Data for Name: clientes; Type: TABLE DATA; Schema: public; Owner: user
 --
 
-COPY public.clientes (id, nome, contato, cidade, pais_id) FROM stdin;
-41	Elle Fashion & Design	Louise Davu	Toulouse	FRA
-84	Art et Fashion	Pierre Robert	Lyon	FRA
-33	El Abrigo Mortal	Antonio Palmer Amer	Caracas	VEN
-37	Boleros	Robert Bolero	Cork	IRL
-43	For The Dark Night	Klaus Tarantino	Walla Walla	USA
-9	La Legion Mercenaire	Bernard de Gaule	Marseille	FRA
-10	Big Foot Shoes	James Hendersson	Tsawassen	CAN
-7	Menàge à Trois	Julie Binoché	Strasbourg	FRA
-74	Chateau de Ville	André Millard	Paris	FRA
-19	Th Fashing	Greg Thatcher	London	GBR
-51	Davenport Fashion	James Belucci	Montréal	CAN
-26	Le Sais de Rión	Jeanne d´Anjou	Nantes	FRA
-78	TTT-The Ticky Tie	Mary Stone	Butte	USA
-85	Pour l´homme	Henry Renault	Reims	FRA
-40	La Boheme	Philippe de Laval	Versailles	FRA
-18	Aujourd´hui	Pierre Chardin	Nantes	FRA
-45	Bobby Socks	Vincent Vega	San Francisco	USA
-48	Too Hot 4U	Andrea Pamelsson	Portland	USA
-77	Eye Fashion	Charles Oakley	Portland	USA
-72	Fast Sunglasses	Ray Banned	London	GBR
-4	Dr Jims Trousers	Carl Montgomery	London	GBR
-23	Champes	Jaques Wilneuve	Lille	FRA
-71	Sunny Ski Store	Perry Farell	Boise	USA
-89	Nirvana Stores	Alice Chain	Seattle	USA
-82	Bond Ltd	Mark Stark	Kirkland	USA
-42	Millenium	Joe Barry	Vancouver	CAN
-32	The Corner Store	Ross The Boss	Eugene	USA
-55	SSS-Sport Shoes Store	Al Bundy	Anchorage	USA
-65	X-Site	Malcolm X	Albuquerque	USA
-86	Autokleider	Ralf Schumaker	Stuttgart	DEU
-24	Sport & Fritid AB	Linda Haglund	Bräcke	SWE
-62	Roba di Piel	Jorge Alemaio	São Paulo	BRA
-31	Paintho da Gama	Anna Figo	Campinas	BRA
-67	Da Bikini Expertu	Thomá Lindao	Rio de Janeiro	BRA
-64	Ropa total	Emerson Fittipaldi	Buenos Aires	ARG
-15	Tendha do Flamengo	Edson Arantes do Nascimento	São Paulo	BRA
-81	Merced do Vaile	Mercedes Couto	São Paulo	BRA
-80	Don Balón	Peloto Gomez	México D.F.	MEX
-2	La Tienda de la Esquina	Paco el Maco	México D.F.	MEX
-47	El Pirata	Andrés Barbanegra	I. de Margarita	VEN
-5	Urras Shop	Urra Gurra Aktersnurra	Luleå	SWE
-16	The sharped dressed man	Ian Wright	London	GBR
-25	Halle Köln	Dieter Köln	München	DEU
-76	Belgium Black Jeans	Cheril Cow	Charleroi	BEL
-8	Las Corbatas	Julio Iglesias	Madrid	ESP
-22	La Camisas Cansadas	Filemón	Madrid	ESP
-3	La Ropa Vieja	Sancho Panza	México D.F.	MEX
-58	La Moda Pasada	Francisca Font Barceló	México D.F.	MEX
-35	El Zapato Rojo	Nicolas Balines	San Cristóbal	VEN
-46	Los Vatos Locos	Tony Montana	Barquisimeto	VEN
-36	Pulp Toxedos	Marcellus Wallace	Elgin	USA
-13	Los Sombreros Gigantes	Speedy Gonzales	México D.F.	MEX
-70	Alles Lusekofter	Akkurat Jonny	Stavern	NOR
-60	La Roba do Santho	Leopoldo Samba	Lisboa	PRT
-11	Shoe Expert	David Foot	London	GBR
-30	Los Trajes de Matador	El Cordobes	Sevilla	ESP
-6	Man Kleider	Herman Hinschler	Mannheim	DEU
-38	King Size Clothes	Al Yankovic	Cowes	GBR
-127	Stephanies	Staffan Blond	Stockholm	SWE
-59	Extrawagens	Herbert Bernstorf	Salzburg	AUT
-69	La Moda Alucinante	Emilio Ilegal	Madrid	ESP
-68	Golden Design Group	Carl Perry	Genève	CHE
-14	Das Alpen Shoe	Alfred Neumann	Bern	CHE
-52	Kohl Industries AG	Helmuth Klein	Leipzig	DEU
-28	El Traige do Benfica	Vitor Baiha	Lisboa	PRT
-90	Leningrad Cowboys Shop	Reijoo Haajanen	Helsinki	FIN
-20	Ski Store	Lars Saalbach	Graz	AUT
-54	Los Espandrilos Fantasticos	Don Gerardo	Buenos Aires	ARG
-79	Boombastic	Heinz Disco	Münster	DEU
-44	Warp AG	Klaus Deum	Frankfurt a.M.	DEU
-39	Noch Einmal GMBH	Dieter Rummernige	Brandenburg	DEU
-56	Casual Clothing	Herman Schlusse	Köln	DEU
-1	Eintrach GS	Albert von Einstein	Berlin	DEU
-75	Macalena	Paul Smith	Lander	USA
-12	Los Pantalones Magicos	Victoria Abril	Buenos Aires	ARG
-29	El Chandal del Barca	Jusep del pep	Barcelona	ESP
-61	Copacabana	Giovanni Santhos	Rio de Janeiro	BRA
-88	Da Santho Cosmethia	Mariah Erdi	Resende	BRA
-34	El Carnevale	Joe do Pintho	Rio de Janeiro	BRA
-21	Cloe do Pau	Romario do Sauza	São Paulo	BRA
-50	De la Vita	Marco Van Deum	Bruxelles	BEL
-53	Fawtly Towers	John Cleez	London	GBR
-66	Sport Shop	Anna Bella	Reggio Emilia	ITA
-63	Grunewald	George Essen	Cunewalde	DEU
-87	Perkii Urkii	Miiko Heikillä	Oulu	FIN
-91	Slotzy Danz	Boniekk Wallessa	Warszawa	POL
-49	La Moda d'il Futuri	Luca Brassi	Bergamo	ITA
-27	Il Pantaloni di la Cammorra	Don Corleone	Torino	ITA
-73	Rode & Vite	Preben Elkjaer	København	DNK
-17	Gluderstedt	Lars von Holstein	Aachen	DEU
+COPY public.clientes (id, pais_id, nome, contato, cidade) FROM stdin;
+41	FRA	Elle Fashion & Design	Louise Davu	Toulouse
+84	FRA	Art et Fashion	Pierre Robert	Lyon
+33	VEN	El Abrigo Mortal	Antonio Palmer Amer	Caracas
+37	IRL	Boleros	Robert Bolero	Cork
+43	USA	For The Dark Night	Klaus Tarantino	Walla Walla
+9	FRA	La Legion Mercenaire	Bernard de Gaule	Marseille
+10	CAN	Big Foot Shoes	James Hendersson	Tsawassen
+7	FRA	Menàge à Trois	Julie Binoché	Strasbourg
+74	FRA	Chateau de Ville	André Millard	Paris
+19	GBR	Th Fashing	Greg Thatcher	London
+51	CAN	Davenport Fashion	James Belucci	Montréal
+26	FRA	Le Sais de Rión	Jeanne d´Anjou	Nantes
+78	USA	TTT-The Ticky Tie	Mary Stone	Butte
+85	FRA	Pour l´homme	Henry Renault	Reims
+40	FRA	La Boheme	Philippe de Laval	Versailles
+18	FRA	Aujourd´hui	Pierre Chardin	Nantes
+45	USA	Bobby Socks	Vincent Vega	San Francisco
+48	USA	Too Hot 4U	Andrea Pamelsson	Portland
+77	USA	Eye Fashion	Charles Oakley	Portland
+72	GBR	Fast Sunglasses	Ray Banned	London
+4	GBR	Dr Jims Trousers	Carl Montgomery	London
+23	FRA	Champes	Jaques Wilneuve	Lille
+71	USA	Sunny Ski Store	Perry Farell	Boise
+89	USA	Nirvana Stores	Alice Chain	Seattle
+82	USA	Bond Ltd	Mark Stark	Kirkland
+42	CAN	Millenium	Joe Barry	Vancouver
+32	USA	The Corner Store	Ross The Boss	Eugene
+55	USA	SSS-Sport Shoes Store	Al Bundy	Anchorage
+65	USA	X-Site	Malcolm X	Albuquerque
+86	DEU	Autokleider	Ralf Schumaker	Stuttgart
+24	SWE	Sport & Fritid AB	Linda Haglund	Bräcke
+62	BRA	Roba di Piel	Jorge Alemaio	São Paulo
+31	BRA	Paintho da Gama	Anna Figo	Campinas
+67	BRA	Da Bikini Expertu	Thomá Lindao	Rio de Janeiro
+64	ARG	Ropa total	Emerson Fittipaldi	Buenos Aires
+15	BRA	Tendha do Flamengo	Edson Arantes do Nascimento	São Paulo
+81	BRA	Merced do Vaile	Mercedes Couto	São Paulo
+80	MEX	Don Balón	Peloto Gomez	México D.F.
+2	MEX	La Tienda de la Esquina	Paco el Maco	México D.F.
+47	VEN	El Pirata	Andrés Barbanegra	I. de Margarita
+5	SWE	Urras Shop	Urra Gurra Aktersnurra	Luleå
+16	GBR	The sharped dressed man	Ian Wright	London
+25	DEU	Halle Köln	Dieter Köln	München
+76	BEL	Belgium Black Jeans	Cheril Cow	Charleroi
+8	ESP	Las Corbatas	Julio Iglesias	Madrid
+22	ESP	La Camisas Cansadas	Filemón	Madrid
+3	MEX	La Ropa Vieja	Sancho Panza	México D.F.
+58	MEX	La Moda Pasada	Francisca Font Barceló	México D.F.
+35	VEN	El Zapato Rojo	Nicolas Balines	San Cristóbal
+46	VEN	Los Vatos Locos	Tony Montana	Barquisimeto
+36	USA	Pulp Toxedos	Marcellus Wallace	Elgin
+13	MEX	Los Sombreros Gigantes	Speedy Gonzales	México D.F.
+70	NOR	Alles Lusekofter	Akkurat Jonny	Stavern
+60	PRT	La Roba do Santho	Leopoldo Samba	Lisboa
+11	GBR	Shoe Expert	David Foot	London
+30	ESP	Los Trajes de Matador	El Cordobes	Sevilla
+6	DEU	Man Kleider	Herman Hinschler	Mannheim
+38	GBR	King Size Clothes	Al Yankovic	Cowes
+127	SWE	Stephanies	Staffan Blond	Stockholm
+59	AUT	Extrawagens	Herbert Bernstorf	Salzburg
+69	ESP	La Moda Alucinante	Emilio Ilegal	Madrid
+68	CHE	Golden Design Group	Carl Perry	Genève
+14	CHE	Das Alpen Shoe	Alfred Neumann	Bern
+52	DEU	Kohl Industries AG	Helmuth Klein	Leipzig
+28	PRT	El Traige do Benfica	Vitor Baiha	Lisboa
+90	FIN	Leningrad Cowboys Shop	Reijoo Haajanen	Helsinki
+20	AUT	Ski Store	Lars Saalbach	Graz
+54	ARG	Los Espandrilos Fantasticos	Don Gerardo	Buenos Aires
+79	DEU	Boombastic	Heinz Disco	Münster
+44	DEU	Warp AG	Klaus Deum	Frankfurt a.M.
+39	DEU	Noch Einmal GMBH	Dieter Rummernige	Brandenburg
+56	DEU	Casual Clothing	Herman Schlusse	Köln
+1	DEU	Eintrach GS	Albert von Einstein	Berlin
+75	USA	Macalena	Paul Smith	Lander
+12	ARG	Los Pantalones Magicos	Victoria Abril	Buenos Aires
+29	ESP	El Chandal del Barca	Jusep del pep	Barcelona
+61	BRA	Copacabana	Giovanni Santhos	Rio de Janeiro
+88	BRA	Da Santho Cosmethia	Mariah Erdi	Resende
+34	BRA	El Carnevale	Joe do Pintho	Rio de Janeiro
+21	BRA	Cloe do Pau	Romario do Sauza	São Paulo
+50	BEL	De la Vita	Marco Van Deum	Bruxelles
+53	GBR	Fawtly Towers	John Cleez	London
+66	ITA	Sport Shop	Anna Bella	Reggio Emilia
+63	DEU	Grunewald	George Essen	Cunewalde
+87	FIN	Perkii Urkii	Miiko Heikillä	Oulu
+91	POL	Slotzy Danz	Boniekk Wallessa	Warszawa
+49	ITA	La Moda d'il Futuri	Luca Brassi	Bergamo
+27	ITA	Il Pantaloni di la Cammorra	Don Corleone	Torino
+73	DNK	Rode & Vite	Preben Elkjaer	København
+17	DEU	Gluderstedt	Lars von Holstein	Aachen
 \.
 
 
@@ -3892,5 +3892,5 @@ ALTER TABLE ONLY public.vendas
 -- PostgreSQL database dump complete
 --
 
-\unrestrict mJo9dG0kdTLHcjgeO3CBLY46GDX8VQhKdI6WrQPG8tpBukuAJcSfo5AhNMoyToT
+\unrestrict MeWiGNgscBP3u63Cd1snykZc9CJvr0SE95xZ2bQXHdMTXTVc4QaS0YIG9hHg00B
 

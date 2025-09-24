@@ -1,0 +1,29 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydatabase
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./db:/docker-entrypoint-initdb.d 
+
+  jupyter:
+    image: jupyter/datascience-notebook
+    container_name: jupyter_notebook
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./:/home/jovyan/work  
+    environment:
+      JUPYTER_ENABLE_LAB: "yes"
+    command: ["start-notebook.sh", "--NotebookApp.token=''", "--NotebookApp.password=''"] 
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:

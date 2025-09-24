@@ -1,0 +1,91 @@
+id,nome,contato,cidade,pais_id
+41.0,Elle Fashion & Design,Louise Davu,Toulouse,FRA
+84.0,Art et Fashion,Pierre Robert,Lyon,FRA
+33.0,El Abrigo Mortal,Antonio Palmer Amer,Caracas,VEN
+37.0,Boleros,Robert Bolero,Cork,IRL
+43.0,For The Dark Night,Klaus Tarantino,Walla Walla,USA
+9.0,La Legion Mercenaire,Bernard de Gaule,Marseille,FRA
+10.0,Big Foot Shoes,James Hendersson,Tsawassen,CAN
+7.0,Menàge à Trois,Julie Binoché,Strasbourg,FRA
+74.0,Chateau de Ville,André Millard,Paris,FRA
+19.0,Th Fashing,Greg Thatcher,London,GBR
+51.0,Davenport Fashion,James Belucci,Montréal,CAN
+26.0,Le Sais de Rión,Jeanne d´Anjou,Nantes,FRA
+78.0,TTT-The Ticky Tie,Mary Stone,Butte,USA
+85.0,Pour l´homme,Henry Renault,Reims,FRA
+40.0,La Boheme,Philippe de Laval,Versailles,FRA
+18.0,Aujourd´hui,Pierre Chardin,Nantes,FRA
+45.0,Bobby Socks,Vincent Vega,San Francisco,USA
+48.0,Too Hot 4U,Andrea Pamelsson,Portland,USA
+77.0,Eye Fashion,Charles Oakley,Portland,USA
+72.0,Fast Sunglasses,Ray Banned,London,GBR
+4.0,Dr Jims Trousers,Carl Montgomery,London,GBR
+23.0,Champes,Jaques Wilneuve,Lille,FRA
+71.0,Sunny Ski Store,Perry Farell,Boise,USA
+89.0,Nirvana Stores,Alice Chain,Seattle,USA
+82.0,Bond Ltd,Mark Stark,Kirkland,USA
+42.0,Millenium,Joe Barry,Vancouver,CAN
+32.0,The Corner Store,Ross The Boss,Eugene,USA
+55.0,SSS-Sport Shoes Store,Al Bundy,Anchorage,USA
+65.0,X-Site,Malcolm X,Albuquerque,USA
+86.0,Autokleider,Ralf Schumaker,Stuttgart,DEU
+24.0,Sport & Fritid AB,Linda Haglund,Bräcke,SWE
+62.0,Roba di Piel,Jorge Alemaio,São Paulo,BRA
+31.0,Paintho da Gama,Anna Figo,Campinas,BRA
+67.0,Da Bikini Expertu,Thomá Lindao,Rio de Janeiro,BRA
+64.0,Ropa total,Emerson Fittipaldi,Buenos Aires,ARG
+15.0,Tendha do Flamengo,Edson Arantes do Nascimento,São Paulo,BRA
+81.0,Merced do Vaile,Mercedes Couto,São Paulo,BRA
+80.0,Don Balón,Peloto Gomez,México D.F.,MEX
+2.0,La Tienda de la Esquina,Paco el Maco,México D.F.,MEX
+47.0,El Pirata,Andrés Barbanegra,I. de Margarita,VEN
+5.0,Urras Shop,Urra Gurra Aktersnurra,Luleå,SWE
+16.0,The sharped dressed man,Ian Wright,London,GBR
+25.0,Halle Köln,Dieter Köln,München,DEU
+76.0,Belgium Black Jeans,Cheril Cow,Charleroi,BEL
+8.0,Las Corbatas,Julio Iglesias,Madrid,ESP
+22.0,La Camisas Cansadas,Filemón,Madrid,ESP
+3.0,La Ropa Vieja,Sancho Panza,México D.F.,MEX
+58.0,La Moda Pasada,Francisca Font Barceló,México D.F.,MEX
+35.0,El Zapato Rojo,Nicolas Balines,San Cristóbal,VEN
+46.0,Los Vatos Locos,Tony Montana,Barquisimeto,VEN
+36.0,Pulp Toxedos,Marcellus Wallace,Elgin,USA
+13.0,Los Sombreros Gigantes,Speedy Gonzales,México D.F.,MEX
+70.0,Alles Lusekofter,Akkurat Jonny,Stavern,NOR
+60.0,La Roba do Santho,Leopoldo Samba,Lisboa,PRT
+11.0,Shoe Expert,David Foot,London,GBR
+30.0,Los Trajes de Matador,El Cordobes,Sevilla,ESP
+6.0,Man Kleider,Herman Hinschler,Mannheim,DEU
+38.0,King Size Clothes,Al Yankovic,Cowes,GBR
+127.0,Stephanies,Staffan Blond,Stockholm,SWE
+59.0,Extrawagens,Herbert Bernstorf,Salzburg,AUT
+69.0,La Moda Alucinante,Emilio Ilegal,Madrid,ESP
+68.0,Golden Design Group,Carl Perry,Genève,CHE
+14.0,Das Alpen Shoe,Alfred Neumann,Bern,CHE
+52.0,Kohl Industries AG,Helmuth Klein,Leipzig,DEU
+28.0,El Traige do Benfica,Vitor Baiha,Lisboa,PRT
+90.0,Leningrad Cowboys Shop,Reijoo Haajanen,Helsinki,FIN
+20.0,Ski Store,Lars Saalbach,Graz,AUT
+54.0,Los Espandrilos Fantasticos,Don Gerardo,Buenos Aires,ARG
+79.0,Boombastic,Heinz Disco,Münster,DEU
+44.0,Warp AG,Klaus Deum,Frankfurt a.M.,DEU
+39.0,Noch Einmal GMBH,Dieter Rummernige,Brandenburg,DEU
+56.0,Casual Clothing,Herman Schlusse,Köln,DEU
+1.0,Eintrach GS,Albert von Einstein,Berlin,DEU
+75.0,Macalena,Paul Smith,Lander,USA
+12.0,Los Pantalones Magicos,Victoria Abril,Buenos Aires,ARG
+29.0,El Chandal del Barca,Jusep del pep,Barcelona,ESP
+61.0,Copacabana,Giovanni Santhos,Rio de Janeiro,BRA
+88.0,Da Santho Cosmethia,Mariah Erdi,Resende,BRA
+34.0,El Carnevale,Joe do Pintho,Rio de Janeiro,BRA
+21.0,Cloe do Pau,Romario do Sauza,São Paulo,BRA
+50.0,De la Vita,Marco Van Deum,Bruxelles,BEL
+53.0,Fawtly Towers,John Cleez,London,GBR
+66.0,Sport Shop,Anna Bella,Reggio Emilia,ITA
+63.0,Grunewald,George Essen,Cunewalde,DEU
+87.0,Perkii Urkii,Miiko Heikillä,Oulu,FIN
+91.0,Slotzy Danz,Boniekk Wallessa,Warszawa,POL
+49.0,La Moda d'il Futuri,Luca Brassi,Bergamo,ITA
+27.0,Il Pantaloni di la Cammorra,Don Corleone,Torino,ITA
+73.0,Rode & Vite,Preben Elkjaer,København,DNK
+17.0,Gluderstedt,Lars von Holstein,Aachen,DEU

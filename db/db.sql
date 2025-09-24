@@ -1,0 +1,3949 @@
+--
+-- PostgreSQL database dump
+--
+
+\restrict eBgBcsCN9KUSzSTGYzsTrKGjaTuscOcYgqCgBfZFMu3I7rUv7AEDR5hUhVjeCg5
+
+-- Dumped from database version 17.6 (Debian 17.6-1.pgdg13+1)
+-- Dumped by pg_dump version 17.6 (Debian 17.6-1.pgdg13+1)
+
+-- Started on 2025-09-24 16:01:57 UTC
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET transaction_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 218 (class 1259 OID 17515)
+-- Name: categorias; Type: TABLE; Schema: public; Owner: user
+--
+
+CREATE TABLE public.categorias (
+    id integer NOT NULL,
+    nome character varying(255) NOT NULL,
+    descricao text
+);
+
+
+ALTER TABLE public.categorias OWNER TO "user";
+
+--
+-- TOC entry 217 (class 1259 OID 17514)
+-- Name: categorias_id_seq; Type: SEQUENCE; Schema: public; Owner: user
+--
+
+CREATE SEQUENCE public.categorias_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.categorias_id_seq OWNER TO "user";
+
+--
+-- TOC entry 3511 (class 0 OID 0)
+-- Dependencies: 217
+-- Name: categorias_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user
+--
+
+ALTER SEQUENCE public.categorias_id_seq OWNED BY public.categorias.id;
+
+
+--
+-- TOC entry 227 (class 1259 OID 17552)
+-- Name: clientes; Type: TABLE; Schema: public; Owner: user
+--
+
+CREATE TABLE public.clientes (
+    id integer NOT NULL,
+    nome character varying(255) NOT NULL,
+    contato character varying(255),
+    cidade character varying(255),
+    pais_id text
+);
+
+
+ALTER TABLE public.clientes OWNER TO "user";
+
+--
+-- TOC entry 226 (class 1259 OID 17551)
+-- Name: clientes_id_seq; Type: SEQUENCE; Schema: public; Owner: user
+--
+
+CREATE SEQUENCE public.clientes_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.clientes_id_seq OWNER TO "user";
+
+--
+-- TOC entry 3512 (class 0 OID 0)
+-- Dependencies: 226
+-- Name: clientes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user
+--
+
+ALTER SEQUENCE public.clientes_id_seq OWNED BY public.clientes.id;
+
+
+--
+-- TOC entry 220 (class 1259 OID 17524)
+-- Name: fornecedores; Type: TABLE; Schema: public; Owner: user
+--
+
+CREATE TABLE public.fornecedores (
+    id integer NOT NULL,
+    nome character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public.fornecedores OWNER TO "user";
+
+--
+-- TOC entry 219 (class 1259 OID 17523)
+-- Name: fornecedores_id_seq; Type: SEQUENCE; Schema: public; Owner: user
+--
+
+CREATE SEQUENCE public.fornecedores_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.fornecedores_id_seq OWNER TO "user";
+
+--
+-- TOC entry 3513 (class 0 OID 0)
+-- Dependencies: 219
+-- Name: fornecedores_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user
+--
+
+ALTER SEQUENCE public.fornecedores_id_seq OWNED BY public.fornecedores.id;
+
+
+--
+-- TOC entry 221 (class 1259 OID 17530)
+-- Name: paises; Type: TABLE; Schema: public; Owner: user
+--
+
+CREATE TABLE public.paises (
+    id text NOT NULL,
+    nome character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public.paises OWNER TO "user";
+
+--
+-- TOC entry 229 (class 1259 OID 17566)
+-- Name: pedidos; Type: TABLE; Schema: public; Owner: user
+--
+
+CREATE TABLE public.pedidos (
+    id integer NOT NULL,
+    cliente_id integer,
+    vendedor_id integer,
+    data date NOT NULL
+);
+
+
+ALTER TABLE public.pedidos OWNER TO "user";
+
+--
+-- TOC entry 228 (class 1259 OID 17565)
+-- Name: pedidos_id_seq; Type: SEQUENCE; Schema: public; Owner: user
+--
+
+CREATE SEQUENCE public.pedidos_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.pedidos_id_seq OWNER TO "user";
+
+--
+-- TOC entry 3514 (class 0 OID 0)
+-- Dependencies: 228
+-- Name: pedidos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user
+--
+
+ALTER SEQUENCE public.pedidos_id_seq OWNED BY public.pedidos.id;
+
+
+--
+-- TOC entry 231 (class 1259 OID 17583)
+-- Name: produtos; Type: TABLE; Schema: public; Owner: user
+--
+
+CREATE TABLE public.produtos (
+    id integer NOT NULL,
+    nome character varying(255) NOT NULL,
+    fornecedor_id integer,
+    categoria_id integer
+);
+
+
+ALTER TABLE public.produtos OWNER TO "user";
+
+--
+-- TOC entry 230 (class 1259 OID 17582)
+-- Name: produtos_id_seq; Type: SEQUENCE; Schema: public; Owner: user
+--
+
+CREATE SEQUENCE public.produtos_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.produtos_id_seq OWNER TO "user";
+
+--
+-- TOC entry 3515 (class 0 OID 0)
+-- Dependencies: 230
+-- Name: produtos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user
+--
+
+ALTER SEQUENCE public.produtos_id_seq OWNED BY public.produtos.id;
+
+
+--
+-- TOC entry 223 (class 1259 OID 17538)
+-- Name: transportadoras; Type: TABLE; Schema: public; Owner: user
+--
+
+CREATE TABLE public.transportadoras (
+    id integer NOT NULL,
+    nome character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public.transportadoras OWNER TO "user";
+
+--
+-- TOC entry 222 (class 1259 OID 17537)
+-- Name: transportadoras_id_seq; Type: SEQUENCE; Schema: public; Owner: user
+--
+
+CREATE SEQUENCE public.transportadoras_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.transportadoras_id_seq OWNER TO "user";
+
+--
+-- TOC entry 3516 (class 0 OID 0)
+-- Dependencies: 222
+-- Name: transportadoras_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user
+--
+
+ALTER SEQUENCE public.transportadoras_id_seq OWNED BY public.transportadoras.id;
+
+
+--
+-- TOC entry 232 (class 1259 OID 17599)
+-- Name: vendas; Type: TABLE; Schema: public; Owner: user
+--
+
+CREATE TABLE public.vendas (
+    pedido_id integer NOT NULL,
+    produto_id integer NOT NULL,
+    transportadora_id integer,
+    quantidade integer,
+    valor_vendas numeric(10,2),
+    custo_vendas numeric(10,2),
+    margem_bruta numeric(10,2),
+    frete numeric(10,2),
+    desconto numeric(10,2)
+);
+
+
+ALTER TABLE public.vendas OWNER TO "user";
+
+--
+-- TOC entry 225 (class 1259 OID 17545)
+-- Name: vendedores; Type: TABLE; Schema: public; Owner: user
+--
+
+CREATE TABLE public.vendedores (
+    id integer NOT NULL,
+    nome character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public.vendedores OWNER TO "user";
+
+--
+-- TOC entry 224 (class 1259 OID 17544)
+-- Name: vendedores_id_seq; Type: SEQUENCE; Schema: public; Owner: user
+--
+
+CREATE SEQUENCE public.vendedores_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.vendedores_id_seq OWNER TO "user";
+
+--
+-- TOC entry 3517 (class 0 OID 0)
+-- Dependencies: 224
+-- Name: vendedores_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user
+--
+
+ALTER SEQUENCE public.vendedores_id_seq OWNED BY public.vendedores.id;
+
+
+--
+-- TOC entry 3312 (class 2604 OID 17518)
+-- Name: categorias id; Type: DEFAULT; Schema: public; Owner: user
+--
+
+ALTER TABLE ONLY public.categorias ALTER COLUMN id SET DEFAULT nextval('public.categorias_id_seq'::regclass);
+
+
+--
+-- TOC entry 3316 (class 2604 OID 17555)
+-- Name: clientes id; Type: DEFAULT; Schema: public; Owner: user
+--
+
+ALTER TABLE ONLY public.clientes ALTER COLUMN id SET DEFAULT nextval('public.clientes_id_seq'::regclass);
+
+
+--
+-- TOC entry 3313 (class 2604 OID 17527)
+-- Name: fornecedores id; Type: DEFAULT; Schema: public; Owner: user
+--
+
+ALTER TABLE ONLY public.fornecedores ALTER COLUMN id SET DEFAULT nextval('public.fornecedores_id_seq'::regclass);
+
+
+--
+-- TOC entry 3317 (class 2604 OID 17569)
+-- Name: pedidos id; Type: DEFAULT; Schema: public; Owner: user
+--
+
+ALTER TABLE ONLY public.pedidos ALTER COLUMN id SET DEFAULT nextval('public.pedidos_id_seq'::regclass);
+
+
+--
+-- TOC entry 3318 (class 2604 OID 17586)
+-- Name: produtos id; Type: DEFAULT; Schema: public; Owner: user
+--
+
+ALTER TABLE ONLY public.produtos ALTER COLUMN id SET DEFAULT nextval('public.produtos_id_seq'::regclass);
+
+
+--
+-- TOC entry 3314 (class 2604 OID 17541)
+-- Name: transportadoras id; Type: DEFAULT; Schema: public; Owner: user
+--
+
+ALTER TABLE ONLY public.transportadoras ALTER COLUMN id SET DEFAULT nextval('public.transportadoras_id_seq'::regclass);
+
+
+--
+-- TOC entry 3315 (class 2604 OID 17548)
+-- Name: vendedores id; Type: DEFAULT; Schema: public; Owner: user
+--
+
+ALTER TABLE ONLY public.vendedores ALTER COLUMN id SET DEFAULT nextval('public.vendedores_id_seq'::regclass);
+
+
+--
+-- TOC entry 3491 (class 0 OID 17515)
+-- Dependencies: 218
+-- Data for Name: categorias; Type: TABLE DATA; Schema: public; Owner: user
+--
+
+COPY public.categorias (id, nome, descricao) FROM stdin;
+1	Men´s Clothes	Fashion for Men
+2	Womens wear	Fashion for Women
+3	Sportwear	Sports…
+4	Bath Clothes	Beachwear
+5	Ladies´Footwear	Ladies Shoes
+7	Children´s wear	3-15 Years
+8	Babywear	0-3 Years
+6	Men´s Footwear	Men Shoes
+\.
+
+
+--
+-- TOC entry 3500 (class 0 OID 17552)
+-- Dependencies: 227
+-- Data for Name: clientes; Type: TABLE DATA; Schema: public; Owner: user
+--
+
+COPY public.clientes (id, nome, contato, cidade, pais_id) FROM stdin;
+41	Elle Fashion & Design	Louise Davu	Toulouse	FRA
+84	Art et Fashion	Pierre Robert	Lyon	FRA
+33	El Abrigo Mortal	Antonio Palmer Amer	Caracas	VEN
+37	Boleros	Robert Bolero	Cork	IRL
+43	For The Dark Night	Klaus Tarantino	Walla Walla	USA
+9	La Legion Mercenaire	Bernard de Gaule	Marseille	FRA
+10	Big Foot Shoes	James Hendersson	Tsawassen	CAN
+7	Menàge à Trois	Julie Binoché	Strasbourg	FRA
+74	Chateau de Ville	André Millard	Paris	FRA
+19	Th Fashing	Greg Thatcher	London	GBR
+51	Davenport Fashion	James Belucci	Montréal	CAN
+26	Le Sais de Rión	Jeanne d´Anjou	Nantes	FRA
+78	TTT-The Ticky Tie	Mary Stone	Butte	USA
+85	Pour l´homme	Henry Renault	Reims	FRA
+40	La Boheme	Philippe de Laval	Versailles	FRA
+18	Aujourd´hui	Pierre Chardin	Nantes	FRA
+45	Bobby Socks	Vincent Vega	San Francisco	USA
+48	Too Hot 4U	Andrea Pamelsson	Portland	USA
+77	Eye Fashion	Charles Oakley	Portland	USA
+72	Fast Sunglasses	Ray Banned	London	GBR
+4	Dr Jims Trousers	Carl Montgomery	London	GBR
+23	Champes	Jaques Wilneuve	Lille	FRA
+71	Sunny Ski Store	Perry Farell	Boise	USA
+89	Nirvana Stores	Alice Chain	Seattle	USA
+82	Bond Ltd	Mark Stark	Kirkland	USA
+42	Millenium	Joe Barry	Vancouver	CAN
+32	The Corner Store	Ross The Boss	Eugene	USA
+55	SSS-Sport Shoes Store	Al Bundy	Anchorage	USA
+65	X-Site	Malcolm X	Albuquerque	USA
+86	Autokleider	Ralf Schumaker	Stuttgart	DEU
+24	Sport & Fritid AB	Linda Haglund	Bräcke	SWE
+62	Roba di Piel	Jorge Alemaio	São Paulo	BRA
+31	Paintho da Gama	Anna Figo	Campinas	BRA
+67	Da Bikini Expertu	Thomá Lindao	Rio de Janeiro	BRA
+64	Ropa total	Emerson Fittipaldi	Buenos Aires	ARG
+15	Tendha do Flamengo	Edson Arantes do Nascimento	São Paulo	BRA
+81	Merced do Vaile	Mercedes Couto	São Paulo	BRA
+80	Don Balón	Peloto Gomez	México D.F.	MEX
+2	La Tienda de la Esquina	Paco el Maco	México D.F.	MEX
+47	El Pirata	Andrés Barbanegra	I. de Margarita	VEN
+5	Urras Shop	Urra Gurra Aktersnurra	Luleå	SWE
+16	The sharped dressed man	Ian Wright	London	GBR
+25	Halle Köln	Dieter Köln	München	DEU
+76	Belgium Black Jeans	Cheril Cow	Charleroi	BEL
+8	Las Corbatas	Julio Iglesias	Madrid	ESP
+22	La Camisas Cansadas	Filemón	Madrid	ESP
+3	La Ropa Vieja	Sancho Panza	México D.F.	MEX
+58	La Moda Pasada	Francisca Font Barceló	México D.F.	MEX
+35	El Zapato Rojo	Nicolas Balines	San Cristóbal	VEN
+46	Los Vatos Locos	Tony Montana	Barquisimeto	VEN
+36	Pulp Toxedos	Marcellus Wallace	Elgin	USA
+13	Los Sombreros Gigantes	Speedy Gonzales	México D.F.	MEX
+70	Alles Lusekofter	Akkurat Jonny	Stavern	NOR
+60	La Roba do Santho	Leopoldo Samba	Lisboa	PRT
+11	Shoe Expert	David Foot	London	GBR
+30	Los Trajes de Matador	El Cordobes	Sevilla	ESP
+6	Man Kleider	Herman Hinschler	Mannheim	DEU
+38	King Size Clothes	Al Yankovic	Cowes	GBR
+127	Stephanies	Staffan Blond	Stockholm	SWE
+59	Extrawagens	Herbert Bernstorf	Salzburg	AUT
+69	La Moda Alucinante	Emilio Ilegal	Madrid	ESP
+68	Golden Design Group	Carl Perry	Genève	CHE
+14	Das Alpen Shoe	Alfred Neumann	Bern	CHE
+52	Kohl Industries AG	Helmuth Klein	Leipzig	DEU
+28	El Traige do Benfica	Vitor Baiha	Lisboa	PRT
+90	Leningrad Cowboys Shop	Reijoo Haajanen	Helsinki	FIN
+20	Ski Store	Lars Saalbach	Graz	AUT
+54	Los Espandrilos Fantasticos	Don Gerardo	Buenos Aires	ARG
+79	Boombastic	Heinz Disco	Münster	DEU
+44	Warp AG	Klaus Deum	Frankfurt a.M.	DEU
+39	Noch Einmal GMBH	Dieter Rummernige	Brandenburg	DEU
+56	Casual Clothing	Herman Schlusse	Köln	DEU
+1	Eintrach GS	Albert von Einstein	Berlin	DEU
+75	Macalena	Paul Smith	Lander	USA
+12	Los Pantalones Magicos	Victoria Abril	Buenos Aires	ARG
+29	El Chandal del Barca	Jusep del pep	Barcelona	ESP
+61	Copacabana	Giovanni Santhos	Rio de Janeiro	BRA
+88	Da Santho Cosmethia	Mariah Erdi	Resende	BRA
+34	El Carnevale	Joe do Pintho	Rio de Janeiro	BRA
+21	Cloe do Pau	Romario do Sauza	São Paulo	BRA
+50	De la Vita	Marco Van Deum	Bruxelles	BEL
+53	Fawtly Towers	John Cleez	London	GBR
+66	Sport Shop	Anna Bella	Reggio Emilia	ITA
+63	Grunewald	George Essen	Cunewalde	DEU
+87	Perkii Urkii	Miiko Heikillä	Oulu	FIN
+91	Slotzy Danz	Boniekk Wallessa	Warszawa	POL
+49	La Moda d'il Futuri	Luca Brassi	Bergamo	ITA
+27	Il Pantaloni di la Cammorra	Don Corleone	Torino	ITA
+73	Rode & Vite	Preben Elkjaer	København	DNK
+17	Gluderstedt	Lars von Holstein	Aachen	DEU
+\.
+
+
+--
+-- TOC entry 3493 (class 0 OID 17524)
+-- Dependencies: 220
+-- Data for Name: fornecedores; Type: TABLE DATA; Schema: public; Owner: user
+--
+
+COPY public.fornecedores (id, nome) FROM stdin;
+1	USA Jeans
+2	Global Outlet
+3	Netshoes
+4	All Sports
+5	Tuxedo Beachwear
+6	Surf Trip
+7	Tennis Place
+8	Sports Now
+9	DSW Imports
+10	Brazilian Style
+11	Tinas Sports
+12	Luis Vilton
+13	Baby Place
+14	Rossi Clothes
+15	Fast Way
+16	L.A. Sports
+17	Roland Sports
+18	Baby Dress
+19	Donald Clothes
+20	Wills Surfwear
+21	Danske Treshoe
+22	Lundenhagen Boots
+23	Pälsii Sports
+24	Great Outdoors
+25	Patamonia Inc
+26	All Shoes
+27	Dolce Ga-Ga
+28	Game Over Sports
+29	Running Place
+\.
+
+
+--
+-- TOC entry 3494 (class 0 OID 17530)
+-- Dependencies: 221
+-- Data for Name: paises; Type: TABLE DATA; Schema: public; Owner: user
+--
+
+COPY public.paises (id, nome) FROM stdin;
+FRA	France
+VEN	Venezuela
+IRL	Ireland
+USA	USA
+CAN	Canada
+GBR	UK
+DEU	Germany
+SWE	Sweden
+BRA	Brazil
+ARG	Argentina
+MEX	Mexico
+BEL	Belgium
+ESP	Spain
+NOR	Norway
+PRT	Portugal
+AUT	Austria
+CHE	Switzerland
+FIN	Finland
+ITA	Italy
+POL	Poland
+DNK	Denmark
+\.
+
+
+--
+-- TOC entry 3502 (class 0 OID 17566)
+-- Dependencies: 229
+-- Data for Name: pedidos; Type: TABLE DATA; Schema: public; Owner: user
+--
+
+COPY public.pedidos (id, cliente_id, vendedor_id, data) FROM stdin;
+10413	41	5	2010-10-20
+10500	41	5	2011-04-14
+10832	41	5	2011-11-19
+10923	41	4	2012-06-05
+10425	41	4	2010-09-30
+10371	41	4	2009-10-09
+10610	41	4	2011-05-30
+10806	84	4	2012-11-05
+10850	84	4	2011-11-28
+10334	84	5	2011-05-26
+10450	84	5	2010-08-28
+10814	84	4	2011-11-10
+10546	84	4	2010-02-27
+10459	84	5	2011-03-02
+10843	84	4	2011-11-26
+10478	84	4	2010-09-24
+10785	33	9	2011-10-23
+10984	33	3	2012-04-04
+10268	33	3	2009-06-05
+10520	37	3	2011-07-04
+10722	37	9	2011-04-03
+10312	37	3	2011-02-26
+11003	37	3	2012-02-10
+10309	37	3	2011-01-22
+10695	37	9	2011-04-12
+10355	37	3	2012-02-19
+10946	37	9	2012-07-18
+11000	37	3	2012-04-11
+10335	37	9	2011-02-25
+10736	37	9	2011-09-16
+10517	37	9	2010-08-30
+10420	37	9	2011-11-26
+10646	37	3	2011-09-01
+10701	37	9	2011-08-18
+10298	37	2	2009-07-12
+10380	37	9	2012-10-22
+10440	37	3	2010-01-14
+10442	37	3	2010-01-15
+10912	37	3	2012-07-01
+10800	37	9	2012-10-31
+10458	37	9	2012-03-01
+10373	37	9	2012-10-10
+10712	37	3	2011-08-26
+10661	37	3	2011-07-15
+10503	37	3	2010-04-17
+10742	37	3	2011-02-17
+10429	37	9	2010-03-05
+11034	37	9	2012-02-24
+10388	37	3	2010-06-25
+10350	37	3	2009-10-17
+10519	37	9	2010-10-24
+10651	37	9	2011-07-07
+10751	37	3	2011-04-29
+10567	37	9	2010-04-07
+10985	37	9	2012-04-04
+10815	37	3	2011-11-10
+10415	37	3	2009-11-21
+10271	37	2	2009-10-18
+10678	37	9	2010-11-29
+11002	37	9	2011-12-12
+11063	37	3	2012-03-05
+10470	37	3	2010-01-15
+10516	37	9	2010-05-30
+10301	37	9	2011-07-15
+10346	37	9	2011-09-10
+10687	37	3	2011-08-05
+10897	37	9	2012-06-24
+10545	43	1	2010-07-29
+10715	9	5	2011-08-28
+11076	9	5	2012-03-27
+10331	9	5	2011-08-21
+10876	9	4	2012-06-14
+11027	10	1	2012-02-20
+10949	10	1	2012-10-18
+10411	10	1	2012-10-15
+10410	10	1	2009-11-16
+11045	10	1	2012-02-27
+11048	10	1	2012-02-28
+10436	7	5	2011-01-08
+10628	7	5	2011-03-17
+10265	7	5	2011-05-30
+10566	7	4	2010-09-18
+10360	7	5	2011-11-27
+10297	7	4	2012-03-09
+10679	7	5	2011-07-29
+10559	7	4	2009-12-12
+10449	7	4	2009-12-25
+10826	7	4	2012-10-17
+10584	7	5	2011-05-05
+10907	74	4	2011-12-31
+10964	74	4	2012-10-25
+10738	74	4	2011-04-17
+10460	19	2	2010-03-04
+10294	19	2	2012-03-05
+10254	19	2	2010-11-17
+10955	19	9	2012-01-21
+10465	19	3	2010-04-11
+10761	19	9	2011-10-07
+10726	19	3	2011-09-08
+10364	19	2	2009-10-02
+10382	19	3	2009-10-29
+11047	19	3	2012-10-29
+11043	19	9	2012-02-26
+10980	19	3	2012-09-01
+10614	19	3	2011-06-03
+10553	19	9	2010-03-06
+10327	19	3	2009-10-17
+10895	19	9	2012-02-22
+10389	19	9	2010-11-26
+11024	19	3	2012-02-19
+10884	19	9	2012-05-17
+10933	19	3	2012-01-10
+10256	19	3	2011-05-20
+11015	19	9	2012-02-14
+10532	19	9	2012-06-14
+10624	19	3	2011-10-12
+10475	19	3	2010-10-20
+10324	19	2	2011-03-13
+10808	19	3	2012-11-06
+10612	19	3	2011-01-31
+10673	19	9	2011-03-23
+10804	19	3	2011-12-05
+11059	19	9	2012-04-03
+10794	19	3	2011-09-29
+11056	19	3	2011-12-03
+10769	19	3	2011-10-13
+10400	19	9	2010-04-07
+10713	19	9	2011-08-27
+10523	19	3	2011-04-05
+10660	19	9	2011-07-14
+10987	19	3	2012-05-06
+10983	19	9	2012-09-01
+10739	19	9	2011-09-17
+10563	19	9	2010-09-16
+10737	19	3	2011-09-16
+10565	51	1	2010-09-17
+10590	51	1	2011-05-12
+10570	51	1	2011-04-22
+10605	51	1	2011-05-26
+10339	51	1	2009-09-03
+10618	51	1	2011-07-07
+10424	51	1	2011-04-28
+10505	51	1	2010-04-20
+10724	51	1	2011-09-04
+10439	51	1	2010-03-13
+10619	51	1	2011-06-09
+10376	51	1	2011-05-14
+10332	51	1	2012-08-22
+10671	26	7	2011-04-22
+10860	26	7	2011-12-04
+10971	26	8	2012-07-30
+11081	78	1	2012-10-21
+10274	85	5	2012-06-11
+10973	40	5	2012-01-28
+10858	40	5	2011-12-04
+10927	40	5	2012-07-11
+10972	40	4	2012-01-28
+10609	18	6	2011-04-29
+10311	18	6	2012-07-26
+10890	18	6	2012-02-20
+10683	18	6	2011-08-01
+10579	45	1	2011-04-30
+10719	45	1	2011-09-01
+10317	48	1	2010-03-06
+10867	48	1	2012-06-08
+10544	48	1	2010-07-28
+10665	48	1	2011-07-17
+10307	48	1	2010-07-24
+10662	48	1	2011-07-15
+11018	48	1	2012-05-18
+11080	77	1	2012-04-04
+10359	72	9	2011-03-26
+10741	4	9	2011-09-19
+10248	4	2	2012-05-09
+10864	4	3	2012-05-08
+10953	4	9	2012-01-20
+10634	23	6	2011-06-20
+10555	23	6	2010-04-08
+10763	23	6	2011-03-08
+10975	23	6	2012-08-30
+10700	23	6	2011-03-15
+10434	23	6	2010-09-09
+10472	23	6	2010-01-16
+11030	23	6	2012-02-21
+11038	23	6	2012-02-25
+10789	23	6	2011-04-27
+10805	23	6	2012-02-03
+10558	23	6	2010-08-10
+10604	23	6	2011-09-23
+11050	23	6	2012-09-01
+10480	23	6	2010-01-24
+10454	23	6	2010-02-25
+10408	23	6	2010-10-14
+10432	23	6	2009-12-07
+10375	23	6	2009-10-12
+10966	23	6	2012-01-24
+10633	23	6	2011-02-18
+10316	23	6	2010-08-03
+11046	23	6	2012-04-28
+10663	23	6	2011-10-15
+10482	23	6	2010-01-25
+10655	23	6	2011-07-09
+10452	71	9	2010-02-24
+10398	71	3	2010-09-05
+10596	89	3	2011-05-16
+10504	89	9	2010-04-17
+10469	89	3	2010-01-14
+10483	89	2	2011-02-27
+10344	89	2	2009-09-07
+11032	89	9	2012-03-22
+11066	89	9	2012-03-06
+10693	89	2	2011-08-11
+10861	89	3	2012-04-04
+10723	89	2	2011-09-04
+10904	89	3	2011-12-30
+10269	89	3	2010-03-07
+10740	89	3	2011-04-18
+10696	89	3	2011-08-13
+10358	82	1	2012-02-24
+10446	82	1	2010-01-18
+10577	82	1	2011-04-28
+10822	82	1	2012-05-13
+10514	82	1	2010-05-28
+10935	82	1	2012-03-14
+10918	82	1	2012-06-11
+10401	82	1	2010-10-18
+10602	82	1	2011-05-22
+10493	82	1	2010-02-06
+10511	82	1	2010-05-24
+10977	82	1	2012-01-30
+11033	82	1	2012-03-22
+10746	82	1	2011-09-24
+10779	82	1	2011-03-21
+10383	82	1	2012-02-29
+10574	82	1	2011-10-24
+10930	82	1	2012-10-11
+10586	82	1	2011-10-07
+10620	42	1	2011-01-08
+10851	42	1	2012-08-01
+11031	42	1	2012-02-21
+10810	42	1	2012-11-06
+10932	42	1	2012-03-11
+10495	42	1	2010-10-24
+10351	42	1	2009-09-17
+10836	42	1	2012-05-21
+10680	42	1	2011-04-29
+10564	42	1	2009-11-16
+11016	42	1	2012-02-14
+10943	42	1	2012-01-15
+10447	32	1	2010-08-20
+10528	32	1	2010-03-12
+10968	32	1	2012-02-27
+11072	32	1	2012-03-21
+11006	32	1	2012-04-12
+10720	32	1	2011-04-02
+10598	32	1	2011-05-19
+10869	32	1	2012-06-09
+10979	32	1	2012-03-31
+10370	32	1	2010-03-09
+10616	32	1	2011-06-05
+10714	32	1	2011-08-27
+10758	32	1	2010-12-04
+10855	32	1	2012-05-02
+10657	32	1	2011-07-10
+10416	32	1	2010-10-22
+10831	32	1	2012-05-19
+10377	32	1	2009-10-15
+10656	32	1	2011-10-09
+10816	32	1	2012-05-11
+10749	32	1	2011-09-25
+10756	32	1	2011-03-02
+11061	32	1	2012-03-05
+10310	32	1	2010-02-24
+10681	32	1	2011-03-30
+10873	32	1	2012-04-11
+11040	32	1	2012-03-27
+10617	32	1	2011-06-05
+10562	32	1	2010-09-15
+10607	32	1	2011-04-27
+10513	32	1	2012-05-27
+10941	32	1	2012-06-16
+10988	32	1	2012-02-04
+10441	32	1	2010-01-14
+10589	32	1	2011-05-09
+10945	32	1	2012-05-17
+10302	32	1	2010-02-14
+10644	32	1	2011-06-30
+10390	32	1	2010-04-29
+10340	32	1	2011-04-03
+10431	32	1	2010-01-06
+10936	32	1	2012-01-13
+11079	55	1	2012-02-22
+10262	65	2	2009-03-28
+10272	65	3	2010-04-08
+10820	65	3	2012-05-12
+10348	86	7	2012-03-12
+10640	86	8	2011-06-26
+10632	86	7	2011-06-19
+10356	86	7	2010-11-24
+10668	86	8	2011-01-18
+10703	24	8	2011-08-19
+10378	24	7	2011-10-15
+10880	24	7	2011-12-16
+10774	24	8	2011-03-16
+10533	24	7	2010-06-18
+10902	24	7	2011-12-29
+11001	24	8	2012-10-11
+10704	62	2	2011-08-19
+10406	62	2	2011-02-10
+10637	62	3	2011-06-24
+10786	62	3	2011-10-24
+10914	62	3	2012-07-02
+10659	62	2	2011-03-10
+11068	62	3	2012-03-12
+10913	62	3	2012-01-01
+10372	62	2	2012-06-09
+10961	62	3	2012-01-23
+10487	62	2	2010-01-30
+10728	62	3	2011-09-09
+10868	62	3	2012-01-08
+10959	31	9	2012-01-22
+11049	31	9	2012-05-29
+10734	31	9	2011-09-12
+10709	31	3	2011-08-22
+10423	31	2	2010-04-29
+10652	31	3	2011-11-06
+10777	31	3	2011-10-20
+10790	31	3	2011-10-27
+10685	31	2	2011-10-04
+10299	67	3	2011-07-12
+10481	67	2	2010-05-26
+10877	67	3	2012-05-14
+10287	67	2	2009-04-28
+11019	64	3	2012-04-18
+10716	64	2	2011-02-27
+10466	15	2	2010-01-10
+10494	15	9	2010-02-06
+10969	15	9	2012-07-29
+10830	81	2	2012-03-18
+10606	81	2	2011-10-27
+10292	81	2	2011-07-03
+10496	81	2	2011-03-09
+10839	81	9	2012-03-24
+10834	81	3	2012-05-20
+10518	80	1	2010-05-31
+10293	80	1	2012-05-04
+10304	80	1	2011-02-15
+10576	80	1	2011-04-28
+10698	80	1	2011-08-14
+10842	80	1	2012-05-25
+10622	80	1	2011-06-11
+11041	80	1	2012-02-26
+10707	80	1	2011-08-21
+10455	80	1	2010-02-28
+10847	80	1	2012-04-27
+10730	80	1	2011-04-10
+10762	80	1	2011-10-07
+11069	80	1	2012-03-14
+10676	80	1	2011-09-27
+10305	80	1	2012-07-19
+10319	80	1	2010-12-08
+10727	80	1	2011-09-08
+10915	80	1	2012-01-02
+10982	80	1	2012-01-31
+10594	80	1	2011-10-14
+10993	80	1	2012-02-05
+10276	80	1	2009-08-14
+10926	2	3	2012-06-09
+10308	2	2	2011-07-24
+10625	2	3	2011-10-13
+10759	2	2	2011-10-03
+10838	47	9	2012-03-24
+10485	47	9	2010-10-01
+10697	47	3	2011-04-13
+10729	47	2	2011-03-09
+10638	47	2	2011-06-25
+10840	47	9	2012-04-24
+10405	47	2	2009-11-12
+10811	47	3	2012-05-08
+10954	47	3	2012-04-22
+10919	47	3	2012-01-05
+11039	47	3	2012-02-25
+11014	47	3	2012-02-14
+10866	5	3	2012-02-07
+10924	5	3	2012-01-08
+10280	5	3	2009-10-20
+10572	5	3	2011-04-23
+10672	5	3	2011-07-23
+10689	5	9	2011-03-06
+10626	5	9	2011-06-16
+10278	5	2	2009-06-18
+10654	5	3	2011-02-05
+10445	5	9	2010-11-19
+10857	5	3	2012-06-02
+10837	5	9	2011-11-21
+10384	5	2	2009-11-05
+10875	5	9	2012-04-11
+10444	5	9	2010-02-16
+10524	5	3	2009-12-07
+10733	5	9	2010-12-14
+10778	5	9	2011-10-21
+10848	16	3	2012-09-28
+10435	16	2	2010-01-08
+10462	16	3	2010-03-07
+10623	25	7	2011-05-12
+10670	25	7	2011-07-22
+10859	25	8	2012-01-04
+10929	25	8	2012-03-10
+10342	25	7	2012-09-04
+10396	25	7	2012-06-01
+11012	25	7	2012-02-13
+10675	25	8	2011-03-24
+10267	25	8	2011-12-04
+10717	25	8	2011-09-29
+10653	25	7	2011-04-07
+10488	25	8	2010-01-31
+10560	25	8	2010-08-12
+10337	25	8	2009-02-28
+10791	25	8	2011-10-28
+10885	76	4	2012-06-17
+11035	76	5	2012-08-25
+10846	76	4	2011-11-27
+10252	76	5	2012-02-13
+10767	76	4	2011-10-10
+10326	8	5	2011-08-15
+10970	8	4	2012-01-28
+10801	8	4	2012-11-03
+11078	22	4	2011-12-04
+11082	22	4	2012-02-02
+10682	3	3	2011-07-31
+10856	3	9	2011-12-03
+10365	3	2	2009-10-03
+10535	3	9	2010-09-19
+10573	3	9	2011-04-24
+10677	3	9	2011-07-28
+10507	3	3	2012-10-20
+10474	58	8	2011-03-18
+11073	58	8	2012-03-14
+10354	58	7	2012-03-19
+10502	58	8	2010-04-16
+10995	58	8	2012-02-06
+10322	58	7	2012-08-09
+10960	35	3	2012-07-25
+10498	35	3	2010-03-13
+11055	35	9	2012-03-03
+10486	35	9	2010-10-12
+10552	35	3	2010-09-04
+10490	35	9	2012-02-04
+10476	35	3	2010-01-21
+10613	35	9	2011-06-03
+10863	35	9	2012-06-07
+10641	35	9	2011-06-27
+10901	35	3	2012-06-28
+10257	35	9	2011-05-21
+10796	35	3	2012-04-30
+10395	35	3	2010-11-01
+10601	35	3	2011-05-21
+10705	35	9	2011-03-20
+10957	35	3	2012-03-23
+10976	35	9	2012-01-29
+10296	46	2	2009-05-13
+10823	46	9	2011-11-14
+10780	46	3	2011-10-21
+10283	46	2	2012-06-21
+10899	46	3	2012-06-25
+10357	46	2	2009-04-25
+10461	46	9	2010-10-04
+10499	46	9	2010-04-14
+11065	46	3	2012-10-06
+10330	46	3	2011-10-21
+10543	46	3	2010-02-25
+10997	46	9	2012-10-08
+10381	46	2	2009-10-28
+11071	46	9	2012-09-19
+10394	36	1	2010-10-31
+10259	13	3	2010-05-24
+10639	70	3	2011-06-25
+10477	60	5	2012-03-22
+10336	60	4	2011-08-28
+11007	60	4	2012-08-13
+10397	60	5	2012-06-30
+10433	60	4	2010-02-07
+10947	11	3	2012-07-19
+10599	11	9	2011-05-20
+10578	11	3	2011-08-29
+10471	11	2	2010-01-15
+11009	30	4	2012-02-12
+11037	30	4	2012-02-25
+10911	30	5	2012-03-31
+10888	30	5	2012-01-20
+10872	30	5	2012-10-10
+10303	30	5	2012-02-15
+10550	30	4	2011-09-02
+10948	30	5	2012-01-17
+10629	30	4	2011-06-17
+11058	6	7	2012-03-04
+10956	6	8	2012-02-21
+10501	6	7	2011-10-14
+10509	6	7	2011-04-22
+10853	6	8	2011-12-02
+10829	38	9	2011-11-18
+10473	38	3	2010-01-17
+10315	38	9	2011-03-31
+10798	38	9	2012-03-31
+10321	38	3	2012-03-08
+10591	127	3	2011-08-12
+10921	127	3	2012-03-06
+10688	127	3	2011-03-06
+10773	59	5	2011-03-16
+10648	59	5	2011-04-02
+10597	59	4	2010-11-17
+11062	59	5	2012-04-04
+10353	59	5	2012-09-18
+10768	59	5	2011-02-11
+10489	59	5	2011-03-03
+10828	59	4	2011-11-18
+10747	59	5	2011-03-24
+11042	59	5	2012-02-26
+10530	59	4	2010-10-14
+10755	59	5	2011-10-01
+10392	59	4	2010-10-30
+10484	59	5	2012-02-28
+10600	59	4	2011-10-21
+10882	59	4	2012-02-15
+10686	59	5	2011-08-05
+11053	59	4	2012-03-02
+10844	59	4	2012-02-25
+10427	59	4	2010-05-03
+10525	59	4	2010-07-08
+10281	69	4	2011-06-19
+10306	69	5	2012-10-21
+11013	69	4	2012-02-13
+10917	69	5	2012-01-05
+10282	69	5	2011-06-20
+11075	68	6	2012-09-18
+10255	68	6	2012-04-17
+10666	68	6	2011-07-18
+10537	68	6	2010-03-20
+10931	68	6	2012-01-10
+11083	14	6	2011-09-25
+10699	52	7	2011-08-14
+10352	28	5	2012-10-17
+10491	28	4	2010-02-04
+10328	28	5	2011-04-19
+10551	28	4	2010-03-04
+10963	28	5	2012-01-23
+10910	90	9	2012-07-01
+10667	20	5	2011-07-18
+10771	20	5	2011-10-15
+10402	20	4	2010-03-09
+10403	20	4	2010-08-09
+10571	20	4	2011-04-22
+10854	20	5	2011-12-02
+10958	54	3	2012-04-23
+10986	54	3	2012-02-03
+10531	54	3	2012-06-13
+10409	54	3	2010-02-13
+10898	54	3	2011-12-26
+10708	79	8	2011-09-22
+10944	79	8	2012-01-16
+10453	79	8	2010-02-25
+10399	79	7	2011-02-03
+10367	79	7	2012-01-03
+10879	79	7	2011-12-16
+10664	79	8	2011-08-15
+11029	79	8	2012-03-21
+10636	79	7	2011-06-24
+10561	79	8	2010-10-12
+10437	79	7	2011-01-08
+10595	79	7	2011-05-15
+10967	79	8	2012-07-29
+10438	79	7	2011-08-11
+10448	79	8	2010-01-21
+10615	79	8	2011-10-05
+10548	79	7	2012-05-01
+10295	79	7	2012-07-08
+10608	79	8	2011-05-28
+10809	79	7	2012-11-06
+10965	79	8	2012-07-26
+10249	79	7	2011-05-10
+10744	79	7	2011-09-22
+10631	44	8	2011-06-19
+10557	44	7	2012-09-08
+11070	44	8	2012-03-18
+10862	44	7	2011-12-05
+10522	44	8	2010-04-05
+11017	44	7	2012-10-18
+10934	44	7	2012-09-14
+10575	44	7	2011-08-25
+10592	44	8	2011-10-13
+10497	44	8	2011-03-09
+10284	44	7	2011-06-24
+10464	44	7	2011-05-09
+10593	44	7	2011-10-14
+10343	44	8	2009-12-07
+10569	44	8	2010-11-22
+10419	44	7	2010-11-26
+10781	44	8	2011-10-22
+10536	44	7	2012-04-19
+10772	44	8	2011-10-15
+10534	44	7	2010-10-18
+10731	44	7	2011-04-11
+10430	44	7	2011-02-02
+10362	44	8	2009-10-01
+10492	44	8	2010-02-05
+10992	44	8	2012-03-07
+10908	44	7	2012-07-01
+10279	44	7	2011-06-18
+10891	44	8	2012-06-22
+10893	39	9	2011-12-24
+10799	39	9	2012-05-01
+10542	39	3	2010-07-27
+10506	39	9	2010-04-21
+10325	39	3	2010-03-15
+10323	39	3	2009-10-13
+10849	39	9	2011-11-28
+10817	39	3	2012-05-11
+10630	39	3	2011-07-19
+10718	39	3	2011-03-02
+11028	39	9	2012-10-21
+10457	39	9	2010-03-01
+10456	39	3	2010-03-01
+10468	39	9	2010-05-13
+10407	56	8	2009-11-13
+10260	56	8	2011-10-24
+10766	56	8	2011-05-10
+10554	56	7	2012-04-04
+10999	56	7	2012-10-08
+10580	56	7	2011-05-01
+10833	56	8	2012-03-20
+10508	56	8	2010-04-22
+10684	56	7	2011-08-01
+11020	56	7	2011-11-19
+11005	1	8	2012-03-12
+11051	1	8	2012-03-02
+10290	1	7	2012-07-02
+10526	1	8	2010-06-11
+10813	1	8	2012-10-10
+10510	1	7	2011-05-23
+10852	1	8	2011-12-01
+10905	1	7	2012-03-29
+10621	1	8	2011-06-10
+11011	1	7	2012-09-14
+10835	1	7	2011-11-20
+10952	1	7	2012-01-20
+10702	1	7	2011-10-18
+10251	1	7	2011-10-13
+10812	1	7	2012-03-08
+10692	1	8	2011-03-08
+10764	1	8	2011-10-08
+10289	1	8	2011-07-01
+10643	1	8	2011-09-30
+11064	1	7	2012-04-05
+10711	1	8	2011-08-26
+10732	1	7	2011-09-11
+10757	1	7	2011-03-02
+10994	1	7	2012-09-07
+10909	1	8	2012-03-31
+10463	1	8	2012-10-09
+10750	1	8	2011-02-24
+10277	1	7	2012-06-14
+10627	1	7	2011-06-16
+10990	1	8	2012-02-05
+10349	1	7	2011-09-13
+10748	1	7	2011-09-25
+10585	1	7	2011-10-06
+10338	1	8	2009-08-31
+10743	1	8	2011-09-22
+10974	75	1	2012-01-29
+10329	75	1	2009-10-21
+10385	75	1	2012-04-07
+10821	75	1	2012-03-13
+10369	75	1	2009-10-08
+10819	12	2	2012-04-12
+11054	12	9	2012-03-03
+10521	12	2	2010-04-04
+10782	12	9	2011-04-22
+10937	12	9	2012-03-15
+10881	12	3	2012-06-16
+10366	29	4	2009-10-04
+10928	29	4	2012-01-09
+10887	29	5	2012-06-18
+10426	29	5	2012-01-02
+10568	29	4	2010-09-19
+10989	61	3	2012-02-04
+10421	61	2	2010-01-25
+10379	61	2	2009-10-21
+10587	61	3	2011-05-07
+10647	61	3	2011-07-02
+10291	61	2	2009-07-03
+10261	61	2	2012-05-24
+10874	88	2	2011-12-12
+10541	34	9	2010-07-26
+10922	34	9	2012-07-06
+10770	34	3	2011-10-14
+10250	34	2	2012-05-13
+10903	34	3	2012-06-29
+10783	34	3	2011-04-23
+10690	34	9	2011-08-07
+10886	34	3	2012-02-17
+10253	34	3	2012-05-15
+10981	34	9	2012-10-12
+11022	34	9	2012-09-19
+11052	34	3	2012-04-01
+10925	34	9	2012-01-08
+10645	34	9	2011-07-01
+10512	21	2	2011-10-26
+10347	21	2	2009-09-12
+10386	21	2	2012-02-06
+10581	21	3	2011-05-01
+10650	21	3	2011-08-04
+10414	21	3	2009-11-20
+10725	21	3	2011-09-05
+10529	50	5	2012-10-12
+10760	50	4	2011-05-06
+10649	50	5	2011-07-03
+10896	50	4	2012-01-23
+11057	53	2	2012-03-04
+10752	53	2	2011-03-29
+11010	66	6	2012-02-13
+10288	66	6	2011-06-28
+10942	66	6	2012-04-16
+10428	66	6	2012-01-03
+10883	63	7	2012-06-17
+10263	63	7	2012-05-28
+11021	63	8	2012-02-18
+10788	63	8	2011-10-27
+10691	63	7	2011-05-08
+10991	63	8	2012-02-05
+10285	63	8	2010-06-26
+10418	63	7	2010-11-23
+10938	63	7	2012-06-15
+10694	63	7	2011-08-11
+10871	63	8	2012-04-10
+10451	63	7	2010-10-25
+10765	63	7	2011-10-09
+10658	63	7	2011-10-10
+10540	63	8	2010-02-23
+10745	63	8	2011-04-23
+10962	63	7	2012-07-25
+10527	63	8	2012-06-10
+10345	63	7	2012-10-08
+10479	63	8	2010-01-23
+10361	63	7	2012-10-08
+10721	63	8	2011-09-03
+10865	63	8	2012-05-08
+10273	63	7	2011-08-10
+10539	63	8	2010-06-22
+10920	63	8	2012-07-06
+10515	63	8	2010-03-29
+10795	63	7	2011-04-29
+10286	63	8	2009-04-27
+10878	63	7	2012-06-15
+10845	63	7	2012-05-26
+10549	63	8	2012-03-02
+10674	63	7	2011-07-24
+10996	63	7	2012-02-06
+10588	63	7	2011-05-08
+10313	63	7	2011-07-30
+11025	87	7	2012-03-20
+10320	87	8	2011-08-08
+10333	87	7	2012-02-22
+10583	87	7	2011-05-05
+10266	87	8	2012-05-31
+10270	87	7	2012-06-06
+10412	87	8	2010-04-19
+10998	91	8	2012-02-07
+10611	91	8	2011-05-30
+10792	91	8	2011-05-28
+11044	91	8	2012-03-28
+10906	91	8	2012-06-30
+10870	91	8	2012-02-08
+10374	91	8	2009-04-11
+10635	49	6	2011-04-23
+10467	49	6	2010-01-10
+10939	49	6	2012-01-14
+10784	49	6	2011-05-23
+10950	49	6	2012-10-21
+10300	49	6	2009-07-16
+10404	49	6	2010-02-28
+10818	49	6	2012-05-12
+10754	49	6	2011-09-30
+11060	27	6	2012-03-05
+10710	27	6	2011-08-25
+10422	27	6	2009-11-28
+10753	27	6	2011-09-30
+11026	27	6	2012-03-20
+10807	27	6	2012-05-06
+10275	73	9	2011-06-12
+10387	73	9	2011-11-23
+10900	73	9	2011-12-26
+11077	73	9	2012-10-10
+10443	73	9	2010-01-16
+10787	73	9	2011-10-24
+10951	73	9	2012-01-20
+10393	73	9	2010-05-31
+10889	73	3	2012-06-21
+10775	73	3	2011-10-17
+10841	73	9	2011-11-25
+10978	73	9	2012-08-31
+10417	73	9	2011-11-21
+10318	73	9	2012-08-06
+11004	73	9	2012-08-12
+10582	73	3	2011-08-02
+10368	73	3	2009-10-05
+10341	73	3	2012-09-03
+10803	73	3	2012-11-04
+10802	73	9	2012-08-04
+11074	73	3	2012-03-15
+10642	73	3	2011-06-27
+10892	73	3	2011-12-23
+10314	73	3	2011-02-28
+10556	73	3	2010-04-09
+11023	73	3	2012-02-18
+10940	73	9	2012-07-17
+10669	73	3	2011-07-21
+10363	17	8	2012-01-01
+10538	17	7	2012-05-20
+10824	17	7	2011-11-14
+10258	17	7	2012-05-22
+10797	17	8	2012-10-30
+11008	17	7	2012-02-12
+10264	17	7	2011-05-29
+10894	17	7	2012-06-23
+10735	17	7	2011-09-15
+10827	17	7	2012-02-16
+10825	17	8	2012-05-14
+10916	17	8	2012-03-02
+10706	17	8	2011-03-21
+11036	17	8	2012-03-25
+10603	17	8	2011-05-23
+10776	17	7	2011-10-20
+10547	17	7	2011-04-28
+10793	17	8	2011-10-29
+11067	17	8	2012-03-11
+10391	17	8	2010-10-29
+\.
+
+
+--
+-- TOC entry 3504 (class 0 OID 17583)
+-- Dependencies: 231
+-- Data for Name: produtos; Type: TABLE DATA; Schema: public; Owner: user
+--
+
+COPY public.produtos (id, nome, fornecedor_id, categoria_id) FROM stdin;
+1	Lenin Jeansshorts	1	1
+15	Sumi Underwear	6	2
+44	Okkaba Skin Jackets	20	2
+67	X-Dress	16	2
+76	Minnki Pälsii	23	2
+25	Basket Vest	11	3
+55	Feiss Fleece Trousers	25	3
+62	Sheat Shoes	29	3
+43	Summer Shorts	20	4
+64	WFS shoes	12	5
+42	Balett Shoes	20	5
+28	RDL Suit	12	7
+36	Mehmet-Tröja	17	8
+13	Aino Shoes	6	8
+2	Mr X Trousers	1	1
+70	US-Master Jeans	7	1
+65	Stretch oui-pants	2	2
+33	Car Boots	15	3
+68	Cap	8	3
+54	Patamonia Fleece Jacket	25	3
+61	Adihash Running Shoe	29	3
+35	LA. Shorts	16	4
+72	Rossi Shorts	14	4
+52	Small Crocodile Boots	24	5
+48	Root Boot	22	6
+51	Snake Boots	24	6
+74	Nikee Running Shoes	4	7
+7	Conserve Shoes	3	7
+10	Sapporoo Gloves	4	8
+41	Duck Shirt	19	8
+46	Rodbye Troje	21	8
+75	Bow tie	12	1
+24	Samba Socker  Socks	10	1
+16	Wimbledon T-Shirt	7	3
+29	Davenport	12	6
+71	Atles Lussekofta	15	1
+11	Desperado Jeans	5	1
+6	Shagall Socks	3	2
+8	Tuxedo	3	2
+53	Jumpin Jack Flash Dress	24	2
+39	Terence Top	18	2
+3	Chantell Shirt	1	2
+77	Skirt	12	2
+4	Oyaki Kimono	2	2
+63	Serve-Shirt	7	2
+66	Langoste Shirt	2	2
+60	Game Over T-Shirt	28	3
+59	Rasta WCT	28	3
+69	Racing Truck  Socks	15	3
+19	Squash Shorts	8	3
+21	Basket Shoes	8	3
+50	Finnish Swimsuit	23	3
+26	Bike Helmet	11	3
+12	Tiny Winy Hot Bikini	5	4
+32	Rossi Bikkini	14	4
+31	Rossi Bermuda Shorts	14	4
+34	Baywatch Bikkini	16	4
+22	Ravellis Träskor	9	5
+23	DSW	9	5
+57	Burned Rubber Shoes	26	5
+56	High Heels Shoes	26	5
+17	TieBreak Tennis shoes	7	6
+45	Danske Treshoe	21	6
+9	Fuji Boots	4	6
+14	Kool Sunglasses	6	7
+73	Mehmet-Napp	17	8
+40	Duck Trousers	19	8
+18	Deuce shirt	7	8
+30	Baby Dark Lounge Suit	13	8
+58	Ga-Ga Dress	27	8
+38	Le Baby Dress	18	2
+49	Finnish Sport Blades	23	3
+5	O-Man Underwear	2	1
+20	Tennis Suit	8	3
+37	Mehmet-Skor	17	8
+47	Lundenhagen Boots	22	6
+27	Tracksuit	11	3
+\.
+
+
+--
+-- TOC entry 3496 (class 0 OID 17538)
+-- Dependencies: 223
+-- Data for Name: transportadoras; Type: TABLE DATA; Schema: public; Owner: user
+--
+
+COPY public.transportadoras (id, nome) FROM stdin;
+1	General Shipping
+2	Global Express
+3	Great Logistics
+\.
+
+
+--
+-- TOC entry 3505 (class 0 OID 17599)
+-- Dependencies: 232
+-- Data for Name: vendas; Type: TABLE DATA; Schema: public; Owner: user
+--
+
+COPY public.vendas (pedido_id, produto_id, transportadora_id, quantidade, valor_vendas, custo_vendas, margem_bruta, frete, desconto) FROM stdin;
+10413	1	1	24	504.24	417.51	86.73	64.69	0.00
+10500	15	1	12	81.02	63.89	17.13	53.28	3.86
+10832	44	1	16	1308.29	961.59	346.70	30.97	218.05
+10923	67	1	24	1842.34	1354.12	488.22	76.90	307.06
+10413	76	1	14	5809.44	4810.22	999.22	64.69	0.00
+10425	76	1	20	9035.75	5985.28	3050.47	23.12	1807.15
+10832	25	1	10	165.60	121.72	43.88	30.97	27.60
+10425	55	1	10	450.50	298.41	152.09	23.12	90.10
+10413	62	1	40	1214.80	1005.85	208.95	64.69	0.00
+10923	43	1	10	154.08	113.25	40.83	76.90	25.68
+10832	64	1	3	99.18	87.48	11.70	30.97	0.00
+10923	42	1	10	158.40	116.42	41.98	76.90	26.40
+10500	28	1	8	394.13	310.80	83.33	53.28	18.77
+10371	36	1	6	55.94	40.28	15.66	66.09	9.32
+10832	13	1	3	92.16	67.74	24.42	30.97	15.36
+10610	36	1	21	198.98	128.94	70.04	67.44	39.80
+10806	2	1	20	476.50	308.77	167.73	38.16	95.30
+10850	70	1	30	927.71	711.51	216.20	58.80	121.01
+10806	65	1	2	18.94	15.34	3.60	38.16	0.00
+10850	33	1	4	121.16	92.93	28.24	58.80	15.80
+10334	68	1	10	127.40	116.79	10.61	41.01	0.00
+10450	54	1	6	253.58	174.97	78.61	39.15	42.26
+10850	25	1	20	318.32	244.14	74.18	58.80	41.52
+10814	61	1	30	936.68	659.75	276.93	76.36	122.18
+10546	62	1	40	1180.40	956.12	224.28	37.46	0.00
+10546	35	1	30	181.80	147.26	34.54	37.46	0.00
+10814	43	1	20	283.36	199.58	83.78	76.36	36.96
+10459	72	1	40	512.40	424.27	88.13	26.28	0.00
+10334	52	1	8	582.08	502.92	79.16	41.01	0.00
+10814	48	1	8	304.52	214.49	90.03	76.36	39.72
+10843	51	1	4	473.60	334.17	139.43	46.32	94.72
+10806	74	1	15	540.56	350.28	190.28	38.16	108.11
+10546	7	1	10	434.60	352.03	82.57	37.46	0.00
+10459	7	1	16	655.87	517.20	138.67	26.28	31.23
+10478	10	1	20	138.60	109.30	29.30	28.49	6.60
+10450	10	1	20	183.36	127.50	55.86	39.15	30.56
+10814	41	1	20	177.60	143.86	33.74	76.36	0.00
+10459	46	1	20	251.58	198.39	53.19	26.28	11.98
+10785	75	2	10	80.40	65.12	15.28	60.35	0.00
+10984	24	2	20	92.80	81.85	10.95	31.11	0.00
+10984	16	2	55	552.75	487.53	65.22	31.11	0.00
+10268	72	2	4	50.56	43.68	6.88	69.28	0.00
+10268	29	2	10	1173.00	1013.47	159.53	69.28	0.00
+10785	10	2	10	64.20	52.00	12.20	60.35	0.00
+10984	36	2	40	350.00	315.85	34.15	31.11	0.00
+10520	24	2	8	37.44	31.00	6.44	31.78	0.00
+10722	2	2	3	58.41	47.31	11.10	71.33	0.00
+10312	75	2	10	76.30	65.92	10.38	76.68	0.00
+11003	1	2	4	76.00	67.03	8.97	28.52	0.00
+10309	71	2	3	89.28	77.14	12.14	71.58	0.00
+10695	24	2	20	98.40	79.70	18.70	40.99	0.00
+10355	24	2	25	116.50	100.66	15.84	75.77	0.00
+10946	24	2	25	115.75	102.09	13.66	47.58	0.00
+11000	24	2	30	162.75	114.84	47.91	77.16	32.55
+10335	2	2	7	163.88	118.00	45.89	46.91	27.31
+10736	75	2	20	151.00	122.31	28.69	63.69	0.00
+10517	70	2	6	186.54	154.46	32.08	37.44	0.00
+10420	70	2	8	276.06	207.79	68.26	79.18	25.10
+10646	1	2	15	364.69	236.32	128.37	58.82	72.94
+10722	75	2	42	309.12	250.39	58.73	71.33	0.00
+10701	71	2	20	739.68	520.99	218.69	34.44	96.48
+10298	2	2	40	701.60	606.18	95.42	78.52	0.00
+10380	70	2	30	814.50	674.41	140.09	77.11	0.00
+10646	71	2	30	1125.00	729.00	396.00	58.82	225.00
+10440	2	2	45	1046.39	753.40	292.99	73.65	136.49
+10442	11	2	30	919.20	761.10	158.10	23.33	0.00
+10912	11	2	40	1275.00	899.64	375.36	59.74	255.00
+10800	11	2	50	1600.50	1178.55	421.95	51.05	145.50
+10458	71	2	50	1502.00	1243.66	258.34	63.98	0.00
+10373	71	2	50	1907.40	1373.33	534.07	25.50	317.90
+10309	6	2	30	110.70	95.64	15.06	71.58	0.00
+10695	8	2	10	182.00	147.42	34.58	40.99	0.00
+10712	53	2	3	185.54	148.94	36.60	23.09	8.84
+10661	39	2	3	236.27	159.48	76.79	63.60	39.38
+10503	65	2	20	197.40	181.11	16.29	29.87	0.00
+10520	53	2	5	284.50	235.57	48.93	31.78	0.00
+10736	65	2	40	374.00	302.94	71.06	63.69	0.00
+10742	3	2	20	394.00	319.14	74.86	37.65	0.00
+11000	77	2	30	372.60	328.63	43.97	77.16	0.00
+10646	77	2	35	576.19	373.37	202.82	58.82	115.24
+10309	4	2	20	432.80	373.94	58.86	71.58	0.00
+11000	4	2	25	637.19	449.60	187.59	77.16	127.44
+10946	77	2	40	547.60	482.98	64.62	47.58	0.00
+10429	63	2	35	951.56	630.32	321.25	48.41	190.31
+11034	44	2	12	879.48	775.70	103.78	54.81	0.00
+10442	66	2	60	1168.80	967.77	201.03	23.33	0.00
+10380	53	2	20	1341.12	1053.39	287.73	77.11	121.92
+10312	53	2	20	1264.60	1092.61	171.99	76.68	0.00
+10388	53	2	40	2511.60	2079.60	432.00	44.70	0.00
+10701	76	2	35	14456.19	10182.19	4274.00	34.44	1885.59
+10380	60	2	6	31.68	24.88	6.80	77.11	2.88
+10517	59	2	4	33.20	27.49	5.71	37.44	0.00
+10350	69	2	18	36.23	28.46	7.77	67.66	3.29
+10519	60	2	10	53.66	42.31	11.34	43.11	2.56
+10651	19	2	12	137.25	94.83	42.42	59.87	27.45
+11034	61	2	6	145.56	128.38	17.18	54.81	0.00
+11034	21	2	15	178.86	143.41	35.45	54.81	16.26
+10800	54	2	7	249.10	183.42	65.67	51.05	22.65
+10350	50	2	15	272.09	213.71	58.37	67.66	24.74
+10742	60	2	50	267.50	216.68	50.83	37.65	0.00
+10298	59	2	30	343.13	237.17	105.96	78.52	68.63
+10751	50	2	20	330.44	243.32	87.12	31.69	30.04
+10567	59	2	40	386.88	261.88	125.00	40.24	64.48
+10751	26	2	12	402.20	296.17	106.04	31.69	36.56
+10701	59	2	42	420.69	296.31	124.38	34.44	54.87
+10985	16	2	36	371.45	297.83	73.61	72.53	33.77
+10815	33	2	16	447.36	362.36	85.00	45.86	0.00
+10298	62	2	15	420.00	362.88	57.12	78.52	0.00
+10440	16	2	49	520.67	374.89	145.79	73.65	67.91
+10722	68	2	45	527.85	432.47	95.38	71.33	0.00
+10415	33	2	20	516.80	464.81	51.99	29.01	0.00
+10271	33	2	24	577.44	498.91	78.53	62.31	0.00
+10429	50	2	40	686.00	568.01	117.99	48.41	0.00
+10678	33	2	30	756.00	612.36	143.64	76.87	0.00
+10458	26	2	30	846.30	700.74	145.56	63.98	0.00
+10678	54	2	30	1074.30	870.18	204.12	76.87	0.00
+11002	55	2	40	1689.20	1581.15	108.05	43.90	0.00
+10440	61	2	90	2685.83	1933.79	752.03	73.65	350.33
+10442	54	2	80	2913.60	2412.46	501.14	23.33	0.00
+10695	12	2	4	39.28	31.82	7.46	40.99	0.00
+11002	35	2	15	100.05	76.73	23.32	43.90	13.05
+10335	32	2	6	134.21	96.63	37.58	46.91	22.37
+10335	31	2	25	254.40	183.17	71.23	46.91	42.40
+10309	43	2	20	237.40	205.11	32.29	71.58	0.00
+11063	34	2	30	241.80	213.27	28.53	75.08	0.00
+10458	43	2	20	252.80	217.88	34.92	63.98	0.00
+10312	43	2	24	314.64	271.85	42.79	76.68	0.00
+10722	31	2	50	392.50	317.93	74.58	71.33	0.00
+10742	72	2	35	393.75	344.67	49.08	37.65	0.00
+10567	31	2	60	624.24	421.36	202.88	40.24	104.04
+10985	32	2	35	790.41	633.76	156.64	72.53	71.86
+10678	12	2	100	960.00	777.60	182.40	76.87	0.00
+10309	42	2	2	27.24	23.54	3.70	71.58	0.00
+10651	22	2	20	88.75	57.51	31.24	59.87	17.75
+10470	23	2	15	133.65	110.66	22.99	72.95	0.00
+10470	64	2	8	291.12	241.05	50.07	72.95	0.00
+10516	42	2	20	291.40	261.39	30.01	78.18	0.00
+11002	42	2	24	354.94	274.46	80.47	43.90	46.30
+10355	57	2	25	442.50	382.32	60.18	75.77	0.00
+10517	52	2	6	512.94	424.71	88.23	37.44	0.00
+10458	56	2	15	604.80	500.77	104.03	63.98	0.00
+10301	56	2	20	783.40	676.86	106.54	21.92	0.00
+10346	56	2	20	810.20	700.01	110.19	23.56	0.00
+11003	52	2	10	801.00	706.48	94.52	28.52	0.00
+10712	56	2	30	1068.60	865.57	203.03	23.09	0.00
+10519	56	2	40	1629.20	1348.98	280.22	43.11	0.00
+10388	52	2	20	1983.60	1368.68	614.92	44.70	330.60
+10415	17	2	2	45.34	37.54	7.80	29.01	0.00
+10388	45	2	15	156.60	108.05	48.55	44.70	26.10
+10567	51	2	3	324.06	262.49	61.57	40.24	0.00
+10420	9	2	20	806.96	607.42	199.54	79.18	73.36
+10346	17	2	36	978.52	768.58	209.94	23.56	88.96
+10800	51	2	10	1104.18	828.62	275.56	51.05	100.38
+10687	29	2	10	1321.20	1070.17	251.03	55.58	0.00
+10687	9	2	50	2573.13	1667.39	905.74	55.58	514.63
+10440	29	2	24	3564.54	2566.47	998.07	73.65	464.94
+10335	51	2	48	6007.10	4325.11	1681.99	46.91	1001.18
+10912	29	2	60	9170.25	6470.53	2699.72	59.74	1834.05
+10897	29	2	80	10652.00	9395.06	1256.94	47.05	0.00
+10312	28	2	4	196.68	179.47	17.21	76.68	0.00
+10458	28	2	30	1445.70	1197.04	248.66	63.98	0.00
+10503	14	2	70	1743.70	1443.78	299.92	29.87	0.00
+10751	73	2	15	15.60	12.64	2.96	31.69	0.00
+10420	73	2	20	23.76	17.88	5.88	79.18	2.16
+10687	36	2	6	58.05	37.62	20.43	55.58	11.61
+10420	13	2	2	59.14	44.51	14.62	79.18	5.38
+10646	10	2	18	142.88	92.58	50.29	58.82	28.58
+10519	10	2	16	126.84	100.02	26.82	43.11	6.04
+10946	10	2	25	167.50	147.74	19.77	47.58	0.00
+11003	40	2	10	167.80	148.00	19.80	28.52	0.00
+10301	40	2	10	183.30	158.37	24.93	21.92	0.00
+10985	18	2	8	245.26	196.65	48.61	72.53	22.30
+10298	36	2	40	367.00	253.67	113.33	78.52	73.40
+11063	41	2	30	317.46	254.55	62.91	75.08	28.86
+10380	30	2	18	505.10	396.73	108.37	77.11	45.92
+10516	18	2	25	749.38	564.08	185.30	78.18	68.13
+10751	30	2	30	708.30	573.72	134.58	31.69	0.00
+10470	18	2	30	755.70	654.32	101.38	72.95	0.00
+10516	41	2	80	924.00	695.52	228.48	78.18	84.00
+11063	40	2	40	878.24	704.19	174.05	75.08	79.84
+10897	30	2	36	945.72	834.13	111.60	47.05	0.00
+10678	41	2	120	1215.60	984.64	230.96	76.87	0.00
+11002	13	2	56	1419.04	1251.59	167.45	43.90	0.00
+10661	58	2	49	3075.24	2075.79	999.45	63.60	512.54
+10373	58	2	80	5094.72	3668.20	1426.52	25.50	849.12
+10545	11	3	10	263.70	219.96	43.74	36.41	0.00
+10715	71	1	30	953.70	772.50	181.20	72.70	0.00
+11076	6	1	20	95.50	69.45	26.05	58.43	19.10
+11076	19	1	10	122.25	86.26	35.99	58.43	24.45
+10331	54	1	15	569.55	492.09	77.46	70.49	0.00
+10876	64	1	20	717.20	639.62	77.58	26.13	0.00
+11076	14	1	20	623.25	439.77	183.48	58.43	124.65
+10715	10	1	21	137.76	111.59	26.17	72.70	0.00
+10876	46	1	21	256.83	226.52	30.31	26.13	0.00
+11027	24	3	30	179.63	126.74	52.88	45.87	35.93
+10949	6	3	12	48.60	42.87	5.73	31.41	0.00
+10411	44	3	40	3298.56	2276.01	1022.55	61.50	549.76
+10411	59	3	9	98.93	68.26	30.67	61.50	16.49
+10410	59	3	16	149.12	123.47	25.65	25.49	0.00
+11045	33	3	15	375.30	331.01	44.29	42.40	0.00
+11048	68	3	42	483.84	426.75	57.09	41.68	0.00
+11027	62	3	21	754.95	589.62	165.33	45.87	150.99
+10410	33	3	49	1272.04	1053.25	218.79	25.49	0.00
+10949	62	3	60	1655.40	1460.06	195.34	31.41	0.00
+10949	17	3	6	164.16	144.79	19.37	31.41	0.00
+11045	51	3	24	2461.20	2170.78	290.42	42.40	0.00
+10949	10	3	30	194.40	171.46	22.94	31.41	0.00
+10411	41	3	25	277.20	191.27	85.93	61.50	46.20
+10436	75	1	24	189.55	142.68	46.87	77.37	17.23
+10628	1	1	25	455.75	369.16	86.59	59.28	0.00
+10265	70	1	20	556.20	486.50	69.70	28.57	0.00
+10566	11	1	35	1054.55	742.77	311.78	51.88	137.55
+10360	38	1	10	807.40	697.59	109.81	26.24	0.00
+10297	39	1	60	3561.00	3076.70	484.30	52.73	0.00
+10566	76	1	10	3986.30	3228.90	757.40	51.88	0.00
+10679	59	1	12	102.12	82.72	19.40	62.06	0.00
+10360	49	1	35	640.15	553.09	87.06	26.24	0.00
+10559	55	1	18	736.34	568.04	168.31	34.85	35.06
+10360	54	1	28	1028.44	888.57	139.87	26.24	0.00
+10449	62	1	35	1044.40	892.94	151.46	51.48	0.00
+10297	72	1	20	239.00	206.50	32.50	52.73	0.00
+10826	31	1	35	310.10	273.51	36.59	68.66	0.00
+10584	31	1	50	480.38	373.34	107.04	75.08	22.88
+10826	57	1	15	280.95	247.80	33.15	68.66	0.00
+10436	64	1	30	1199.22	902.69	296.53	77.37	109.02
+10436	56	1	40	1661.44	1250.61	410.83	77.37	151.04
+10449	52	1	20	1759.60	1456.95	302.65	51.48	0.00
+10265	17	1	30	717.00	619.49	97.51	28.57	0.00
+10360	29	1	35	4751.60	4105.38	646.22	26.24	0.00
+10360	28	1	30	1262.10	1090.45	171.65	26.24	0.00
+10436	46	1	5	64.25	53.20	11.05	77.37	0.00
+10449	10	1	14	97.86	81.03	16.83	51.48	0.00
+10559	41	1	12	109.87	84.76	25.11	34.85	5.23
+10566	18	1	18	545.65	384.33	161.32	51.88	71.17
+10907	75	1	14	107.52	94.83	12.69	72.85	0.00
+10964	38	1	5	436.40	384.90	51.50	44.33	0.00
+10964	69	1	10	20.40	17.99	2.41	44.33	0.00
+10738	16	1	3	25.98	21.04	4.94	43.51	0.00
+10964	18	1	6	152.40	134.42	17.98	44.33	0.00
+10460	75	2	4	39.60	26.23	13.37	69.81	7.92
+10294	75	2	6	49.32	42.61	6.71	35.17	0.00
+10254	24	2	15	77.97	56.14	21.83	49.18	10.17
+10955	75	2	12	113.18	83.19	29.99	59.30	18.86
+10465	24	2	25	110.25	91.29	18.96	64.55	0.00
+10761	75	2	18	136.98	110.95	26.03	74.71	0.00
+10726	11	2	5	146.95	119.03	27.92	63.55	0.00
+10364	71	2	5	148.65	128.43	20.22	33.65	0.00
+10382	5	2	32	179.84	148.91	30.93	72.13	0.00
+11047	5	2	30	223.50	157.70	65.80	21.76	44.70
+11043	11	2	10	282.80	249.43	33.37	39.19	0.00
+10980	75	2	40	384.48	282.59	101.89	26.34	64.08
+10614	11	2	14	365.54	296.09	69.45	60.78	0.00
+10294	1	2	18	389.88	336.86	53.02	35.17	0.00
+10553	11	2	15	454.35	368.02	86.33	74.82	0.00
+10327	2	2	25	576.60	415.15	161.45	65.53	96.10
+11047	1	2	25	603.44	425.79	177.65	21.76	120.69
+10895	24	2	110	504.90	445.32	59.58	37.91	0.00
+10389	70	2	30	838.80	694.53	144.27	59.24	0.00
+10327	11	2	50	1746.00	1257.12	488.88	65.53	291.00
+11024	71	2	50	1430.00	1261.26	168.74	27.01	0.00
+10884	65	2	12	115.04	96.63	18.41	43.67	5.48
+10933	53	2	2	110.38	97.36	13.02	32.82	0.00
+10256	77	2	12	162.00	134.14	27.86	22.56	0.00
+11024	65	2	21	196.98	173.74	23.24	27.01	0.00
+11015	77	2	18	212.40	187.34	25.06	42.24	0.00
+10614	39	2	5	298.05	241.42	56.63	60.78	0.00
+10532	66	2	24	449.28	363.92	85.36	78.04	0.00
+10726	4	2	25	565.50	458.06	107.45	63.55	0.00
+10624	44	2	10	825.40	668.57	156.83	61.04	0.00
+10256	53	2	15	907.95	751.78	156.17	22.56	0.00
+10475	66	2	60	1189.56	924.38	265.18	34.69	155.16
+10324	63	2	80	1894.28	1423.18	471.10	42.61	247.08
+10895	39	2	45	2893.50	2552.07	341.43	37.91	0.00
+10475	76	2	42	20042.09	14430.30	5611.78	34.69	2614.19
+10808	76	2	50	21077.20	14845.68	6231.52	25.87	2749.20
+10612	76	2	80	32075.20	25980.91	6094.29	66.44	0.00
+10673	16	2	3	29.01	23.50	5.51	46.29	0.00
+10364	69	2	30	61.50	53.14	8.36	33.65	0.00
+10804	49	2	4	86.71	61.07	25.64	25.71	11.31
+10614	21	2	8	87.36	70.76	16.60	60.78	0.00
+10294	60	2	21	95.76	87.57	8.19	35.17	0.00
+10553	16	2	14	127.82	103.53	24.29	74.82	0.00
+10612	60	2	40	182.80	148.07	34.73	66.44	0.00
+10324	16	2	21	211.80	159.12	52.67	42.61	27.63
+11059	60	2	35	181.65	160.22	21.43	75.66	0.00
+10794	54	2	6	239.40	161.60	77.81	64.91	39.90
+10460	68	2	21	310.54	205.70	104.84	69.81	62.11
+11056	60	2	50	269.00	247.47	21.53	74.83	0.00
+10612	49	2	18	324.00	262.44	61.56	66.44	0.00
+10324	59	2	40	382.26	287.19	95.07	42.61	49.86
+10465	50	2	25	378.25	313.19	65.06	64.55	0.00
+10884	21	2	40	415.80	349.27	66.53	43.67	19.80
+11024	26	2	12	401.28	353.93	47.35	27.01	0.00
+10769	62	2	15	462.45	374.58	87.87	44.92	0.00
+10761	25	2	35	622.56	403.42	219.14	74.71	124.51
+10769	61	2	20	542.20	439.18	103.02	44.92	0.00
+10895	60	2	100	502.00	442.76	59.24	37.91	0.00
+10389	55	2	15	562.35	465.63	96.72	59.24	0.00
+10389	62	2	20	633.60	524.62	108.98	59.24	0.00
+10400	49	2	30	646.50	563.20	83.30	49.41	0.00
+11024	33	2	30	707.40	623.93	83.47	27.01	0.00
+10933	61	2	30	764.70	674.47	90.23	32.82	0.00
+10254	55	2	21	984.35	708.73	275.62	49.18	128.39
+10713	26	2	30	941.70	762.78	178.92	74.75	0.00
+10523	20	2	15	1385.01	1042.53	342.48	64.15	125.91
+11056	55	2	35	1367.45	1206.09	161.36	74.83	0.00
+10382	33	2	60	1649.40	1365.70	283.70	72.13	0.00
+10660	20	2	21	1817.55	1472.22	345.33	29.65	0.00
+10553	35	2	6	37.50	30.38	7.13	74.82	0.00
+10673	43	2	6	74.34	63.98	10.36	46.29	0.00
+10987	43	2	6	78.42	69.17	9.25	46.81	0.00
+10294	43	2	15	193.50	167.18	26.32	35.17	0.00
+10400	35	2	35	203.00	168.08	34.92	49.41	0.00
+10553	31	2	30	248.10	200.96	47.14	74.82	0.00
+10987	72	2	20	249.40	219.97	29.43	46.81	0.00
+10475	31	2	35	374.73	269.80	104.92	34.69	48.88
+10324	35	2	70	452.41	339.90	112.51	42.61	59.01
+10553	22	2	24	78.72	63.76	14.96	74.82	0.00
+10673	42	2	6	81.18	65.76	15.42	46.29	0.00
+10983	57	2	15	293.40	258.78	34.62	53.64	0.00
+10808	56	2	20	894.24	629.86	264.38	25.87	116.64
+10884	56	2	21	908.02	762.74	145.28	43.67	43.24
+10769	52	2	15	1284.41	990.83	293.58	44.92	61.16
+10739	52	2	18	1431.72	1159.69	272.03	65.96	0.00
+10563	52	2	70	5688.90	4608.01	1080.89	30.63	0.00
+10465	45	2	30	339.57	255.60	83.97	64.55	30.87
+11059	17	2	12	321.60	283.65	37.95	75.66	0.00
+10294	17	2	15	369.30	319.08	50.22	35.17	0.00
+10523	17	2	25	672.38	506.12	166.26	64.15	61.13
+10624	29	2	6	725.70	587.82	137.88	61.04	0.00
+10713	45	2	110	1129.70	989.46	140.24	74.75	0.00
+10382	29	2	14	1811.32	1499.77	311.55	72.13	0.00
+10465	29	2	18	2646.86	2087.20	559.66	64.55	240.62
+10400	29	2	21	2554.65	2115.25	439.40	49.41	0.00
+10794	14	2	15	432.00	291.60	140.40	64.91	72.00
+10624	28	2	10	448.60	363.37	85.23	61.04	0.00
+10254	74	2	21	617.40	511.21	106.19	49.18	0.00
+10804	28	2	24	1090.32	883.16	207.16	25.71	0.00
+10382	74	2	50	1360.50	1126.49	234.01	72.13	0.00
+11056	7	2	40	1686.00	1487.05	198.95	74.83	0.00
+10987	7	2	60	2467.20	2176.07	291.13	46.81	0.00
+10739	36	2	6	44.76	36.26	8.50	65.96	0.00
+10523	41	2	6	68.64	51.67	16.97	64.15	6.24
+10523	37	2	18	79.79	60.83	18.96	64.15	7.25
+10737	13	2	4	102.24	83.84	18.40	63.14	0.00
+10389	10	2	16	101.28	83.86	17.42	59.24	0.00
+10713	10	2	18	116.28	94.19	22.09	74.75	0.00
+10737	41	2	12	121.44	98.37	23.07	63.14	0.00
+10563	36	2	25	202.00	163.62	38.38	30.63	0.00
+10382	18	2	9	241.02	199.56	41.46	72.13	0.00
+10804	10	2	36	255.60	207.04	48.56	25.71	0.00
+10769	41	2	30	283.19	218.46	64.73	44.92	13.49
+10713	46	2	24	273.84	221.81	52.03	74.75	0.00
+10532	30	2	15	369.90	299.62	70.28	78.04	0.00
+10324	46	2	30	364.50	314.93	49.57	42.61	0.00
+10465	40	2	20	387.00	320.44	66.56	64.55	0.00
+10612	36	2	55	400.95	324.77	76.18	66.44	0.00
+11015	30	2	15	425.40	375.20	50.20	42.24	0.00
+10612	10	2	70	497.00	402.57	94.43	66.44	0.00
+11059	13	2	30	812.40	716.54	95.86	75.66	0.00
+10327	30	2	35	1008.84	726.36	282.48	65.53	168.14
+10327	58	2	30	1582.92	1139.70	443.22	65.53	263.82
+10895	40	2	91	1752.66	1545.85	206.81	37.91	0.00
+10983	13	2	84	2186.06	1676.61	509.45	53.64	285.14
+10565	24	3	25	121.83	89.71	32.12	77.13	11.08
+10590	1	3	20	403.60	326.92	76.68	66.64	0.00
+10570	11	3	15	484.79	373.98	110.81	61.99	23.09
+10605	71	3	15	508.57	392.32	116.24	56.22	24.22
+10339	4	3	10	213.20	184.20	29.00	58.76	0.00
+10618	6	3	70	270.90	219.43	51.47	38.44	0.00
+10590	77	3	60	885.78	683.32	202.46	66.64	42.18
+10424	38	3	49	5068.56	3497.31	1571.25	70.35	844.76
+10505	62	3	3	94.08	77.90	16.18	35.90	0.00
+10724	61	3	5	134.10	108.62	25.48	25.96	0.00
+10605	59	3	20	166.95	128.79	38.16	56.22	7.95
+10439	16	3	16	159.68	132.22	27.47	63.71	0.00
+10618	68	3	15	184.95	149.81	35.14	38.44	0.00
+10605	16	3	30	297.99	229.88	68.11	56.22	14.19
+10605	60	3	70	399.84	308.45	91.39	56.22	19.04
+10619	21	3	42	383.88	310.94	72.94	75.31	0.00
+10424	68	3	30	450.72	324.65	126.07	70.35	75.12
+10339	62	3	28	857.08	740.52	116.56	58.76	0.00
+10439	12	3	15	153.30	126.93	26.37	63.71	0.00
+10424	35	3	60	399.60	275.72	123.88	70.35	66.60
+10376	31	3	42	341.33	280.87	60.46	76.39	16.25
+10619	22	3	40	130.80	105.95	24.85	75.31	0.00
+10332	42	3	10	181.56	130.72	50.84	22.50	30.26
+10439	64	3	6	210.12	173.98	36.14	63.71	0.00
+10565	64	3	18	697.75	513.80	183.95	77.13	63.43
+10618	56	3	20	832.00	673.92	158.08	38.44	0.00
+10570	56	3	60	2530.71	1952.26	578.45	61.99	120.51
+10332	47	3	16	471.74	339.66	132.09	22.50	78.62
+10339	17	3	70	1797.81	1479.34	318.47	58.76	85.61
+10439	74	3	30	985.50	815.99	169.51	63.71	0.00
+10724	10	3	16	123.04	99.66	23.38	25.96	0.00
+10332	18	3	40	1191.36	857.78	333.58	22.50	198.56
+10671	65	2	12	121.92	98.76	23.16	23.05	0.00
+10860	76	2	20	7288.80	6428.72	860.08	51.61	0.00
+10671	16	2	10	101.00	81.81	19.19	23.05	0.00
+10671	62	2	10	273.50	221.54	51.97	23.05	0.00
+10860	51	2	3	325.41	287.01	38.40	51.61	0.00
+10971	29	2	14	1892.24	1668.96	223.28	22.41	0.00
+11081	75	3	150	1163.25	943.78	219.47	12.45	105.75
+10274	71	1	20	623.40	538.62	84.78	35.09	0.00
+10274	72	1	7	83.93	72.52	11.41	35.09	0.00
+10973	75	1	10	82.10	79.69	2.41	79.19	0.00
+10858	70	1	4	122.24	107.82	14.42	71.69	0.00
+10927	76	1	20	7285.00	6425.37	859.63	26.94	0.00
+10973	26	1	5	154.20	136.00	18.20	79.19	0.00
+10972	33	1	7	177.31	164.30	13.01	50.66	0.00
+10927	20	1	5	410.70	362.24	48.46	26.94	0.00
+10858	27	1	10	433.50	382.35	51.15	71.69	0.00
+10927	52	1	5	371.65	327.80	43.85	26.94	0.00
+10972	17	1	6	151.56	133.68	17.88	50.66	0.00
+10858	7	1	5	214.30	189.01	25.29	71.69	0.00
+10973	41	1	6	52.26	46.09	6.17	79.19	0.00
+10609	1	1	3	55.50	44.96	10.55	52.39	0.00
+10311	69	1	7	13.86	11.98	1.89	22.76	0.00
+10609	21	1	6	64.14	51.95	12.19	52.39	0.00
+10890	34	1	10	80.30	74.40	5.90	57.94	0.00
+10311	42	1	6	89.58	77.40	12.18	22.76	0.00
+10683	52	1	9	688.41	557.61	130.80	47.10	0.00
+10890	17	1	15	347.55	306.54	41.01	57.94	0.00
+10609	10	1	10	65.70	53.22	12.48	52.39	0.00
+10890	41	1	14	127.68	112.61	15.07	57.94	0.00
+10579	75	3	21	165.27	133.87	31.40	64.13	0.00
+10579	15	3	10	70.90	57.43	13.47	64.13	0.00
+10719	54	3	40	1712.50	1109.70	602.80	43.69	342.50
+10719	30	3	3	100.65	70.16	30.49	43.69	20.13
+10719	18	3	12	408.45	264.68	143.77	43.69	81.69
+10317	1	3	20	362.40	313.11	49.29	24.58	0.00
+10867	53	3	3	197.97	174.61	23.36	37.25	0.00
+10544	67	3	7	453.60	367.42	86.18	66.34	0.00
+10665	76	3	10	3610.50	2924.51	686.00	37.60	0.00
+10665	59	3	1	8.03	6.50	1.53	37.60	0.00
+10307	68	3	3	38.46	33.23	5.23	60.66	0.00
+10662	68	3	10	129.10	104.57	24.53	37.12	0.00
+10307	62	3	10	272.70	235.61	37.09	60.66	0.00
+11018	12	3	20	194.20	171.28	22.92	45.70	0.00
+11018	56	3	5	180.10	158.85	21.25	45.70	0.00
+10665	51	3	20	1880.60	1523.29	357.31	37.60	0.00
+10544	28	3	7	304.15	246.36	57.79	66.34	0.00
+11018	18	3	10	275.60	243.08	32.52	45.70	0.00
+11080	14	3	100	2415.00	2028.60	386.40	27.96	115.00
+10359	60	2	80	458.64	377.40	81.24	59.44	21.84
+10359	16	2	56	602.11	495.45	106.66	59.44	28.67
+10359	31	2	70	639.45	526.18	113.27	59.44	30.45
+10741	2	2	15	324.54	219.06	105.48	70.43	54.09
+10248	11	2	12	343.44	284.37	59.07	43.48	0.00
+10864	67	2	15	972.15	857.44	114.71	32.43	0.00
+10953	20	2	50	4404.75	3699.99	704.76	29.59	209.75
+10864	35	2	4	25.28	22.30	2.98	32.43	0.00
+10248	72	2	5	63.55	52.62	10.93	43.48	0.00
+10953	31	2	50	414.23	347.95	66.28	29.59	19.73
+10248	42	2	10	140.40	116.25	24.15	43.48	0.00
+10634	75	1	2	15.08	12.21	2.87	52.12	0.00
+10555	24	1	18	88.56	59.78	28.78	50.88	14.76
+10763	24	1	20	87.40	70.79	16.61	75.34	0.00
+10975	75	1	10	83.80	73.91	9.89	43.24	0.00
+10700	1	1	5	121.86	82.26	39.60	56.88	20.31
+10434	11	1	6	156.78	129.81	26.97	79.13	0.00
+10472	24	1	80	351.96	281.69	70.27	61.00	16.76
+11030	5	1	70	424.20	413.91	10.29	32.34	0.00
+11038	71	1	30	961.80	848.31	113.49	31.88	0.00
+10700	71	1	60	2067.84	1395.79	672.05	56.88	344.64
+11030	2	1	100	2427.50	1712.84	714.66	32.34	485.50
+10975	8	1	16	316.48	279.14	37.34	43.24	0.00
+10789	63	1	30	572.10	463.40	108.70	31.92	0.00
+10805	38	1	10	848.90	687.61	161.29	53.70	0.00
+10558	53	1	18	1013.94	821.29	192.65	77.38	0.00
+10604	76	1	10	4068.24	2995.70	1072.54	65.51	369.84
+10434	76	1	18	8931.84	6430.93	2500.92	79.13	1165.02
+11050	76	1	50	21109.55	16926.02	4183.53	74.80	1919.05
+10480	59	1	12	97.68	80.88	16.80	26.41	0.00
+10454	16	1	20	213.12	147.05	66.07	76.76	35.52
+10408	54	1	6	204.54	169.36	35.18	71.84	0.00
+10789	68	1	18	224.82	182.10	42.72	31.92	0.00
+10555	19	1	35	357.00	240.98	116.03	50.88	59.50
+10432	26	1	10	300.40	248.73	51.67	64.82	0.00
+10375	54	1	10	329.50	284.69	44.81	70.91	0.00
+10966	62	1	12	395.23	303.13	92.11	23.19	51.55
+10763	21	1	40	423.60	343.12	80.48	75.34	0.00
+10700	68	1	40	649.44	438.37	211.07	56.88	108.24
+10454	33	1	20	668.88	461.53	207.35	76.76	111.48
+11030	59	1	100	980.00	691.49	288.51	32.34	196.00
+10408	62	1	35	1088.85	901.57	187.28	71.84	0.00
+10633	26	1	35	1284.38	904.65	379.73	40.81	167.53
+10432	54	1	40	1364.80	1130.05	234.75	64.82	0.00
+10316	62	1	70	2053.10	1773.88	279.22	38.95	0.00
+10633	62	1	80	2668.00	1879.20	788.80	40.81	348.00
+10805	34	1	10	77.00	62.37	14.63	53.70	0.00
+10789	35	1	15	87.90	71.20	16.70	31.92	0.00
+10700	34	1	12	125.86	84.95	40.90	56.88	20.98
+11046	35	1	18	119.26	100.18	19.08	54.31	5.68
+11046	12	1	20	195.72	164.40	31.32	54.31	9.32
+11046	32	1	15	328.39	275.85	52.54	54.31	15.64
+10633	12	1	36	403.24	284.02	119.22	40.81	52.60
+10763	22	1	6	21.96	17.79	4.17	75.34	0.00
+11038	52	1	2	155.22	136.90	18.32	31.88	0.00
+10663	42	1	30	464.94	366.78	98.16	47.54	22.14
+10966	56	1	12	539.86	414.05	125.81	23.19	70.42
+10555	56	1	40	1915.20	1292.76	622.44	50.88	319.20
+10558	52	1	30	2554.20	2068.90	485.30	77.38	0.00
+10604	48	1	6	220.51	162.37	58.13	65.51	20.05
+10558	47	1	25	619.00	501.39	117.61	77.38	0.00
+10480	47	1	30	780.30	646.09	134.21	26.41	0.00
+10634	51	1	15	1514.85	1227.03	287.82	52.12	0.00
+10472	51	1	18	1632.42	1351.64	280.78	61.00	0.00
+10663	51	1	20	2033.43	1568.65	464.78	47.54	96.83
+10558	51	1	20	1828.60	1588.94	239.66	77.38	0.00
+10555	51	1	20	2441.04	1647.70	793.34	50.88	406.84
+11030	29	1	60	10074.75	7108.74	2966.01	32.34	2014.95
+10375	14	1	15	323.85	279.81	44.04	70.91	0.00
+10555	14	1	30	772.56	521.48	251.08	50.88	128.76
+10634	7	1	35	1290.45	1045.26	245.19	52.12	0.00
+10558	73	1	3	2.97	2.41	0.56	77.38	0.00
+10408	37	1	10	39.20	32.46	6.74	71.84	0.00
+10966	37	1	8	33.36	32.46	0.90	23.19	0.00
+10316	41	1	10	89.60	77.41	12.19	38.95	0.00
+11038	40	1	5	106.62	78.37	28.25	31.88	17.77
+10454	46	1	10	143.64	99.11	44.53	76.76	23.94
+10482	40	1	10	175.90	152.05	23.85	44.07	0.00
+10655	41	1	20	251.28	169.61	81.67	61.06	41.88
+10633	13	1	13	361.19	254.40	106.79	40.81	47.11
+10663	40	1	30	609.21	469.96	139.25	47.54	29.01
+10789	18	1	30	696.00	594.76	101.24	31.92	0.00
+10634	18	1	50	1381.50	1119.02	262.49	52.12	0.00
+10452	44	2	100	8495.55	6699.35	1796.20	33.50	404.55
+10398	55	2	120	4935.48	3715.07	1220.41	27.57	448.68
+10398	35	2	30	163.50	146.39	17.11	27.57	0.00
+10452	28	2	15	736.35	609.70	126.65	33.50	0.00
+10596	75	2	30	268.92	181.52	87.40	57.12	44.82
+10504	2	2	12	246.00	203.69	42.31	37.89	0.00
+10469	2	2	40	807.76	581.59	226.17	61.04	105.36
+10469	44	2	2	156.81	112.91	43.91	61.04	20.45
+10483	77	2	30	443.21	349.50	93.71	36.66	21.11
+10596	63	2	24	543.17	400.71	142.46	57.12	90.53
+10504	53	2	10	623.20	516.01	107.19	37.89	0.00
+10344	4	2	35	727.30	628.39	98.91	22.69	0.00
+10344	8	2	70	1697.50	1222.68	474.82	22.69	339.50
+11032	38	2	25	2139.00	1886.60	252.40	30.60	0.00
+11066	16	2	3	28.08	24.77	3.31	57.37	0.00
+10693	69	2	30	74.87	52.73	22.13	25.54	9.77
+10861	62	2	3	88.05	77.66	10.39	44.72	0.00
+10504	21	2	12	129.00	106.81	22.19	37.89	0.00
+11032	59	2	30	233.40	205.86	27.54	30.60	0.00
+10469	16	2	35	384.79	277.05	107.74	61.04	50.19
+10861	21	2	40	367.60	324.22	43.38	44.72	0.00
+11066	19	2	42	412.02	363.40	48.62	57.37	0.00
+10723	26	2	15	480.75	389.41	91.34	37.82	0.00
+10504	61	2	25	650.50	538.61	111.89	37.89	0.00
+10861	33	2	35	920.85	812.19	108.66	44.72	0.00
+10904	62	2	35	934.50	824.23	110.27	72.68	0.00
+10269	33	2	60	1726.20	1420.42	305.78	54.26	82.20
+10693	54	2	60	2555.76	1800.14	755.62	25.54	333.36
+10740	35	2	35	252.00	170.10	81.90	25.96	42.00
+10269	72	2	20	255.57	210.30	45.27	54.26	12.17
+10483	34	2	35	294.00	231.84	62.16	36.66	14.00
+11066	34	2	35	265.65	234.30	31.35	57.37	0.00
+10596	56	2	5	215.46	145.44	70.02	57.12	35.91
+10740	56	2	14	665.95	449.52	216.43	25.96	110.99
+10693	9	2	6	211.80	182.43	29.37	25.54	0.00
+10740	45	2	40	447.84	302.29	145.55	25.96	74.64
+10696	17	2	20	509.60	412.78	96.82	40.47	0.00
+10861	17	2	42	1066.38	940.55	125.83	44.72	0.00
+10740	28	2	5	252.66	170.55	82.11	25.96	42.11
+10693	73	2	15	20.36	14.34	6.02	25.54	2.66
+10696	46	2	18	216.36	175.25	41.11	40.47	0.00
+11032	36	2	35	261.80	230.91	30.89	30.60	0.00
+10861	18	2	20	476.60	420.36	56.24	44.72	0.00
+10904	58	2	15	670.35	591.25	79.10	72.68	0.00
+10358	24	3	10	44.52	36.63	7.89	61.24	2.12
+10446	24	3	20	92.62	69.72	22.90	40.45	8.42
+10577	75	3	20	167.20	135.43	31.77	33.52	0.00
+10822	70	3	6	180.78	146.43	34.35	67.33	0.00
+10514	75	3	50	368.50	305.12	63.38	40.04	0.00
+10935	1	3	21	444.15	391.74	52.41	45.44	0.00
+10918	1	3	60	1458.75	1029.29	429.46	34.42	291.75
+10401	71	3	60	1823.40	1509.78	313.62	35.90	0.00
+10602	77	3	5	81.81	53.01	28.80	47.74	16.36
+10493	65	3	15	156.59	117.87	38.72	21.74	14.24
+10401	65	3	20	181.20	150.03	31.17	35.90	0.00
+10493	66	3	10	219.23	165.02	54.21	21.74	19.93
+10577	77	3	18	215.10	177.89	37.21	33.52	0.00
+10511	8	3	10	252.66	181.91	70.74	30.11	32.96
+10514	65	3	39	429.00	361.39	67.61	40.04	0.00
+10977	63	3	20	433.60	382.44	51.16	65.21	0.00
+10577	39	3	10	627.20	508.03	119.17	33.52	0.00
+10511	4	3	50	1371.95	987.80	384.15	30.11	178.95
+10977	39	3	30	1816.20	1601.89	214.31	65.21	0.00
+11033	53	3	70	4261.95	3417.31	844.64	72.57	387.45
+10493	69	3	10	20.57	15.48	5.09	21.74	1.87
+10746	69	3	40	82.80	67.07	15.73	34.33	0.00
+11033	69	3	36	85.14	72.00	13.14	72.57	7.74
+10822	62	3	3	88.29	76.78	11.51	67.33	0.00
+10446	19	3	12	122.23	92.01	30.22	40.45	11.11
+10918	60	3	25	156.56	110.47	46.09	34.42	31.31
+10779	16	3	20	192.00	155.52	36.48	32.38	0.00
+10383	50	3	15	231.45	191.64	39.81	57.13	0.00
+10746	62	3	9	256.32	207.62	48.70	34.33	0.00
+10574	62	3	10	300.30	243.24	57.06	71.84	0.00
+10574	33	3	14	387.10	313.55	73.55	71.84	0.00
+10930	21	3	36	386.28	371.15	15.13	47.70	0.00
+10779	62	3	20	604.60	502.31	102.29	32.38	0.00
+10930	55	3	25	1192.80	876.71	316.09	47.70	198.80
+10930	27	3	25	1039.50	1012.77	26.73	47.70	0.00
+10514	20	3	39	3433.17	2842.66	590.51	40.04	0.00
+10446	31	3	3	27.29	20.54	6.75	40.45	2.48
+10358	34	3	10	86.73	73.11	13.62	61.24	4.13
+10935	23	3	8	91.20	64.35	26.85	45.44	18.24
+10574	64	3	6	212.88	172.43	40.45	71.84	0.00
+10586	52	3	4	375.41	264.42	110.99	57.06	48.97
+10746	42	3	28	416.36	337.25	79.11	34.33	0.00
+10383	56	3	20	826.40	684.26	142.14	57.13	0.00
+10446	52	3	15	1266.54	953.36	313.18	40.45	115.14
+10514	56	3	70	2674.70	2214.65	460.05	40.04	0.00
+10401	56	3	70	2804.20	2556.24	247.96	35.90	0.00
+10977	47	3	30	809.70	714.16	95.54	65.21	0.00
+10977	51	3	10	1047.50	923.90	123.61	65.21	0.00
+10514	28	3	35	1618.05	1339.75	278.30	40.04	0.00
+10511	7	3	50	2442.60	1758.67	683.93	30.11	318.60
+10574	40	3	2	38.58	31.25	7.33	71.84	0.00
+10935	18	3	4	123.45	87.11	36.34	45.44	24.69
+10746	13	3	6	144.48	117.03	27.45	34.33	0.00
+10358	36	3	20	159.81	131.50	28.31	61.24	7.61
+10401	30	3	18	469.26	388.55	80.71	35.90	0.00
+10383	13	3	20	523.60	433.54	90.06	57.13	0.00
+10930	58	3	30	1722.60	1266.11	456.49	47.70	287.10
+10620	24	3	5	22.05	17.86	4.19	79.96	0.00
+10851	2	3	5	92.93	78.06	14.87	30.43	4.43
+11031	24	3	21	94.92	83.72	11.20	28.48	0.00
+10810	70	3	5	132.45	107.28	25.17	58.10	0.00
+10932	75	3	20	172.04	137.94	34.10	37.35	15.64
+11031	71	3	16	460.32	406.00	54.32	28.48	0.00
+11031	1	3	45	965.25	851.35	113.90	28.48	0.00
+10495	77	3	5	65.60	54.32	11.28	46.62	0.00
+10351	65	3	10	105.84	87.09	18.75	65.12	5.04
+10351	38	3	20	1575.84	1296.69	279.15	65.12	75.04
+10351	44	3	77	5961.88	4905.77	1056.10	65.12	283.90
+10810	25	3	5	67.15	54.39	12.76	58.10	0.00
+10851	25	3	10	138.29	116.16	22.13	30.43	6.59
+10836	60	3	60	279.60	246.61	32.99	76.57	0.00
+10932	16	3	30	313.17	263.65	49.52	37.35	28.47
+10851	59	3	42	390.29	327.84	62.45	30.43	18.59
+10932	62	3	14	416.42	337.49	78.93	37.35	37.86
+10680	16	3	50	533.13	345.47	187.66	79.63	106.63
+10564	55	3	25	930.56	717.86	212.70	35.94	44.31
+10836	35	3	6	38.28	35.10	3.18	76.57	0.00
+10564	31	3	6	48.51	37.42	11.09	35.94	2.31
+11016	31	3	15	122.85	108.35	14.50	73.93	0.00
+10680	31	3	20	195.25	126.52	68.73	79.63	39.05
+10932	72	3	16	182.88	161.30	21.58	37.35	0.00
+10943	22	3	21	73.29	64.64	8.65	30.30	0.00
+10495	23	3	10	83.30	68.97	14.33	46.62	0.00
+10836	22	3	52	184.08	162.36	21.72	76.57	0.00
+10851	57	3	10	200.45	172.40	28.05	30.43	9.55
+10620	52	3	5	415.40	336.47	78.93	79.96	0.00
+10836	57	3	24	462.48	407.91	54.57	76.57	0.00
+10680	42	3	40	693.50	449.39	244.11	79.63	138.70
+11031	64	3	20	648.00	628.30	19.70	28.48	0.00
+10836	64	3	30	948.90	836.93	111.97	76.57	0.00
+10564	17	3	16	422.35	325.81	96.54	35.94	20.11
+10351	41	3	13	135.46	117.04	18.42	65.12	0.00
+11016	36	3	16	138.56	122.21	16.35	73.93	0.00
+10810	13	3	7	173.32	140.39	32.93	58.10	0.00
+10943	46	3	15	185.85	163.92	21.93	30.30	0.00
+10495	41	3	20	204.40	169.24	35.16	46.62	0.00
+10943	13	3	15	364.20	321.22	42.98	30.30	0.00
+11031	13	3	80	2183.20	1925.58	257.62	28.48	0.00
+10447	71	3	2	57.08	47.26	9.82	45.69	0.00
+10528	11	3	3	88.11	72.96	15.15	25.64	0.00
+10968	24	3	30	128.10	112.98	15.12	37.77	0.00
+11072	2	3	8	161.60	142.53	19.07	69.62	0.00
+11006	1	3	8	175.52	154.81	20.71	65.67	0.00
+10720	71	3	8	238.24	192.97	45.27	21.15	0.00
+10598	71	3	9	255.96	207.33	48.63	36.64	0.00
+10869	11	3	10	299.50	264.16	35.34	44.38	0.00
+10979	24	3	80	329.60	290.71	38.89	72.67	0.00
+10370	1	3	15	371.91	292.98	78.93	29.05	48.51
+10616	70	3	15	416.43	321.25	95.18	66.70	19.83
+10616	71	3	15	477.07	368.02	109.04	66.70	22.72
+10714	2	3	30	653.25	423.31	229.94	45.54	130.65
+10869	1	3	40	860.00	758.52	101.48	44.38	0.00
+10758	70	3	40	1230.00	996.30	233.70	33.57	0.00
+10855	65	3	15	164.22	125.95	38.27	48.14	21.42
+10657	15	3	50	313.50	253.94	59.57	74.96	0.00
+10447	65	3	35	366.80	303.71	63.09	45.69	0.00
+10416	53	3	10	553.20	458.05	95.15	22.48	0.00
+10831	38	3	8	686.80	605.76	81.04	78.10	0.00
+10979	63	3	35	697.20	614.93	82.27	72.67	0.00
+10616	38	3	15	1191.80	964.34	227.46	66.70	56.75
+10377	39	3	20	1374.94	1033.00	341.94	49.19	179.34
+10656	44	3	28	2095.02	1542.69	552.32	21.31	190.46
+10816	38	3	30	2774.21	2140.10	634.10	31.89	132.11
+10749	76	3	10	4192.30	3395.76	796.54	46.19	0.00
+10831	19	3	2	20.18	17.80	2.38	78.10	0.00
+10756	69	3	20	51.60	34.83	16.77	75.84	8.60
+10749	59	3	6	52.80	42.77	10.03	46.19	0.00
+10756	68	3	6	83.52	56.38	27.14	75.84	13.92
+11061	60	3	15	79.05	69.72	9.33	25.77	0.00
+10310	16	3	10	85.30	73.70	11.60	37.33	0.00
+10681	21	3	12	122.36	90.10	32.26	73.33	11.12
+10657	60	3	30	144.60	117.13	27.47	74.96	0.00
+10310	62	3	5	160.95	139.06	21.89	37.33	0.00
+10416	19	3	20	187.60	155.45	32.15	22.48	0.00
+10528	33	3	8	261.41	180.37	81.04	25.64	43.57
+10873	21	3	20	205.40	181.16	24.24	40.54	0.00
+11040	21	3	20	209.20	184.51	24.69	50.60	0.00
+10617	59	3	30	301.88	212.63	89.25	40.88	39.38
+10562	62	3	10	320.32	235.87	84.45	45.52	29.12
+10869	68	3	20	273.60	241.32	32.28	44.38	0.00
+10681	19	3	30	319.77	256.18	63.59	73.33	29.07
+10607	33	3	14	340.20	275.56	64.64	28.50	0.00
+10447	19	3	40	341.20	282.51	58.69	45.69	0.00
+11072	50	3	22	347.82	306.78	41.04	69.62	0.00
+10513	61	3	15	460.26	317.58	142.68	53.37	76.71
+10513	21	3	40	475.68	328.22	147.46	53.37	79.28
+10562	33	3	20	579.04	426.38	152.66	45.52	52.64
+10855	16	3	50	459.00	444.45	14.55	48.14	0.00
+10816	62	3	20	622.44	480.17	142.27	31.89	29.64
+10758	26	3	20	577.40	499.84	77.56	33.57	0.00
+10941	62	3	30	1023.00	721.83	301.17	69.94	204.60
+10941	68	3	80	1282.00	1004.47	277.53	69.94	256.40
+10988	62	3	40	1307.68	1048.52	259.16	41.89	118.88
+10979	27	3	30	1213.50	1070.31	143.19	72.67	0.00
+10598	27	3	50	2074.50	1680.35	394.16	36.64	0.00
+10441	27	3	50	2212.50	1831.95	380.55	72.69	0.00
+10589	35	3	4	24.32	19.70	4.62	72.58	0.00
+10831	35	3	8	45.12	39.80	5.32	78.10	0.00
+10945	31	3	10	79.00	69.68	9.32	26.55	0.00
+10528	72	3	9	95.94	79.44	16.50	25.64	0.00
+10855	31	3	14	119.28	105.21	14.08	48.14	0.00
+10831	43	3	9	113.94	109.10	4.84	78.10	0.00
+10720	35	3	21	138.18	111.93	26.25	21.15	0.00
+10302	43	3	12	129.84	112.18	17.66	48.81	0.00
+10607	72	3	12	150.60	121.99	28.61	28.50	0.00
+10979	31	3	24	207.60	183.18	24.42	72.67	0.00
+10979	12	3	20	209.00	184.34	24.66	72.67	0.00
+10644	43	3	20	262.00	212.22	49.78	28.61	0.00
+10390	35	3	40	288.64	217.27	71.37	21.89	26.24
+10390	72	3	24	288.82	217.40	71.42	21.89	26.26
+10968	12	3	30	288.90	278.73	10.17	37.77	0.00
+10941	31	3	44	441.10	311.24	129.86	69.94	88.22
+10340	43	3	40	501.06	412.30	88.76	63.37	23.86
+10390	31	3	60	595.98	448.61	147.37	21.89	54.18
+10941	72	3	50	626.50	552.57	73.93	69.94	0.00
+10513	32	3	50	1079.40	744.79	334.61	53.37	179.90
+10968	64	3	4	121.36	107.04	14.32	37.77	0.00
+10416	57	3	20	374.80	310.33	64.47	22.48	0.00
+10869	23	3	50	419.00	369.56	49.44	44.38	0.00
+10616	56	3	14	561.54	454.85	106.69	66.70	0.00
+10749	56	3	15	612.15	495.84	116.31	46.19	0.00
+10714	56	3	18	775.80	502.72	273.08	45.54	155.16
+10681	64	3	28	899.36	728.48	170.88	73.33	0.00
+10855	56	3	24	910.80	803.33	107.47	48.14	0.00
+10370	64	3	30	1020.60	881.80	138.80	29.05	0.00
+10657	56	3	45	1809.45	1465.65	343.80	74.96	0.00
+10758	52	3	60	4579.20	3709.15	870.05	33.57	0.00
+11072	64	3	130	4230.20	3731.04	499.16	69.62	0.00
+10656	47	3	6	156.62	115.33	41.29	21.31	14.24
+10657	47	3	10	253.20	205.09	48.11	74.96	0.00
+11006	29	3	2	327.88	231.35	96.53	65.67	65.58
+10714	17	3	27	816.41	529.04	287.38	45.54	163.28
+10431	47	3	30	1012.13	670.43	341.69	56.71	202.43
+10302	17	3	40	1026.00	886.46	139.54	48.81	0.00
+10431	17	3	50	1585.63	1050.32	535.31	56.71	317.13
+10714	47	3	50	1746.88	1131.98	614.90	45.54	349.38
+10607	17	3	100	2436.00	1973.16	462.84	28.50	0.00
+10656	14	3	3	82.93	61.63	21.30	21.31	7.54
+10873	28	3	3	134.64	118.75	15.89	40.54	0.00
+10370	74	3	20	750.72	564.02	186.70	29.05	97.92
+10979	7	3	18	750.24	661.71	88.53	72.67	0.00
+10377	28	3	20	947.14	711.59	235.55	49.19	123.54
+10302	28	3	28	1198.68	1035.66	163.02	48.81	0.00
+10607	7	3	45	1629.45	1319.85	309.60	28.50	0.00
+10988	7	3	60	2395.80	2113.10	282.70	41.89	0.00
+10644	18	3	4	114.22	84.11	30.11	28.61	10.38
+10340	41	3	12	115.04	94.66	20.38	63.37	5.48
+10756	36	3	20	177.84	120.04	57.80	75.84	29.64
+10657	41	3	24	245.04	198.48	46.56	74.96	0.00
+10644	46	3	21	300.30	221.13	79.17	28.61	27.30
+10936	36	3	30	313.92	230.73	83.19	57.08	52.32
+11072	41	3	40	416.00	366.91	49.09	69.62	0.00
+10390	46	3	45	487.35	403.53	83.82	21.89	0.00
+10340	18	3	20	510.30	419.90	90.40	63.37	24.30
+10714	58	3	12	651.90	422.43	229.47	45.54	130.38
+10657	46	3	45	584.10	473.12	110.98	74.96	0.00
+10756	18	3	21	643.61	473.59	170.02	75.84	107.27
+10945	13	3	20	543.40	479.28	64.12	26.55	0.00
+10607	40	3	42	700.14	567.11	133.03	28.50	0.00
+10431	40	3	50	1118.75	741.06	377.69	56.71	223.75
+11079	57	3	15	285.00	251.37	33.63	49.50	0.00
+11079	13	3	10	267.75	224.91	42.84	49.50	12.75
+10262	5	2	12	80.35	57.85	22.50	33.19	13.39
+10272	20	2	6	529.50	457.49	72.01	40.25	0.00
+10272	72	2	24	282.24	263.43	18.81	40.25	0.00
+10272	31	2	40	312.40	269.91	42.49	40.25	0.00
+10262	56	2	2	69.10	59.70	9.40	33.19	0.00
+10820	56	2	30	1200.60	972.49	228.11	66.11	0.00
+10262	7	2	15	574.50	496.37	78.13	33.19	0.00
+10348	1	2	15	334.82	251.55	83.27	34.34	43.67
+10640	70	2	15	516.00	334.37	181.63	53.05	103.20
+10632	2	2	30	607.01	468.26	138.74	63.30	28.91
+10640	69	2	20	46.00	29.81	16.19	53.05	9.20
+10356	69	2	20	41.00	35.42	5.58	43.26	0.00
+10668	55	2	4	181.28	133.49	47.79	22.86	16.48
+10632	33	2	20	522.48	403.06	119.42	63.30	24.88
+10356	55	2	12	487.80	421.46	66.34	43.26	0.00
+10668	31	2	8	71.90	52.94	18.95	22.86	6.54
+10356	31	2	30	276.60	238.98	37.62	43.26	0.00
+10348	23	2	25	230.75	199.37	31.38	34.34	0.00
+10668	64	2	15	596.81	461.11	135.69	22.86	54.26
+10703	2	2	5	92.80	75.17	17.63	52.83	0.00
+10378	71	2	6	169.14	148.16	20.98	56.37	0.00
+10880	70	2	50	1750.20	1286.40	463.80	74.98	291.70
+10774	66	2	50	923.00	747.63	175.37	36.46	0.00
+10533	4	2	50	1061.03	818.51	242.52	39.08	50.53
+10902	62	2	6	193.20	148.18	45.02	67.01	25.20
+11001	55	2	6	217.50	191.84	25.67	33.18	0.00
+10703	59	2	35	310.80	251.75	59.05	52.83	0.00
+10880	61	2	30	973.08	715.21	257.87	74.98	162.18
+10902	55	2	30	1464.18	1122.96	341.22	67.01	190.98
+10774	31	2	2	19.70	12.77	6.93	36.46	3.94
+10533	72	2	24	264.72	214.42	50.30	39.08	0.00
+11001	22	2	25	95.50	84.23	11.27	33.18	0.00
+10880	23	2	30	299.16	219.88	79.28	74.98	49.86
+11001	7	2	60	2568.60	2265.51	303.09	33.18	0.00
+10533	73	2	24	25.70	19.83	5.88	39.08	1.22
+10703	73	2	35	38.15	30.90	7.25	52.83	0.00
+11001	46	2	25	328.50	289.74	38.76	33.18	0.00
+10704	24	2	35	160.30	129.84	30.46	64.83	0.00
+10406	1	2	10	197.60	163.61	33.99	73.88	0.00
+10637	11	2	10	267.70	216.84	50.86	20.01	0.00
+10786	75	2	42	352.80	238.14	114.66	27.74	58.80
+10914	71	2	25	750.75	662.16	88.59	72.38	0.00
+10659	70	2	40	1098.72	847.58	251.14	65.19	52.32
+10704	4	2	6	144.84	117.32	27.52	64.83	0.00
+11068	77	2	28	447.26	343.03	104.23	45.77	58.34
+10786	8	2	30	662.40	447.12	215.28	27.74	110.40
+10913	4	2	30	887.25	626.04	261.21	40.33	177.45
+10372	38	2	40	3897.00	2703.00	1194.00	30.16	779.40
+10961	76	2	60	23334.60	20581.12	2753.48	74.31	0.00
+10487	19	2	5	48.45	40.12	8.33	58.30	0.00
+10728	60	2	15	79.95	64.76	15.19	31.39	0.00
+10406	21	2	30	346.83	277.30	69.53	73.88	31.53
+10372	60	2	70	463.75	320.54	143.21	30.16	92.75
+10637	50	2	25	416.06	320.96	95.10	20.01	19.81
+10728	55	2	12	450.84	365.18	85.66	31.39	0.00
+10868	26	2	20	666.40	587.76	78.64	24.03	0.00
+10487	54	2	24	1008.30	667.90	340.40	58.30	201.66
+10868	49	2	42	899.51	762.67	136.84	24.03	81.77
+10913	33	2	40	1163.50	820.97	342.53	40.33	232.70
+10487	26	2	30	1002.00	829.66	172.34	58.30	0.00
+10372	20	2	12	1218.60	842.30	376.30	30.16	243.72
+10659	31	2	20	173.04	133.49	39.55	65.19	8.24
+10868	35	2	30	187.20	165.11	22.09	24.03	0.00
+11068	43	2	36	464.09	355.94	108.15	45.77	60.53
+10372	72	2	42	564.38	390.10	174.28	30.16	112.88
+10961	52	2	6	467.27	392.51	74.76	74.31	22.25
+10637	56	2	60	2314.62	1785.56	529.06	20.01	110.22
+10704	48	2	24	712.08	576.78	135.30	64.83	0.00
+11068	28	2	8	431.11	330.64	100.47	45.77	56.23
+10406	28	2	42	2187.11	1646.30	540.81	73.88	198.83
+10406	40	2	2	41.65	31.35	10.30	73.88	3.79
+10406	36	2	5	43.34	32.62	10.72	73.88	3.94
+10728	40	2	6	106.92	86.61	20.31	31.39	0.00
+10728	30	2	15	356.25	288.56	67.69	31.39	0.00
+10786	30	2	15	503.46	339.84	163.62	27.74	83.91
+10659	40	2	24	490.14	378.11	112.03	65.19	23.34
+10913	58	2	15	774.45	683.06	91.39	40.33	0.00
+10959	75	2	20	166.52	127.71	38.81	26.74	21.72
+11049	2	2	10	224.40	164.93	59.47	21.83	37.40
+10734	6	2	30	120.90	97.93	22.97	34.90	0.00
+10709	8	2	40	813.20	658.69	154.51	22.66	0.00
+10734	76	2	20	8252.40	6862.10	1390.30	34.90	0.00
+10709	60	2	10	49.10	39.77	9.33	22.66	0.00
+10423	59	2	20	178.40	147.72	30.68	49.89	0.00
+11049	12	2	4	44.26	32.53	11.73	21.83	7.38
+10423	31	2	14	107.66	89.14	18.52	49.89	0.00
+10652	42	2	20	267.60	216.76	50.84	53.60	0.00
+10777	42	2	20	360.96	243.65	117.31	37.72	60.16
+10790	56	2	20	838.12	590.33	247.79	73.17	109.32
+10685	47	2	15	375.30	303.99	71.31	73.20	0.00
+10709	51	2	28	2561.44	2074.77	486.67	22.66	0.00
+10790	7	2	3	134.21	94.53	39.68	73.17	17.51
+10685	41	2	4	36.84	29.84	7.00	73.20	0.00
+10652	30	2	2	65.60	42.51	23.09	53.60	13.12
+10685	10	2	20	150.60	121.99	28.61	73.20	0.00
+10734	30	2	15	351.30	287.07	64.23	34.90	0.00
+10299	70	2	20	581.60	502.50	79.10	73.71	0.00
+10299	19	2	15	137.55	118.84	18.71	73.71	0.00
+10481	60	2	40	204.80	169.57	35.23	48.38	0.00
+10877	16	2	30	375.38	264.86	110.51	44.17	75.08
+10287	16	2	40	408.48	306.89	101.59	70.97	53.28
+10481	49	2	24	454.80	386.21	68.59	48.38	0.00
+10287	34	2	20	153.40	132.54	20.86	70.97	0.00
+10287	46	2	15	210.97	168.07	42.90	70.97	27.52
+10877	18	2	25	644.50	568.45	76.05	44.17	0.00
+11019	49	2	2	43.54	39.17	4.37	20.36	0.00
+10716	21	2	5	48.70	39.45	9.25	61.82	0.00
+10716	61	2	10	255.70	229.53	26.17	61.82	0.00
+10716	51	2	7	730.52	591.72	138.80	61.82	0.00
+11019	46	2	3	34.05	30.03	4.02	20.36	0.00
+10466	11	2	10	257.30	217.89	39.41	77.44	0.00
+10494	56	2	30	1061.10	878.59	182.51	26.06	0.00
+10466	46	2	5	59.25	49.06	10.19	77.44	0.00
+10969	46	2	9	117.63	103.75	13.88	34.54	0.00
+10830	6	2	6	23.82	21.01	2.81	64.98	0.00
+10606	4	2	20	548.64	370.33	178.31	77.76	91.44
+10830	39	2	28	1522.36	1342.72	179.64	64.98	0.00
+10830	60	2	30	159.30	140.50	18.80	64.98	0.00
+10606	62	2	10	351.72	238.01	113.71	77.76	58.62
+10830	68	2	24	316.08	298.96	17.12	64.98	0.00
+10606	55	2	20	1002.48	676.67	325.81	77.76	167.08
+10292	20	2	20	1681.40	1452.73	228.67	78.59	0.00
+10496	31	2	20	171.57	135.30	36.27	65.67	8.17
+10839	72	2	15	203.94	163.56	40.38	53.41	18.54
+10834	29	2	8	1124.09	968.05	156.04	66.49	53.53
+10834	30	2	20	511.77	458.82	52.95	66.49	24.37
+10839	58	2	30	1593.57	1277.75	315.82	53.41	144.87
+10518	24	3	5	21.65	17.93	3.72	27.16	0.00
+10293	24	3	10	41.10	35.51	5.59	76.28	0.00
+10293	75	3	6	45.60	39.40	6.20	76.28	0.00
+10304	71	3	2	59.52	51.43	8.09	69.84	0.00
+10576	1	3	10	219.40	177.71	41.69	31.24	0.00
+10698	70	3	8	250.91	193.56	57.35	68.35	11.95
+10842	70	3	12	321.84	283.86	37.98	54.66	0.00
+10622	2	3	20	355.20	287.71	67.49	42.88	0.00
+10842	11	3	15	381.45	336.44	45.01	54.66	0.00
+10698	11	3	15	392.55	348.32	44.23	68.35	0.00
+11041	2	3	30	724.32	532.38	191.94	64.44	120.72
+10707	70	3	28	953.76	671.78	281.98	76.35	124.40
+10455	71	3	30	835.50	691.79	143.71	69.02	0.00
+10847	1	3	80	1746.24	1302.45	443.79	29.84	291.04
+10847	71	3	55	1937.10	1518.72	418.38	29.84	322.85
+10730	65	3	10	95.13	73.39	21.74	76.20	4.53
+10293	63	3	5	105.30	90.98	14.32	76.28	0.00
+10698	65	3	65	687.96	530.71	157.25	68.35	32.76
+11041	63	3	30	610.50	538.46	72.04	64.44	0.00
+10518	44	3	9	691.29	572.39	118.90	27.16	0.00
+10762	39	3	16	875.20	708.91	166.29	76.47	0.00
+10518	38	3	15	1150.35	952.49	197.86	27.16	0.00
+10455	39	3	20	1297.80	1074.58	223.22	69.02	0.00
+11069	39	3	20	1165.20	1075.30	89.90	34.81	0.00
+10676	44	3	21	1565.76	1268.27	297.49	49.84	0.00
+10576	44	3	21	1611.96	1305.69	306.27	31.24	0.00
+10305	39	3	30	1889.25	1483.92	405.33	66.61	171.75
+10455	53	3	50	3115.50	2579.63	535.87	69.02	0.00
+10319	76	3	30	12119.10	10470.90	1648.20	54.41	0.00
+10676	19	3	7	67.55	56.09	11.46	49.84	0.00
+10727	59	3	10	86.63	66.83	19.80	31.78	4.13
+10304	59	3	10	79.10	68.34	10.76	69.84	0.00
+10847	19	3	12	140.83	103.51	37.32	29.84	23.47
+10730	16	3	15	137.81	106.31	31.50	76.20	6.56
+10847	60	3	45	279.18	205.20	73.98	29.84	46.53
+10622	68	3	18	279.29	208.86	70.43	42.88	46.55
+10842	68	3	20	265.40	234.08	31.32	54.66	0.00
+10915	54	3	10	370.80	327.05	43.75	24.52	0.00
+10304	49	3	30	593.70	512.96	80.74	69.84	0.00
+10455	61	3	25	668.75	553.73	115.03	69.02	0.00
+10915	33	3	30	788.10	695.10	93.00	24.52	0.00
+10707	55	3	21	878.01	711.19	166.82	76.35	0.00
+10730	31	3	3	27.47	21.19	6.28	76.20	1.31
+10842	43	3	5	55.45	48.91	6.54	54.66	0.00
+10982	43	3	9	102.33	90.26	12.07	20.53	0.00
+10576	31	3	20	165.00	143.58	21.42	31.24	0.00
+10727	56	3	10	435.44	335.91	99.53	31.78	20.74
+10707	57	3	40	764.40	619.16	145.24	76.35	0.00
+10594	52	3	24	1964.16	1590.97	373.19	68.55	0.00
+10762	56	3	60	2187.60	1771.96	415.64	76.47	0.00
+10698	17	3	8	201.35	155.33	46.02	68.35	9.59
+10319	17	3	8	209.84	181.30	28.54	54.41	0.00
+10915	17	3	10	274.50	242.11	32.39	24.52	0.00
+10847	45	3	36	378.00	277.83	100.17	29.84	63.00
+10727	17	3	20	577.08	445.28	131.80	31.78	27.48
+10762	47	3	30	703.50	569.84	133.67	76.47	0.00
+10698	29	3	12	1570.84	1211.79	359.05	68.35	74.80
+10762	51	3	28	2742.60	2221.51	521.09	76.47	0.00
+10305	29	3	25	3133.35	2461.10	672.25	66.61	284.85
+10993	29	3	50	7867.50	5551.31	2316.19	55.53	1573.50
+10319	28	3	14	682.78	589.92	92.86	54.41	0.00
+10982	7	3	20	746.40	698.46	47.94	20.53	0.00
+10676	10	3	2	12.96	10.50	2.46	49.84	0.00
+10276	10	3	15	103.80	89.68	14.12	22.95	0.00
+10847	37	3	60	285.12	209.56	75.56	29.84	47.52
+10276	13	3	10	274.50	237.17	37.33	22.95	0.00
+10293	18	3	12	328.56	283.88	44.68	76.28	0.00
+10993	41	3	35	442.75	312.40	130.35	55.53	88.55
+10305	18	3	25	757.90	595.30	162.60	66.61	68.90
+10594	58	3	30	1368.90	1108.81	260.09	68.55	0.00
+10926	11	2	2	54.98	48.49	6.49	59.53	0.00
+10308	70	2	5	147.75	127.66	20.09	52.09	0.00
+10308	69	2	1	2.12	1.83	0.29	52.09	0.00
+10625	60	2	10	48.70	39.45	9.25	24.44	0.00
+10926	19	2	7	60.48	53.34	7.14	59.53	0.00
+10926	72	2	10	121.00	106.72	14.28	59.53	0.00
+10759	32	2	10	198.50	160.79	37.72	31.10	0.00
+10625	42	2	5	74.60	60.43	14.17	24.44	0.00
+10625	14	2	3	72.75	58.93	13.82	24.44	0.00
+10926	13	2	10	235.00	207.27	27.73	59.53	0.00
+10838	1	2	4	102.60	72.39	30.21	45.91	20.52
+10485	2	2	20	383.68	288.81	94.87	42.60	34.88
+10697	70	2	30	1040.63	674.33	366.30	32.34	208.13
+10729	1	2	50	1026.00	831.06	194.94	67.48	0.00
+10485	70	2	60	1768.80	1331.42	437.38	42.60	160.80
+10638	65	2	21	212.94	172.48	40.46	75.11	0.00
+10485	3	2	20	476.96	359.02	117.94	42.60	43.36
+10840	39	2	10	650.52	478.13	172.39	60.14	108.42
+10405	3	2	50	924.00	791.66	132.34	75.65	0.00
+10697	19	2	7	73.68	47.74	25.93	32.34	14.74
+10840	25	2	6	110.81	81.44	29.36	60.14	18.47
+10811	19	2	15	141.90	114.94	26.96	40.63	0.00
+10954	60	2	24	151.25	116.00	35.25	28.77	19.73
+10919	16	2	24	242.16	213.59	28.57	58.44	0.00
+10729	21	2	30	284.70	230.61	54.09	67.48	0.00
+10954	16	2	28	314.92	241.53	73.39	28.77	41.08
+10919	25	2	24	305.52	296.62	8.90	58.44	0.00
+10729	50	2	40	660.40	534.92	125.48	67.48	0.00
+10485	55	2	30	1161.93	874.62	287.31	42.60	105.63
+11039	49	2	60	1116.00	984.31	131.69	25.61	0.00
+10697	35	2	9	67.61	43.81	23.80	32.34	13.52
+11039	35	2	24	147.84	130.39	17.45	25.61	0.00
+10954	31	2	25	242.08	185.66	56.41	28.77	31.58
+10638	72	2	60	646.20	523.42	122.78	75.11	0.00
+10811	23	2	18	178.20	144.34	33.86	40.63	0.00
+11039	57	2	28	575.68	507.75	67.93	25.61	0.00
+10638	45	2	20	177.20	143.53	33.67	75.11	0.00
+10954	45	2	30	262.80	231.79	31.01	28.77	0.00
+11039	28	2	20	958.00	844.96	113.04	25.61	0.00
+11014	41	2	28	313.54	251.41	62.14	79.78	28.50
+10838	36	2	50	476.88	336.48	140.39	45.91	95.38
+10919	40	2	20	400.00	352.80	47.20	58.44	0.00
+10811	40	2	30	523.80	424.28	99.52	40.63	0.00
+10838	18	2	25	875.00	617.40	257.60	45.91	175.00
+10697	58	2	30	1641.75	1063.85	577.90	32.34	328.35
+10866	24	2	6	35.18	24.82	10.36	46.54	7.04
+10924	75	2	6	44.64	39.37	5.27	31.99	0.00
+10280	24	2	12	51.00	44.06	6.94	38.06	0.00
+10572	75	2	15	137.28	101.09	36.19	35.90	12.48
+10280	75	2	30	216.30	186.88	29.42	38.06	0.00
+10672	71	2	12	389.64	315.61	74.03	59.59	0.00
+10866	2	2	21	463.31	326.91	136.40	46.54	92.66
+10689	1	2	35	804.13	521.07	283.05	52.19	160.83
+10626	71	2	20	663.20	537.19	126.01	25.36	0.00
+10278	63	2	8	168.16	145.29	22.87	50.46	0.00
+10654	4	2	12	296.60	225.25	71.35	61.64	26.96
+10445	39	2	6	351.42	290.98	60.44	31.84	0.00
+10857	3	2	30	587.70	518.35	69.35	38.51	0.00
+10626	53	2	12	761.28	616.64	144.64	25.36	0.00
+10654	39	2	20	1397.88	1029.35	368.53	61.64	127.08
+10672	38	2	15	1367.85	1094.80	273.05	59.59	124.35
+10278	44	2	16	1292.48	1116.70	175.78	50.46	0.00
+10837	76	2	21	10140.90	7155.42	2985.48	25.42	2028.18
+10384	60	2	15	79.80	66.07	13.73	66.07	0.00
+10626	60	2	20	99.00	80.19	18.81	25.36	0.00
+10572	16	2	12	131.74	97.01	34.73	35.90	11.98
+10278	59	2	15	128.55	115.22	13.33	50.46	0.00
+10654	54	2	6	212.85	156.74	56.12	61.64	19.35
+10875	19	2	25	213.75	188.53	25.22	51.98	0.00
+10875	49	2	15	324.30	286.03	38.27	51.98	0.00
+10444	26	2	15	464.55	384.65	79.90	62.54	0.00
+10524	54	2	15	513.45	425.14	88.31	55.42	0.00
+10445	54	2	15	529.80	445.45	84.35	31.84	0.00
+10280	55	2	20	849.40	733.88	115.52	38.06	0.00
+10857	26	2	35	1294.13	913.13	380.99	38.51	258.83
+10384	20	2	28	2422.28	2015.97	406.31	66.07	0.00
+10444	35	2	8	45.60	37.76	7.84	62.54	0.00
+10572	32	2	10	223.96	164.92	59.04	35.90	20.36
+10524	43	2	60	780.00	645.84	134.16	55.42	0.00
+10733	52	2	25	2147.50	1739.48	408.03	45.37	0.00
+10444	17	2	10	270.00	223.56	46.44	62.54	0.00
+10875	47	2	21	564.10	452.31	111.79	51.98	51.28
+10837	47	2	40	1356.00	956.79	399.21	25.42	271.20
+10857	29	2	10	1521.25	1073.39	447.86	38.51	304.25
+10733	14	2	16	348.32	282.14	66.18	45.37	0.00
+10733	28	2	20	998.80	809.03	189.77	45.37	0.00
+10924	28	2	30	1544.40	1238.33	306.07	31.99	140.40
+10524	10	2	2	14.98	12.40	2.58	55.42	0.00
+10278	73	2	25	26.75	23.11	3.64	50.46	0.00
+10778	41	2	10	90.60	73.39	17.21	32.80	0.00
+10924	10	2	20	151.58	121.54	30.04	31.99	13.78
+10837	13	2	6	148.08	130.61	17.47	25.42	0.00
+10524	30	2	10	272.50	225.63	46.87	55.42	0.00
+10444	41	2	30	275.70	228.28	47.42	62.54	0.00
+10837	40	2	25	450.25	402.56	47.69	25.42	0.00
+10572	40	2	50	971.50	786.92	184.59	35.90	0.00
+10866	30	2	40	1204.50	849.90	354.60	46.54	240.90
+10848	5	2	30	184.80	162.99	21.81	64.28	0.00
+10435	2	2	10	200.50	166.01	34.49	29.06	0.00
+10435	72	2	10	126.00	104.33	21.67	29.06	0.00
+10435	22	2	12	45.00	37.26	7.74	29.06	0.00
+10462	23	2	21	178.50	156.15	22.35	70.53	0.00
+10848	9	2	3	120.96	106.69	14.27	64.28	0.00
+10462	13	2	1	27.09	22.43	4.66	70.53	0.00
+10623	24	2	3	13.11	10.62	2.49	25.50	0.00
+10670	75	2	25	184.50	149.45	35.06	26.27	0.00
+10859	24	2	40	225.50	159.11	66.39	64.10	45.10
+10929	75	2	49	373.87	329.75	44.12	26.25	0.00
+10342	2	2	24	566.21	407.67	158.54	77.29	94.37
+10396	71	2	60	1780.20	1474.01	306.19	52.14	0.00
+11012	71	2	60	1915.20	1715.51	199.69	41.48	91.20
+10929	77	2	15	198.15	174.77	23.38	26.25	0.00
+10675	53	2	10	661.80	536.06	125.74	77.22	0.00
+10670	67	2	25	1468.25	1189.28	278.97	26.27	0.00
+10267	76	2	15	6356.80	4775.89	1580.91	49.70	829.15
+10717	69	2	25	50.14	38.68	11.46	52.70	2.39
+10653	60	2	20	108.90	80.19	28.71	58.95	9.90
+10623	19	2	15	154.28	113.60	40.67	25.50	14.03
+11012	60	2	36	172.75	145.11	27.64	41.48	8.23
+10623	21	2	25	276.38	203.51	72.86	25.50	25.13
+10488	59	2	30	264.00	218.59	45.41	41.02	0.00
+10653	16	2	30	329.01	242.27	86.74	58.95	29.91
+10717	21	2	32	339.70	262.05	77.64	52.70	16.18
+10560	62	2	15	585.00	379.08	205.92	67.88	117.00
+10717	54	2	15	523.65	424.16	99.49	52.70	0.00
+11012	19	2	50	473.03	432.38	40.64	41.48	22.53
+10929	21	2	60	556.20	490.57	65.63	26.25	0.00
+10267	59	2	70	697.13	523.76	173.37	49.70	90.93
+10337	26	2	24	805.20	725.27	79.93	76.43	0.00
+10859	54	2	35	1568.88	1107.00	461.88	64.10	313.78
+10342	55	2	40	1800.96	1296.69	504.27	77.29	300.16
+10623	35	2	30	202.29	148.96	53.33	25.50	18.39
+10396	72	2	21	230.16	190.57	39.59	52.14	0.00
+10337	72	2	25	300.75	259.85	40.90	76.43	0.00
+10342	31	2	56	585.98	421.91	164.08	77.29	97.66
+10670	23	2	32	274.88	222.65	52.23	26.27	0.00
+10396	23	2	40	344.00	284.83	59.17	52.14	0.00
+10337	23	2	40	360.00	311.04	48.96	76.43	0.00
+10859	64	2	30	1312.50	926.10	386.40	64.10	262.50
+10791	29	2	14	1692.56	1305.69	386.87	47.97	80.60
+10623	14	2	21	508.41	449.92	58.49	25.50	0.00
+10675	14	2	30	653.70	529.50	124.20	77.22	0.00
+10488	73	2	20	29.04	20.04	9.00	41.02	4.84
+10670	73	2	50	56.50	45.77	10.74	26.27	0.00
+10337	37	2	28	109.20	94.35	14.85	76.43	0.00
+10337	36	2	20	159.80	138.07	21.73	76.43	0.00
+10791	41	2	20	202.23	160.82	41.41	47.97	9.63
+10342	36	2	40	362.88	261.27	101.61	77.29	60.48
+10560	30	2	20	512.40	415.04	97.36	67.88	0.00
+10670	46	2	60	745.80	667.45	78.35	26.27	0.00
+10267	40	2	50	935.50	808.27	127.23	49.70	0.00
+10675	58	2	30	1337.70	1083.54	254.16	77.22	0.00
+10885	24	1	12	54.72	48.26	6.46	48.54	0.00
+11035	1	1	10	195.50	172.43	23.07	38.64	0.00
+10885	2	1	20	389.00	343.10	45.90	48.54	0.00
+10885	70	1	30	883.20	778.98	104.22	48.54	0.00
+10846	70	1	30	922.50	842.11	80.39	57.51	0.00
+10885	77	1	25	342.25	301.86	40.39	48.54	0.00
+10846	4	1	21	474.18	418.23	55.95	57.51	0.00
+10252	60	1	40	182.00	150.70	31.30	23.20	0.00
+11035	54	1	10	373.00	328.99	44.01	38.64	0.00
+10252	33	1	25	620.55	489.35	131.20	23.20	29.55
+10252	20	1	40	3189.06	2514.80	674.26	23.20	151.86
+11035	35	1	60	366.60	323.34	43.26	38.64	0.00
+10767	42	1	2	26.70	21.63	5.07	78.21	0.00
+11035	42	1	30	399.60	383.09	16.51	38.64	0.00
+10846	74	1	20	621.80	548.43	73.37	57.51	0.00
+10326	75	1	50	406.00	350.78	55.22	65.69	0.00
+10326	4	1	24	476.16	411.40	64.76	65.69	0.00
+10326	57	1	16	287.04	248.00	39.04	65.69	0.00
+10970	52	1	40	3659.04	2689.39	969.65	50.83	609.84
+10801	17	1	40	1247.00	808.06	438.94	74.91	249.40
+10801	29	1	20	3298.50	2137.43	1161.07	74.91	659.70
+11078	2	1	10	198.45	166.70	31.75	50.00	9.45
+11078	3	1	25	511.88	429.98	81.90	50.00	24.38
+11082	3	1	35	732.15	603.51	128.64	23.89	47.90
+10682	75	2	30	247.50	200.48	47.03	54.83	0.00
+10856	2	2	20	390.80	363.15	27.65	39.03	0.00
+10365	11	2	24	707.52	611.30	96.22	35.04	0.00
+10535	11	2	50	1556.50	1146.15	410.35	47.43	141.50
+10682	66	2	4	74.16	60.07	14.09	54.83	0.00
+10573	53	2	25	1640.25	1328.60	311.65	52.32	0.00
+10535	59	2	15	126.39	93.07	33.32	47.43	11.49
+10677	33	2	8	243.89	171.78	72.11	62.67	31.81
+10682	33	2	30	764.10	618.92	145.18	54.83	0.00
+10677	26	2	30	1158.51	815.99	342.52	62.67	151.11
+10507	43	2	15	196.82	141.71	55.11	37.11	25.67
+10573	34	2	40	295.20	239.11	56.09	52.32	0.00
+10535	57	2	5	112.09	82.54	29.55	47.43	10.19
+10856	42	2	20	268.00	236.38	31.62	39.03	0.00
+10573	17	2	18	438.66	355.31	83.35	52.32	0.00
+10507	48	2	15	551.14	396.82	154.32	37.11	71.89
+10535	40	2	10	213.40	157.14	56.26	47.43	19.40
+10474	75	2	10	76.30	63.18	13.12	29.44	0.00
+11073	24	2	20	92.00	81.14	10.86	25.62	0.00
+10354	1	2	12	259.80	224.47	35.33	25.00	0.00
+11073	11	2	10	289.30	261.80	27.50	25.62	0.00
+10502	53	2	6	400.98	332.01	68.97	75.02	0.00
+10502	67	2	30	1899.60	1572.87	326.73	75.02	0.00
+10995	60	2	4	20.84	18.38	2.46	35.77	0.00
+10322	52	2	20	1560.40	1348.19	212.21	24.83	0.00
+10502	45	2	21	210.00	173.88	36.12	75.02	0.00
+10354	29	2	4	521.36	450.46	70.91	25.00	0.00
+10995	51	2	20	1995.80	1769.06	226.74	35.77	0.00
+10474	14	2	12	295.80	244.92	50.88	29.44	0.00
+10474	28	2	18	789.66	653.84	135.82	29.44	0.00
+10474	40	2	21	374.22	309.85	64.37	29.44	0.00
+10960	24	2	10	58.00	40.92	17.08	69.03	11.60
+10498	24	2	14	68.60	56.80	11.80	48.66	0.00
+11055	24	2	15	67.35	59.40	7.95	54.57	0.00
+10486	11	2	5	141.90	117.49	24.41	75.83	0.00
+10552	75	2	30	214.80	173.99	40.81	46.85	0.00
+10490	75	2	36	270.00	223.56	46.44	56.23	0.00
+10476	70	2	12	313.68	259.73	53.95	60.61	0.00
+10613	75	2	40	340.80	276.05	64.75	65.88	0.00
+10863	1	2	20	476.10	365.15	110.95	52.24	62.10
+10641	2	2	50	929.00	752.49	176.51	38.27	0.00
+10901	71	2	30	920.10	811.53	108.57	21.92	0.00
+10257	77	2	15	192.60	159.47	33.13	33.98	0.00
+10257	39	2	6	329.04	272.71	56.33	33.98	0.00
+10796	44	2	10	713.90	578.26	135.64	67.39	0.00
+10395	53	2	70	5109.72	3846.23	1263.49	51.87	464.52
+10395	69	2	8	14.96	12.39	2.57	51.87	0.00
+10552	69	2	18	34.56	27.99	6.57	46.85	0.00
+10796	69	2	24	60.77	41.02	19.75	67.39	10.13
+10476	55	2	2	79.04	62.33	16.71	60.61	3.76
+11055	25	2	15	189.30	166.96	22.34	54.57	0.00
+10601	59	2	35	303.10	245.51	57.59	44.73	0.00
+10490	68	2	30	398.70	341.68	57.02	56.23	0.00
+10490	59	2	60	518.40	433.48	84.92	56.23	0.00
+10796	26	2	21	710.39	505.04	205.35	67.39	118.40
+10257	27	2	25	1077.25	891.96	185.29	33.98	0.00
+10705	32	2	4	78.72	69.11	9.61	53.85	0.00
+10705	31	2	20	183.00	148.23	34.77	53.85	0.00
+10957	35	2	40	237.60	209.56	28.04	48.63	0.00
+10957	64	2	8	279.12	246.18	32.94	48.63	0.00
+11055	57	2	20	387.40	341.69	45.71	54.57	0.00
+10498	42	2	30	453.00	375.08	77.92	48.66	0.00
+10796	64	2	35	1524.18	1028.82	495.36	67.39	254.03
+11055	51	2	20	1941.60	1712.49	229.11	54.57	0.00
+10486	51	2	25	2421.25	2004.80	416.46	75.83	0.00
+10486	74	2	16	439.84	364.19	75.65	75.83	0.00
+10976	28	2	20	846.80	746.88	99.92	76.17	0.00
+10498	40	2	5	90.00	74.52	15.48	48.66	0.00
+10613	13	2	8	241.12	177.55	63.57	65.88	21.92
+10960	41	2	24	229.92	202.79	27.13	69.03	0.00
+10901	41	2	30	267.60	236.02	31.58	21.92	0.00
+10395	46	2	28	357.90	269.40	88.50	51.87	32.54
+10863	58	2	12	617.27	498.12	119.15	52.24	80.51
+10957	30	2	30	838.20	739.29	98.91	48.63	0.00
+10641	40	2	60	1187.40	961.79	225.61	38.27	0.00
+10601	13	2	60	1422.00	1151.82	270.18	44.73	0.00
+10296	11	2	12	319.44	276.00	43.44	22.40	0.00
+10823	11	2	20	666.82	491.02	175.80	53.04	60.62
+10780	70	2	35	1005.90	814.78	191.12	23.35	0.00
+10283	15	2	20	130.60	112.84	17.76	66.34	0.00
+10780	77	2	15	186.45	151.02	35.43	23.35	0.00
+10823	77	2	15	216.32	173.45	42.87	53.04	19.67
+10899	39	2	8	591.28	453.49	137.79	25.47	77.12
+10296	69	2	15	28.35	24.49	3.86	22.40	0.00
+10357	60	2	8	46.66	35.32	11.34	65.97	7.78
+10283	19	2	18	165.24	142.77	22.47	66.34	0.00
+10283	60	2	35	181.30	156.64	24.66	66.34	0.00
+10296	16	2	30	280.80	242.61	38.19	22.40	0.00
+10823	59	2	40	392.04	314.34	77.70	53.04	35.64
+10461	21	2	40	493.00	326.56	166.44	29.04	98.60
+10499	49	2	25	476.50	394.54	81.96	38.53	0.00
+10357	26	2	16	471.04	406.98	64.06	65.97	0.00
+11065	54	2	20	942.25	664.85	277.40	64.04	188.45
+10330	26	2	50	1882.55	1414.37	468.18	30.44	245.55
+10461	55	2	60	2643.00	1750.72	892.28	29.04	528.60
+10283	72	2	3	34.98	30.22	4.76	66.34	0.00
+10330	72	2	25	311.65	246.62	65.03	30.44	40.65
+10543	12	2	30	358.80	252.72	106.08	23.11	46.80
+10997	32	2	50	1016.50	896.55	119.95	21.62	0.00
+10823	57	2	15	312.30	252.96	59.34	53.04	0.00
+10543	23	2	70	772.80	544.32	228.48	23.11	100.80
+10997	52	2	20	1884.25	1329.53	554.72	21.62	376.85
+10381	74	2	14	428.26	354.60	73.66	45.81	0.00
+11071	7	2	15	669.38	562.28	107.10	27.50	31.88
+10499	28	2	20	872.80	772.15	100.65	38.53	0.00
+11065	30	2	4	123.00	94.25	28.75	64.04	24.60
+10357	10	2	30	234.36	168.74	65.62	65.97	39.06
+10997	46	2	20	315.50	222.62	92.88	21.62	63.10
+11071	13	2	10	273.74	229.94	43.80	27.50	13.04
+10461	30	2	28	955.15	632.69	322.46	29.04	191.03
+10394	62	3	10	266.70	220.83	45.87	31.84	0.00
+10394	13	3	10	270.40	223.89	46.51	31.84	0.00
+10259	21	2	10	101.40	87.61	13.79	30.11	0.00
+10259	37	2	1	4.37	3.78	0.59	30.11	0.00
+10639	18	2	8	193.36	156.62	36.74	73.30	0.00
+10477	1	1	15	316.65	262.19	54.46	50.67	0.00
+10336	4	1	18	459.95	361.27	98.68	30.45	41.81
+11007	8	1	30	616.50	543.75	72.75	69.59	0.00
+10477	39	1	20	1427.50	945.58	481.92	50.67	285.50
+10397	21	1	10	123.17	88.68	34.49	33.73	16.07
+10477	21	1	21	236.78	161.47	75.31	50.67	47.36
+11007	42	1	14	207.06	196.44	10.62	69.59	0.00
+10433	56	1	28	1072.68	888.18	184.50	62.95	0.00
+11007	29	1	10	1344.10	1185.50	158.60	69.59	0.00
+10397	51	1	18	2089.04	1504.11	584.93	33.73	272.48
+10947	59	2	4	33.12	29.21	3.91	48.47	0.00
+10599	62	2	10	305.10	247.13	57.97	71.49	0.00
+10578	35	2	20	129.40	104.81	24.59	61.67	0.00
+10578	57	2	6	117.78	100.15	17.63	61.67	0.00
+10471	56	2	20	796.40	659.42	136.98	26.66	0.00
+10471	7	2	30	1192.20	1023.52	168.68	26.66	0.00
+11009	24	1	12	50.16	44.24	5.92	69.21	0.00
+11037	70	1	4	116.00	102.31	13.69	70.66	0.00
+10911	1	1	10	219.30	197.02	22.28	35.87	0.00
+10888	2	1	20	409.20	360.91	48.29	32.12	0.00
+10872	65	1	21	229.76	193.00	36.76	22.92	10.94
+10303	65	1	30	355.74	279.42	76.32	63.01	32.34
+10911	67	1	15	935.85	845.65	90.20	35.87	0.00
+11009	60	1	9	46.80	41.28	5.52	69.21	0.00
+10550	21	1	6	62.70	46.17	16.53	78.79	5.70
+10550	19	1	10	95.20	77.11	18.09	78.79	0.00
+10948	50	1	9	144.45	127.40	17.05	30.03	0.00
+10948	55	1	4	154.92	136.64	18.28	30.03	0.00
+10303	68	1	15	210.71	165.50	45.21	63.01	19.16
+10888	68	1	18	208.08	183.53	24.55	32.12	0.00
+10550	61	1	10	282.15	207.77	74.39	78.79	25.65
+10872	55	1	10	441.32	370.70	70.61	22.92	21.02
+10872	62	1	20	649.53	545.61	103.92	22.92	30.93
+10629	64	1	9	274.05	221.98	52.07	56.71	0.00
+10872	64	1	15	512.98	430.90	82.08	22.92	24.43
+10550	17	1	8	225.63	166.15	59.48	78.79	20.51
+10911	17	1	12	298.32	263.12	35.20	35.87	0.00
+10629	29	1	20	2389.80	1935.74	454.06	56.71	0.00
+10948	51	1	40	4030.40	3554.81	475.59	30.03	0.00
+11009	36	1	18	188.55	133.04	55.51	69.21	37.71
+10303	40	1	40	775.28	608.95	166.33	63.01	70.48
+11058	21	2	3	30.90	27.25	3.65	57.52	0.00
+11058	61	2	4	107.88	95.15	12.73	57.52	0.00
+11058	60	2	21	115.08	101.50	13.58	57.52	0.00
+10956	21	2	12	120.12	105.95	14.17	55.03	0.00
+10501	54	2	20	755.80	687.42	68.38	26.97	0.00
+10956	47	2	14	322.56	284.50	38.06	55.03	0.00
+10956	51	2	8	785.44	692.76	92.68	55.03	0.00
+10509	28	2	3	149.76	134.13	15.63	54.96	0.00
+10853	18	2	10	255.20	225.09	30.11	48.80	0.00
+10829	2	2	10	201.10	177.37	23.73	67.88	0.00
+10473	71	2	12	391.44	324.11	67.33	37.32	0.00
+10315	70	2	30	873.90	755.05	118.85	28.88	0.00
+10829	8	2	20	395.40	348.74	46.66	67.88	0.00
+10798	62	2	2	56.52	45.78	10.74	72.95	0.00
+10829	60	2	21	112.98	99.65	13.33	67.88	0.00
+10473	33	2	12	319.08	264.20	54.88	37.32	0.00
+10321	35	2	10	54.30	46.92	7.38	39.56	0.00
+10798	72	2	10	118.00	95.58	22.42	72.95	0.00
+10315	34	2	14	117.32	101.36	15.96	28.88	0.00
+10829	13	2	10	264.30	233.11	31.19	67.88	0.00
+10591	3	2	14	272.72	220.90	51.82	49.54	0.00
+10921	63	2	40	854.40	753.58	100.82	53.78	0.00
+10591	54	2	50	1851.00	1499.31	351.69	49.54	0.00
+10921	35	2	10	55.90	49.30	6.60	53.78	0.00
+10688	34	2	14	111.86	90.61	21.25	50.83	0.00
+10591	7	2	10	385.60	312.34	73.26	49.54	0.00
+10688	28	2	60	2856.48	2103.41	753.07	50.83	259.68
+10688	10	2	18	140.18	103.23	36.96	50.83	12.74
+10773	75	1	7	61.82	41.73	20.09	62.36	10.30
+10648	24	1	15	83.66	58.93	24.74	44.22	10.91
+10597	24	1	35	206.64	139.48	67.16	37.63	34.44
+11062	70	1	12	398.59	292.97	105.63	71.22	66.43
+10353	11	1	12	428.40	308.45	119.95	33.28	71.40
+10768	71	1	12	381.12	308.71	72.41	48.05	0.00
+10489	11	1	15	529.50	350.74	178.76	58.26	105.90
+10597	65	1	12	136.51	102.27	34.24	37.63	22.75
+10828	38	1	2	150.96	133.15	17.81	78.73	0.00
+10747	63	1	9	184.50	149.45	35.06	51.06	0.00
+11062	53	1	10	738.48	542.78	195.70	71.22	123.08
+11042	44	1	15	1131.15	997.67	133.48	35.50	0.00
+10353	38	1	50	4524.00	3257.28	1266.72	33.28	754.00
+10530	76	1	50	19557.50	15841.58	3715.93	41.07	0.00
+10755	69	1	25	62.19	40.30	21.89	24.00	12.44
+10747	69	1	30	63.90	51.76	12.14	51.06	0.00
+10768	60	1	15	68.85	55.77	13.08	48.05	0.00
+10392	69	1	50	104.50	86.53	17.97	75.33	0.00
+11042	61	1	4	114.16	100.69	13.47	35.50	0.00
+10484	21	1	14	134.12	111.05	23.07	34.67	0.00
+10600	54	1	4	141.44	114.57	26.87	36.98	0.00
+10489	16	1	18	159.84	132.35	27.49	58.26	0.00
+10882	49	1	20	458.85	351.92	106.93	52.68	59.85
+10686	26	1	15	443.25	359.03	84.22	44.19	0.00
+10828	20	1	5	409.35	361.05	48.30	78.73	0.00
+10530	61	1	20	554.20	448.90	105.30	41.07	0.00
+10882	54	1	32	1303.46	999.69	303.76	52.68	170.02
+10747	31	1	8	65.92	53.40	12.52	51.06	0.00
+10530	43	1	25	272.75	225.84	46.91	41.07	0.00
+10768	31	1	50	423.00	348.12	74.88	48.05	0.00
+11053	32	1	20	411.20	392.09	19.11	63.94	0.00
+10773	31	1	70	761.88	514.27	247.61	62.36	126.98
+10768	22	1	4	13.68	11.08	2.60	48.05	0.00
+10648	22	1	15	52.65	42.65	10.00	44.22	0.00
+10844	22	1	35	125.65	110.82	14.83	69.16	0.00
+10755	57	1	14	359.10	232.70	126.40	24.00	71.82
+10882	42	1	25	315.75	278.49	37.26	52.68	0.00
+10597	57	1	20	363.60	294.52	69.08	37.63	0.00
+11053	64	1	25	1084.20	796.89	287.31	63.94	180.70
+10755	56	1	30	1558.50	1110.58	447.92	24.00	311.70
+10484	51	1	3	272.88	225.94	46.94	34.67	0.00
+10686	17	1	30	813.60	549.18	264.42	44.19	135.60
+10755	47	1	30	1044.75	677.00	367.75	24.00	208.95
+10773	17	1	33	856.02	693.38	162.64	62.36	0.00
+10530	17	1	40	968.00	801.50	166.50	41.07	0.00
+10427	14	1	35	851.55	706.90	144.65	50.46	0.00
+10600	73	1	30	35.10	28.43	6.67	36.98	0.00
+10484	40	1	10	184.00	152.35	31.65	34.67	0.00
+10525	36	1	30	219.30	195.85	23.45	72.37	0.00
+10525	40	1	15	304.59	229.27	75.32	72.37	27.69
+10747	41	1	35	316.75	256.57	60.18	51.06	0.00
+11053	18	1	35	1068.90	842.83	226.07	63.94	178.15
+10281	24	1	6	25.08	21.67	3.41	21.86	0.00
+10306	53	1	10	611.10	527.99	83.11	67.37	0.00
+10281	19	1	1	9.90	8.55	1.35	21.86	0.00
+11013	68	1	2	25.02	22.07	2.95	32.37	0.00
+10917	60	1	10	46.90	41.37	5.53	21.46	0.00
+10306	54	1	5	189.40	163.64	25.76	67.37	0.00
+10281	35	1	4	25.48	22.44	3.04	21.86	0.00
+10282	57	1	2	42.04	36.32	5.72	22.03	0.00
+11013	42	1	4	59.16	54.13	5.03	32.37	0.00
+11013	23	1	10	91.40	80.61	10.79	32.37	0.00
+11013	45	1	20	179.40	158.23	21.17	32.37	0.00
+10917	30	1	1	26.20	23.11	3.09	21.46	0.00
+10282	30	1	6	158.28	136.75	21.53	22.03	0.00
+10306	30	1	10	280.20	242.09	38.11	67.37	0.00
+11075	2	1	10	196.65	150.82	45.83	39.35	25.65
+10255	2	1	20	342.40	283.51	58.89	43.89	0.00
+10666	65	1	10	110.40	89.42	20.98	71.03	0.00
+11075	76	1	2	871.82	668.64	203.17	39.35	113.72
+10255	59	1	30	234.90	198.24	36.66	43.89	0.00
+10255	16	1	35	320.95	265.75	55.20	43.89	0.00
+10537	72	1	21	233.52	189.15	44.37	36.46	0.00
+10537	31	1	30	240.00	194.40	45.60	36.46	0.00
+10931	57	1	30	577.50	543.79	33.71	54.14	0.00
+10537	51	1	6	552.84	447.80	105.04	36.46	0.00
+10666	29	1	36	4708.80	3814.13	894.67	71.03	0.00
+10537	73	1	9	9.36	7.58	1.78	36.46	0.00
+10255	36	1	25	194.25	160.84	33.41	43.89	0.00
+11075	46	1	30	454.71	348.74	105.97	39.35	59.31
+10537	58	1	20	1043.40	845.15	198.25	36.46	0.00
+10931	13	1	42	1305.55	1001.30	304.25	54.14	170.29
+11083	24	1	50	236.25	198.45	37.80	44.50	11.25
+11083	33	1	3	76.50	67.47	9.03	44.50	0.00
+11083	62	1	5	124.80	105.84	18.96	44.50	4.80
+11083	21	1	15	149.25	131.64	17.61	44.50	0.00
+11083	22	1	15	52.50	46.31	6.20	44.50	0.00
+11083	42	1	10	156.50	138.03	18.47	44.50	0.00
+11083	47	1	5	127.50	112.46	15.05	44.50	0.00
+11083	9	1	5	194.50	171.55	22.95	44.50	0.00
+11083	51	1	3	308.69	264.34	44.36	44.50	8.99
+11083	37	1	7	31.50	27.78	3.72	44.50	0.00
+10699	47	2	12	286.56	232.11	54.45	69.30	0.00
+10352	24	1	10	47.30	40.87	6.43	57.21	0.00
+10491	77	1	7	114.31	82.30	32.01	49.27	14.91
+10328	65	1	40	414.40	358.04	56.36	20.61	0.00
+10491	44	1	15	1420.37	1022.66	397.70	49.27	185.27
+10551	44	1	40	2739.60	2219.08	520.52	46.26	0.00
+10963	60	1	2	10.99	8.43	2.56	73.12	1.43
+10328	59	1	9	75.51	65.24	10.27	20.61	0.00
+10328	68	1	10	121.30	104.80	16.50	20.61	0.00
+10551	16	1	40	391.46	275.72	115.74	46.26	51.06
+10352	54	1	20	871.70	654.91	216.79	57.21	113.70
+10551	35	1	20	130.18	91.69	38.49	46.26	16.98
+10910	19	2	12	100.92	89.01	11.91	30.08	0.00
+10910	61	2	5	139.15	126.26	12.89	30.08	0.00
+10910	49	2	10	202.70	178.78	23.92	30.08	0.00
+10667	71	1	14	522.65	352.79	169.86	37.26	87.11
+10771	71	1	16	486.88	394.37	92.51	69.82	0.00
+10402	63	1	65	1231.10	1019.35	211.75	46.63	0.00
+10667	69	1	45	116.64	78.73	37.91	37.26	19.44
+10403	16	1	21	245.12	176.49	68.63	26.43	31.97
+10571	42	1	28	435.99	307.09	128.90	70.13	56.87
+10402	23	1	60	544.20	450.60	93.60	46.63	0.00
+10403	48	1	70	2562.32	1844.87	717.45	26.43	334.22
+10571	14	1	11	278.17	195.93	82.24	70.13	36.28
+10854	10	1	100	724.50	555.66	168.84	70.27	94.50
+10854	13	1	65	2046.66	1569.70	476.96	70.27	266.96
+10958	5	2	20	123.40	108.84	14.56	53.25	0.00
+10986	11	2	30	855.60	754.64	100.96	61.59	0.00
+10986	77	2	15	197.10	173.84	23.26	61.59	0.00
+10986	76	2	10	3689.30	3253.96	435.34	61.59	0.00
+10531	59	2	2	15.80	12.80	3.00	21.39	0.00
+10409	21	2	12	131.52	108.90	22.62	56.30	0.00
+10986	20	2	15	1211.70	1068.72	142.98	61.59	0.00
+10958	72	2	5	58.25	51.38	6.87	53.25	0.00
+10958	7	2	6	229.02	202.00	27.02	53.25	0.00
+10409	14	2	12	294.96	244.23	50.73	56.30	0.00
+10898	13	2	5	116.45	102.71	13.74	29.47	0.00
+10708	5	2	4	21.64	17.53	4.11	28.19	0.00
+10944	11	2	5	161.88	114.22	47.66	71.52	32.38
+10453	70	2	25	836.83	629.90	206.92	75.97	76.08
+10399	71	2	30	829.80	687.07	142.73	43.68	0.00
+10367	77	2	7	99.61	86.06	13.55	56.88	0.00
+10879	65	2	10	109.00	96.14	12.86	69.50	0.00
+10664	65	2	15	171.64	120.89	50.75	56.30	22.39
+10367	65	2	15	141.15	121.95	19.20	56.88	0.00
+10399	77	2	14	168.14	139.22	28.92	43.68	0.00
+11029	63	2	12	217.68	191.99	25.69	21.35	0.00
+10636	4	2	25	515.75	417.76	97.99	59.71	0.00
+10561	44	2	10	688.90	558.01	130.89	54.79	0.00
+10437	53	2	15	872.55	722.47	150.08	54.75	0.00
+10944	44	2	18	1636.43	1154.66	481.76	71.52	327.29
+10879	76	2	10	4305.30	3797.27	508.03	69.50	0.00
+10399	76	2	35	13366.85	11067.75	2299.10	43.68	0.00
+10595	69	2	65	146.25	94.77	51.48	44.79	29.25
+10967	19	2	12	111.72	98.54	13.18	38.06	0.00
+10438	19	2	15	171.36	118.24	53.12	65.47	28.56
+10448	26	2	6	195.18	161.61	33.57	67.50	0.00
+10615	55	2	5	209.25	169.49	39.76	71.09	0.00
+10367	54	2	18	672.66	581.18	91.48	56.88	0.00
+10967	49	2	40	746.80	658.68	88.12	38.06	0.00
+10399	68	2	60	794.40	693.51	100.89	43.68	0.00
+10595	61	2	120	3897.00	2525.26	1371.74	44.79	779.40
+10548	34	2	10	109.13	70.71	38.41	20.88	21.83
+10438	34	2	20	179.52	123.87	55.65	65.47	29.92
+10595	35	2	30	219.75	142.40	77.35	44.79	43.95
+10367	34	2	36	272.16	256.69	15.47	56.88	0.00
+10295	56	2	4	139.36	120.41	18.95	71.49	0.00
+10438	57	2	15	365.40	252.13	113.27	65.47	60.90
+10664	56	2	12	573.53	403.96	169.56	56.30	74.81
+10944	56	2	18	727.20	641.39	85.81	71.52	0.00
+11029	56	2	20	763.20	673.14	90.06	21.35	0.00
+10608	56	2	28	1155.28	935.78	219.50	67.94	0.00
+10809	52	2	20	1454.80	1178.39	276.41	24.92	0.00
+10453	48	2	15	592.35	445.88	146.47	75.97	53.85
+10965	51	2	16	1553.12	1369.85	183.27	56.62	0.00
+10249	51	2	40	4048.00	3642.67	405.33	29.20	0.00
+10561	51	2	50	5042.50	4084.43	958.08	54.79	0.00
+10249	14	2	9	205.20	169.91	35.29	29.20	0.00
+10708	36	2	5	41.90	33.94	7.96	28.19	0.00
+10548	41	2	14	146.72	118.84	27.88	20.88	0.00
+10664	10	2	24	189.06	133.16	55.90	56.30	24.66
+10879	40	2	12	210.36	185.54	24.82	69.50	0.00
+10636	58	2	6	285.78	231.48	54.30	59.71	0.00
+10448	40	2	20	373.00	308.84	64.16	67.50	0.00
+10744	40	2	50	1187.40	801.50	385.91	54.20	197.90
+10631	75	2	8	61.86	45.55	16.31	32.07	5.62
+10557	75	2	20	157.60	127.66	29.94	76.70	0.00
+11070	2	2	20	463.91	355.80	108.11	44.07	60.51
+10862	11	2	25	683.50	602.85	80.65	76.44	0.00
+11070	1	2	40	854.22	655.15	199.07	44.07	111.42
+10522	1	2	40	1038.24	716.39	321.85	38.79	173.04
+11017	70	2	30	952.80	848.40	104.40	49.81	0.00
+10934	6	2	20	74.00	65.27	8.73	57.17	0.00
+10575	63	2	6	118.26	95.79	22.47	73.98	0.00
+10592	15	2	25	155.40	119.88	35.52	67.96	7.40
+10497	77	2	25	303.00	250.88	52.12	56.31	0.00
+10284	67	2	5	400.44	276.78	123.66	65.41	80.09
+10464	4	2	16	429.89	296.62	133.27	28.66	71.65
+10522	8	2	24	502.32	415.92	86.40	38.79	0.00
+11017	3	2	25	538.25	486.13	52.12	49.81	0.00
+10284	44	2	21	1435.77	1240.51	195.26	65.41	0.00
+10593	76	2	4	2010.96	1482.54	528.42	44.62	335.16
+10575	76	2	10	4060.80	3533.37	527.43	73.98	0.00
+10343	76	2	15	5862.30	5065.03	797.27	60.85	0.00
+10569	76	2	30	11229.90	9096.22	2133.68	30.02	0.00
+10593	69	2	20	47.04	31.75	15.29	44.62	7.84
+10419	69	2	20	39.27	32.65	6.62	67.45	1.87
+10343	68	2	4	48.51	39.92	8.59	60.85	2.31
+10284	60	2	20	118.25	81.73	36.52	65.41	23.65
+10464	60	2	20	103.60	85.78	17.82	28.66	0.00
+10575	59	2	12	112.08	90.78	21.30	73.98	0.00
+10781	54	2	3	136.19	91.93	44.26	25.14	22.70
+10592	26	2	5	151.52	116.88	34.63	67.96	7.22
+10536	60	2	35	213.06	138.06	75.00	58.11	42.61
+10772	59	2	25	208.50	168.89	39.62	22.82	0.00
+10419	60	2	60	289.17	228.03	61.14	67.45	13.77
+11070	16	2	30	302.22	236.51	65.71	44.07	39.42
+10534	54	2	10	443.40	299.30	144.11	61.57	73.90
+10731	21	2	40	412.02	317.84	94.18	43.34	19.62
+10430	21	2	50	513.00	424.76	88.24	68.53	0.00
+10430	59	2	70	719.04	496.14	222.90	68.53	119.84
+10284	27	2	15	806.81	557.67	249.14	65.41	161.36
+10536	33	2	30	692.40	560.84	131.56	58.11	0.00
+10362	25	2	50	752.00	649.73	102.27	40.91	0.00
+10492	25	2	60	868.14	684.59	183.55	31.75	41.34
+10362	54	2	24	889.68	768.68	121.00	40.91	0.00
+11017	59	2	110	933.90	823.70	110.20	49.81	0.00
+10593	20	2	21	2096.39	1415.06	681.33	44.62	349.40
+10992	72	2	2	25.60	22.58	3.02	40.64	0.00
+10464	43	2	3	33.54	27.77	5.77	28.66	0.00
+10536	12	2	15	181.88	117.86	64.02	58.11	36.38
+10536	31	2	20	178.20	144.34	33.86	58.11	0.00
+11070	31	2	20	169.00	149.06	19.94	44.07	0.00
+10497	72	2	25	278.00	230.18	47.82	56.31	0.00
+10569	31	2	35	358.26	265.73	92.53	30.02	59.71
+10575	72	2	30	335.10	271.43	63.67	73.98	0.00
+10492	42	2	20	290.22	254.23	35.99	31.75	13.82
+10497	56	2	14	579.46	479.79	99.67	56.31	0.00
+10862	52	2	8	683.52	628.37	55.15	76.44	0.00
+10781	56	2	20	977.04	659.50	317.54	25.14	162.84
+10557	64	2	30	1084.50	878.45	206.06	76.70	0.00
+10430	56	2	30	1087.50	900.45	187.05	68.53	0.00
+10908	52	2	14	1150.57	966.48	184.09	73.21	54.79
+10464	56	2	30	1417.32	977.95	439.37	28.66	236.22
+10343	64	2	50	1697.50	1466.64	230.86	60.85	0.00
+10279	17	2	15	506.63	372.12	134.51	46.34	101.33
+10430	17	2	45	1217.16	839.84	377.32	68.53	202.86
+10772	29	2	18	2206.44	1787.22	419.22	22.82	0.00
+10362	51	2	20	2195.80	1897.17	298.63	40.91	0.00
+10731	51	2	30	2959.74	2283.23	676.51	43.34	140.94
+10908	7	2	20	847.98	712.30	135.68	73.21	40.38
+10781	74	2	35	1043.70	845.40	198.30	25.14	0.00
+10534	40	2	10	221.76	149.69	72.07	61.57	36.96
+10534	30	2	10	263.10	213.11	49.99	61.57	0.00
+10891	30	2	15	428.24	359.72	68.52	77.77	20.39
+10522	40	2	25	547.50	377.78	169.73	38.79	91.25
+10522	30	2	20	621.12	428.57	192.55	38.79	103.52
+10893	24	2	10	47.00	41.45	5.55	68.97	0.00
+10799	24	2	20	105.11	74.03	31.08	38.38	13.71
+10542	11	2	15	444.31	342.75	101.56	30.09	21.16
+10506	70	2	14	473.55	356.45	117.10	66.45	43.05
+10325	6	2	6	22.26	19.23	3.03	43.29	0.00
+10323	15	2	5	30.60	26.44	4.16	73.01	0.00
+10323	39	2	4	244.84	211.54	33.30	73.01	0.00
+10893	8	2	30	603.30	532.11	71.19	68.97	0.00
+10849	3	2	49	967.75	853.56	114.19	39.15	0.00
+10817	38	2	30	2451.90	1986.04	465.86	52.68	0.00
+10630	76	2	35	14078.05	11403.22	2674.83	61.52	0.00
+10323	25	2	4	57.36	49.56	7.80	73.01	0.00
+10718	16	2	20	181.40	146.93	34.47	31.17	0.00
+11028	59	2	24	207.12	182.68	24.44	47.74	0.00
+10799	59	2	25	227.25	184.07	43.18	38.38	0.00
+10506	25	2	18	292.45	220.13	72.31	66.45	26.59
+10457	59	2	36	282.60	248.16	34.44	32.32	0.00
+10456	21	2	40	422.74	336.00	86.74	30.41	55.14
+10456	49	2	21	484.93	349.15	135.78	30.41	63.25
+10630	55	2	12	444.53	354.66	89.86	61.52	21.17
+10718	62	2	20	603.20	488.59	114.61	31.17	0.00
+10849	26	2	18	693.45	531.85	161.60	39.15	90.45
+10817	62	2	25	777.69	547.76	229.93	52.68	101.44
+10542	54	2	24	822.02	634.13	187.89	30.09	39.14
+10817	26	2	40	1378.16	970.70	407.46	52.68	179.76
+11028	55	2	35	1286.95	1135.09	151.86	47.74	0.00
+10325	31	2	4	31.20	26.96	4.24	43.29	0.00
+10468	43	2	15	173.85	143.95	29.90	56.09	0.00
+10718	12	2	36	363.96	294.81	69.15	31.17	0.00
+10325	72	2	40	438.40	378.78	59.62	43.29	0.00
+10893	29	2	24	3030.72	2673.10	357.63	68.97	0.00
+10325	14	2	9	190.26	164.38	25.88	43.29	0.00
+10893	36	2	20	147.80	130.36	17.44	68.97	0.00
+10468	30	2	8	188.40	156.00	32.40	56.09	0.00
+10325	13	2	12	277.08	239.40	37.68	43.29	0.00
+10718	36	2	40	314.00	254.34	59.66	31.17	0.00
+10799	13	2	20	532.91	375.35	157.56	38.38	69.51
+10893	30	2	35	959.00	845.84	113.16	68.97	0.00
+10817	40	2	60	1247.52	878.69	368.83	52.68	162.72
+10407	71	2	15	484.95	401.54	83.41	55.48	0.00
+10260	70	2	21	770.96	532.89	238.07	56.99	154.19
+10407	11	2	30	765.60	633.92	131.68	55.48	0.00
+10766	2	2	40	788.00	677.60	110.40	40.63	0.00
+10554	77	2	10	143.01	110.32	32.69	29.16	6.81
+10999	77	2	21	265.48	223.00	42.48	53.80	12.64
+10580	65	2	30	292.32	241.30	51.02	75.20	13.92
+10833	53	2	9	600.63	481.60	119.03	76.36	54.60
+10508	39	2	10	640.20	530.09	110.11	60.12	0.00
+10407	69	2	15	31.65	26.21	5.44	55.48	0.00
+10684	60	2	30	164.70	133.41	31.29	38.97	0.00
+10554	16	2	30	309.02	238.38	70.63	29.16	14.72
+10260	62	2	15	540.38	373.51	166.87	56.99	108.08
+10766	68	2	40	464.40	376.16	88.24	40.63	0.00
+10554	62	2	20	562.80	434.16	128.64	29.16	26.80
+10833	31	2	9	87.42	71.43	15.99	76.36	7.95
+10554	23	2	20	197.82	152.60	45.22	29.16	9.42
+10260	57	2	50	929.00	802.66	126.34	56.99	0.00
+10684	47	2	40	1051.60	851.80	199.80	38.97	0.00
+10999	51	2	15	1550.90	1302.76	248.14	53.80	73.85
+10580	14	2	15	363.35	280.30	83.05	75.20	17.30
+10833	7	2	20	892.76	715.83	176.93	76.36	81.16
+10766	7	2	35	1318.80	1068.23	250.57	40.63	0.00
+10580	41	2	9	92.04	72.90	19.14	75.20	4.38
+10260	41	2	16	200.40	138.52	61.88	56.99	40.08
+11020	10	2	24	197.06	151.14	45.92	63.08	25.70
+10999	41	2	20	199.50	167.58	31.92	53.80	9.50
+10508	13	2	10	240.90	199.47	41.43	60.12	0.00
+10684	40	2	20	364.80	295.49	69.31	38.97	0.00
+11005	1	2	2	38.00	33.52	4.48	24.92	0.00
+11051	24	2	10	49.68	36.51	13.17	76.13	8.28
+10290	5	2	20	131.40	113.53	17.87	58.77	0.00
+10526	1	2	8	179.68	129.37	50.31	72.33	23.44
+10813	2	2	12	251.28	169.61	81.67	53.36	41.88
+10510	75	2	36	312.44	235.19	77.26	50.87	28.40
+10852	2	2	15	293.55	258.91	34.64	68.00	0.00
+10905	1	2	20	411.60	345.74	65.86	60.73	19.60
+10621	71	2	15	487.05	394.51	92.54	60.94	0.00
+10621	70	2	20	546.80	442.91	103.89	60.94	0.00
+11011	71	2	20	634.40	559.54	74.86	44.28	0.00
+10835	77	2	2	29.52	21.70	7.82	45.71	4.92
+10952	6	2	16	65.02	60.18	4.83	78.07	3.10
+10702	3	2	6	120.96	97.98	22.98	59.39	0.00
+10290	77	2	10	134.90	116.55	18.35	58.77	0.00
+10251	65	2	20	185.20	156.44	28.76	43.41	0.00
+10812	77	2	20	275.20	222.91	52.29	28.20	0.00
+10692	63	2	20	385.00	322.99	62.01	22.22	0.00
+10764	3	2	20	440.00	324.00	116.00	73.70	40.00
+10289	3	2	30	616.20	532.40	83.80	25.25	0.00
+10643	39	2	21	1478.40	958.00	520.40	67.91	295.68
+11064	53	2	25	1683.28	1349.68	333.59	51.20	153.03
+10702	76	2	15	6430.35	5208.58	1221.77	59.39	0.00
+10764	39	2	130	7797.79	5742.01	2055.78	73.70	708.89
+10711	53	2	120	7548.00	6113.88	1434.12	48.73	0.00
+10732	76	2	20	8250.00	6682.50	1567.50	48.00	0.00
+10621	19	2	5	49.45	40.05	9.40	60.94	0.00
+10757	59	2	7	54.74	44.34	10.40	60.34	0.00
+11005	59	2	10	88.50	78.06	10.44	24.92	0.00
+10711	19	2	12	105.24	92.95	12.29	48.73	0.00
+10835	59	2	15	120.60	114.67	5.93	45.71	0.00
+10994	59	2	18	155.17	130.34	24.83	28.57	7.39
+10909	16	2	15	148.20	130.71	17.49	77.43	0.00
+11064	55	2	4	174.94	140.27	34.67	51.20	15.90
+10463	19	2	21	203.07	168.14	34.93	40.58	0.00
+10750	59	2	25	260.19	183.26	76.93	77.41	33.94
+10290	49	2	15	294.90	254.79	40.11	58.77	0.00
+10277	62	2	12	360.96	311.87	49.09	77.65	0.00
+10627	62	2	15	460.80	373.25	87.55	64.75	0.00
+11064	68	2	55	627.55	553.50	74.05	51.20	0.00
+10990	21	2	65	675.35	595.66	79.69	30.90	0.00
+10757	62	2	30	838.80	679.43	159.37	60.34	0.00
+10349	54	2	24	820.32	708.76	111.56	79.64	0.00
+10852	62	2	50	1572.00	1386.50	185.50	68.00	0.00
+10990	61	2	66	2132.03	1635.18	496.86	30.90	278.09
+10990	55	2	65	2942.91	2257.08	685.83	30.90	383.86
+10812	31	2	16	155.76	122.27	33.49	28.20	14.16
+10757	34	2	30	232.50	188.33	44.18	60.34	0.00
+10990	34	2	60	516.81	396.37	120.44	30.90	67.41
+10812	72	2	40	551.32	405.97	145.35	28.20	50.12
+10251	22	2	6	21.36	16.84	4.52	43.41	1.02
+10621	23	2	10	96.40	78.08	18.32	60.94	0.00
+10289	64	2	9	320.40	276.83	43.57	25.25	0.00
+10251	57	2	15	332.64	288.14	44.50	43.41	15.84
+10748	23	2	44	419.76	340.01	79.75	28.47	0.00
+10463	42	2	50	743.00	615.20	127.80	40.58	0.00
+10757	64	2	24	848.40	732.57	115.83	60.34	0.00
+10748	56	2	28	1034.88	838.25	196.63	28.47	0.00
+10526	56	2	30	1438.31	1035.58	402.73	72.33	187.61
+10852	17	2	6	139.44	122.99	16.45	68.00	0.00
+10750	45	2	40	405.72	285.77	119.95	77.41	52.92
+10585	47	2	15	375.60	304.24	71.36	79.86	0.00
+10338	17	2	20	524.80	453.43	71.37	52.33	0.00
+10290	29	2	15	1890.45	1633.35	257.10	58.77	0.00
+11064	17	2	77	2277.58	1826.21	451.38	51.20	207.05
+10510	29	2	36	4764.24	3944.79	819.45	50.87	0.00
+10952	28	2	2	89.10	78.59	10.51	78.07	0.00
+10750	14	2	5	125.18	88.17	37.01	77.41	16.33
+10909	7	2	12	485.64	428.33	57.31	77.43	0.00
+10643	28	2	15	873.00	565.70	307.30	67.91	174.60
+10277	28	2	20	889.60	768.61	120.99	77.65	0.00
+10643	46	2	2	27.88	18.06	9.81	67.91	5.58
+10627	73	2	35	47.50	33.92	13.58	64.75	6.20
+10909	41	2	5	50.45	44.50	5.95	77.43	0.00
+11064	41	2	12	122.76	108.27	14.49	51.20	0.00
+10526	13	2	10	262.40	217.27	45.13	72.33	0.00
+10743	46	2	28	383.08	295.52	87.56	23.05	18.24
+10711	41	2	42	393.96	319.11	74.85	48.73	0.00
+10338	30	2	15	381.00	329.18	51.82	52.33	0.00
+10813	46	2	35	419.65	339.92	79.73	53.36	0.00
+10748	40	2	40	720.40	609.95	110.45	28.47	0.00
+11011	58	2	40	1931.16	1622.17	308.99	44.28	91.96
+10974	63	3	10	207.40	182.93	24.47	55.91	0.00
+10329	38	3	20	1624.56	1336.78	287.78	75.98	77.36
+10329	19	3	10	89.25	80.38	8.87	75.98	4.25
+10385	60	3	20	119.76	82.63	37.13	53.13	19.96
+10385	68	3	8	131.04	90.42	40.62	53.13	21.84
+10821	35	3	20	117.00	94.77	22.23	78.52	0.00
+10329	56	3	12	505.64	416.07	89.57	75.98	24.08
+10369	56	3	18	886.95	613.06	273.89	57.37	177.39
+10821	51	3	6	630.90	511.03	119.87	78.52	0.00
+10369	29	3	20	2355.60	2035.24	320.36	57.37	0.00
+10385	7	3	10	433.56	299.16	134.40	53.13	72.26
+10329	30	3	8	206.72	170.10	36.62	75.98	9.84
+10819	75	2	20	145.60	117.94	27.66	42.97	0.00
+11054	67	2	20	1090.60	961.91	128.69	66.77	0.00
+10521	68	2	6	76.68	63.49	13.19	49.83	0.00
+11054	33	2	10	238.40	210.27	28.13	66.77	0.00
+10782	31	2	1	8.19	6.63	1.56	42.38	0.00
+10521	35	2	3	18.72	15.50	3.22	49.83	0.00
+10819	43	2	7	79.59	64.47	15.12	42.97	0.00
+10937	34	2	20	154.20	136.00	18.20	49.25	0.00
+10937	28	2	8	397.28	350.40	46.88	49.25	0.00
+10881	73	2	10	11.90	10.50	1.40	43.45	0.00
+10521	41	2	10	96.30	79.74	16.56	49.83	0.00
+10366	65	1	5	45.60	39.40	6.20	23.84	0.00
+10366	77	1	5	63.55	54.91	8.64	23.84	0.00
+10928	76	1	5	1818.20	1613.76	204.44	76.32	0.00
+10887	25	1	5	65.60	57.86	7.74	77.14	0.00
+10426	56	1	5	181.45	150.24	31.21	26.05	0.00
+10426	64	1	7	233.24	193.12	40.12	26.05	0.00
+10928	47	1	5	127.50	112.46	15.05	76.32	0.00
+10568	10	1	5	32.45	26.28	6.17	78.77	0.00
+10989	11	2	15	385.65	340.14	45.51	62.00	0.00
+10421	77	2	10	138.35	104.83	33.52	31.83	18.05
+10989	6	2	40	159.60	140.77	18.83	62.00	0.00
+10379	65	2	20	220.00	172.80	47.20	62.83	20.00
+10587	77	2	20	246.40	200.02	46.38	35.34	0.00
+10379	63	2	16	358.16	281.32	76.84	62.83	32.56
+10421	53	2	15	964.28	694.28	270.00	31.83	125.78
+10647	39	2	20	1264.00	1023.84	240.16	32.08	0.00
+10291	44	2	24	2182.75	1714.45	468.30	21.08	198.43
+10421	19	2	4	42.04	30.27	11.77	31.83	5.48
+10587	26	2	6	199.74	161.79	37.95	35.34	0.00
+10261	21	2	20	200.20	172.97	27.23	63.78	0.00
+10647	19	2	30	271.20	219.67	51.53	32.08	0.00
+10421	26	2	30	955.80	791.40	164.40	31.83	0.00
+10587	35	2	20	128.40	104.00	24.40	35.34	0.00
+10261	35	2	20	131.20	115.92	15.28	63.78	0.00
+10291	51	2	2	234.43	184.14	50.30	21.08	21.31
+10989	41	2	4	37.36	32.95	4.41	62.00	0.00
+10379	41	2	8	82.10	64.49	17.62	62.83	7.46
+10291	13	2	20	506.66	397.96	108.70	21.08	46.06
+10874	10	2	10	66.00	58.21	7.79	21.48	0.00
+10541	24	2	35	162.47	119.64	42.83	75.44	14.77
+10922	24	2	35	166.25	146.63	19.62	69.37	0.00
+10541	71	2	9	274.33	202.01	72.32	75.44	24.94
+10770	11	2	15	476.25	308.61	167.64	75.12	95.25
+10250	65	2	15	163.36	117.62	45.74	79.17	21.31
+10903	65	2	21	223.02	196.70	26.32	37.24	0.00
+10541	38	2	4	340.82	250.97	89.85	75.44	30.98
+10541	65	2	36	366.30	269.73	96.57	75.44	33.30
+10783	38	2	5	372.25	313.80	58.45	67.56	0.00
+10690	77	2	30	502.50	325.62	176.88	47.52	100.50
+10886	77	2	40	543.20	479.10	64.10	30.11	0.00
+10253	39	2	42	2433.90	2015.27	418.63	66.54	0.00
+10981	38	2	60	4796.40	4230.42	565.98	67.07	0.00
+11022	69	2	30	62.10	54.77	7.33	41.27	0.00
+10903	68	2	20	255.40	225.26	30.14	37.24	0.00
+11052	61	2	10	335.04	251.58	83.46	54.23	55.84
+11022	19	2	35	336.35	296.66	39.69	41.27	0.00
+10253	49	2	40	796.40	659.42	136.98	66.54	0.00
+10783	31	2	10	81.60	66.10	15.50	67.56	0.00
+10253	31	2	20	165.60	140.57	25.03	66.54	0.00
+10886	31	2	35	317.45	284.44	33.01	30.11	0.00
+11052	43	2	30	429.12	315.40	113.72	54.23	71.52
+10690	56	2	20	1026.25	665.01	361.24	47.52	205.25
+10925	52	2	12	1171.76	909.01	262.75	67.89	152.84
+10922	17	2	15	345.30	304.55	40.75	69.37	0.00
+10250	51	2	35	3931.22	2830.48	1100.74	79.17	512.77
+10250	41	2	10	95.90	79.41	16.49	79.17	0.00
+10645	36	2	15	118.95	96.35	22.60	46.54	0.00
+10925	36	2	25	228.85	175.52	53.33	67.89	29.85
+10886	10	2	70	471.80	416.13	55.67	30.11	0.00
+10645	18	2	20	525.20	425.41	99.79	46.54	0.00
+10903	13	2	40	1029.60	908.11	121.49	37.24	0.00
+10512	24	2	10	52.90	38.09	14.81	24.02	6.90
+10347	75	2	6	53.48	40.18	13.30	28.29	6.98
+10386	24	2	15	61.65	51.05	10.60	67.33	0.00
+10581	75	2	50	467.40	315.50	151.91	45.26	77.90
+10650	53	2	25	1635.38	1261.58	373.80	67.71	77.88
+10347	39	2	50	3376.40	2536.70	839.70	28.29	440.40
+10512	60	2	12	72.45	52.16	20.29	24.02	9.45
+10347	25	2	10	132.10	114.13	17.97	28.29	0.00
+10414	19	2	18	166.32	131.16	35.16	73.13	7.92
+10725	55	2	6	249.60	202.18	47.42	73.38	0.00
+10650	54	2	30	1060.50	859.01	201.50	67.71	0.00
+10414	33	2	50	1290.50	1107.48	183.02	73.13	0.00
+10386	34	2	10	84.80	70.21	14.59	67.33	0.00
+10725	52	2	4	290.84	235.58	55.26	73.38	0.00
+10512	47	2	6	183.89	132.40	51.49	24.02	23.99
+10347	40	2	4	68.00	58.75	9.25	28.29	0.00
+10512	46	2	9	129.89	93.52	36.37	24.02	16.94
+10725	41	2	12	123.36	99.92	23.44	73.38	0.00
+10650	30	2	30	825.30	668.49	156.81	67.71	0.00
+10529	69	1	10	20.60	17.06	3.54	40.32	0.00
+10760	25	1	12	192.00	129.20	62.81	49.79	38.40
+10529	68	1	20	274.60	227.37	47.23	40.32	0.00
+10529	55	1	14	517.58	428.56	89.02	40.32	0.00
+10760	27	1	40	1592.00	1375.61	216.39	49.79	0.00
+10649	72	1	15	182.85	148.11	34.74	60.92	0.00
+10760	43	1	30	464.25	300.83	163.42	49.79	92.85
+10896	56	1	16	578.72	510.43	68.29	56.57	0.00
+10896	45	1	15	140.85	124.23	16.62	56.57	0.00
+10649	28	1	20	948.60	768.37	180.23	60.92	0.00
+11057	70	2	3	86.10	75.94	10.16	68.79	0.00
+10752	1	2	8	144.16	116.77	27.39	50.65	0.00
+10752	69	2	3	6.57	5.32	1.25	50.65	0.00
+11010	24	1	10	44.70	39.43	5.27	37.02	0.00
+10288	68	1	3	38.81	30.48	8.33	77.13	3.53
+10288	54	1	10	369.82	290.48	79.34	77.13	33.62
+10942	49	1	28	551.88	486.76	65.12	65.71	0.00
+11010	7	1	20	878.80	775.10	103.70	37.02	0.00
+10428	46	1	20	241.40	199.88	41.52	65.62	0.00
+10883	24	2	8	34.80	30.69	4.11	58.13	0.00
+10263	24	2	28	114.52	100.78	13.74	30.64	0.00
+11021	2	2	11	244.75	172.70	72.05	51.74	48.95
+10788	75	2	40	351.54	271.19	80.35	69.96	16.74
+10691	1	2	30	639.00	517.59	121.41	34.85	0.00
+10991	70	2	20	716.16	526.38	189.78	63.32	119.36
+10285	1	2	45	1064.88	766.71	298.17	71.59	177.48
+10991	2	2	50	1084.80	797.33	287.47	63.32	180.80
+10418	2	2	60	1164.60	964.29	200.31	64.34	0.00
+10938	71	2	35	1411.81	996.17	415.64	30.44	282.36
+10694	70	2	50	1350.50	1093.91	256.60	31.50	0.00
+10871	6	2	50	197.40	165.82	31.58	54.62	9.40
+10451	65	2	28	328.33	247.14	81.19	51.42	29.85
+10451	77	2	55	756.86	569.71	187.15	51.42	68.81
+10765	65	2	80	842.16	620.14	222.02	40.93	76.56
+10658	77	2	70	937.86	723.49	214.37	31.17	44.66
+10540	3	2	60	1146.00	928.26	217.74	71.42	0.00
+10745	44	2	16	1146.08	928.32	217.76	57.20	0.00
+10962	53	2	20	1155.40	1019.06	136.34	24.88	0.00
+10527	4	2	50	1294.15	1038.55	255.60	50.43	117.65
+10345	8	2	70	1432.20	1237.42	194.78	68.67	0.00
+10691	44	2	24	1781.04	1442.64	338.40	34.85	0.00
+10479	53	2	28	1833.16	1517.86	315.30	30.01	0.00
+10285	53	2	36	2633.47	1896.10	737.37	71.59	438.91
+10540	38	2	30	2527.20	2047.03	480.17	71.42	0.00
+10479	38	2	30	2492.10	2063.46	428.64	30.01	0.00
+10361	39	2	54	3596.08	2824.55	771.52	55.52	326.92
+10721	44	2	50	3967.43	3060.59	906.84	62.62	188.93
+10865	38	2	60	5111.82	4293.93	817.89	23.51	243.42
+10865	39	2	80	5286.96	4441.05	845.91	23.51	251.76
+10273	76	2	33	14281.34	11751.51	2529.84	78.00	680.06
+10962	76	2	44	16628.48	16153.18	475.30	24.88	0.00
+10991	76	2	90	43755.12	32160.01	11595.11	63.32	7292.52
+10962	69	2	9	17.46	15.42	2.04	24.88	0.00
+10871	16	2	12	121.34	101.92	19.41	54.62	5.78
+10539	49	2	6	125.40	102.26	23.14	54.18	0.00
+10539	21	2	15	163.65	132.56	31.09	54.18	0.00
+10694	59	2	25	202.50	164.03	38.48	31.50	0.00
+10658	60	2	55	265.65	204.93	60.72	31.17	12.65
+10361	60	2	55	282.54	221.92	60.62	55.52	25.69
+10938	60	2	49	322.18	227.33	94.85	30.44	64.44
+10920	50	2	24	356.88	314.77	42.11	49.83	0.00
+10745	59	2	45	391.05	316.75	74.30	57.20	0.00
+10418	61	2	16	388.80	321.93	66.87	64.34	0.00
+10539	33	2	15	414.60	335.83	78.77	54.18	0.00
+10515	16	2	50	434.00	359.35	74.65	66.26	0.00
+10540	68	2	35	456.40	369.68	86.72	71.42	0.00
+10515	33	2	16	515.38	371.08	144.31	66.26	67.22
+10515	60	2	84	516.81	372.10	144.71	66.26	67.41
+10788	19	2	50	499.28	385.16	114.12	69.96	23.78
+10479	59	2	60	493.20	408.37	84.83	30.01	0.00
+10273	33	2	20	509.00	439.78	69.22	78.00	0.00
+10658	21	2	60	582.00	471.42	110.58	31.17	0.00
+10263	16	2	60	709.50	490.41	219.09	30.64	141.90
+10795	16	2	65	668.20	541.24	126.96	23.98	0.00
+10345	19	2	80	806.40	696.73	109.67	68.67	0.00
+11021	20	2	15	1114.20	982.72	131.48	51.74	0.00
+10286	62	2	40	1211.20	1046.48	164.72	42.17	0.00
+10691	62	2	48	1326.24	1074.25	251.99	34.85	0.00
+10540	26	2	40	1368.40	1108.40	260.00	71.42	0.00
+10878	20	2	20	1718.22	1443.30	274.92	55.53	81.82
+11021	26	2	63	1901.34	1676.98	224.36	51.74	0.00
+10451	55	2	120	5283.96	3977.38	1306.58	51.42	480.36
+10515	27	2	120	5004.00	4143.31	860.69	66.26	0.00
+10745	72	2	7	85.12	68.95	16.17	57.20	0.00
+10273	31	2	15	140.96	115.99	24.97	78.00	6.71
+10845	35	2	25	178.48	143.10	35.37	47.94	16.23
+10938	43	2	24	380.10	282.41	97.69	30.44	76.02
+10549	31	2	55	487.03	343.04	143.99	60.32	63.53
+10691	43	2	40	457.60	370.66	86.94	34.85	0.00
+11021	72	2	35	441.35	389.27	52.08	51.74	0.00
+10286	35	2	100	606.00	523.58	82.42	42.17	0.00
+10674	23	2	5	48.55	39.33	9.22	43.34	0.00
+10345	42	2	9	136.71	118.12	18.59	68.67	0.00
+10845	42	2	42	621.39	498.24	123.15	47.94	56.49
+10996	42	2	40	568.40	501.33	67.07	32.59	0.00
+10845	23	2	70	721.49	615.18	106.31	47.94	65.59
+10479	64	2	30	1044.90	865.18	179.72	30.01	0.00
+10451	64	2	35	1383.69	1041.54	342.15	51.42	125.79
+10588	42	2	100	1669.20	1126.71	542.49	25.10	278.20
+10845	64	2	48	1654.08	1458.90	195.18	47.94	0.00
+10871	17	2	16	404.21	339.53	64.67	54.62	19.25
+10515	9	2	16	773.72	557.08	216.64	66.26	100.92
+10795	17	2	35	1029.88	667.36	362.52	23.98	205.98
+10549	45	2	100	1084.45	763.83	320.62	60.32	141.45
+10418	47	2	55	1410.75	1168.10	242.65	64.34	0.00
+10549	51	2	48	5390.83	3797.02	1593.81	60.32	703.15
+10691	29	2	40	4824.80	3908.09	916.71	34.85	0.00
+11021	51	2	44	5569.85	3930.09	1639.76	51.74	1113.97
+10418	74	2	15	463.65	383.90	79.75	64.34	0.00
+10263	74	2	36	1254.15	866.87	387.28	30.64	250.83
+10962	7	2	45	1769.85	1561.01	208.84	24.88	0.00
+10694	7	2	90	3359.70	2721.36	638.34	31.50	0.00
+10313	36	2	12	101.64	87.82	13.82	66.69	0.00
+10273	10	2	24	173.38	142.66	30.71	78.00	8.26
+10539	13	2	8	199.12	161.29	37.83	54.18	0.00
+10527	36	2	30	277.20	208.66	68.54	50.43	25.20
+10938	13	2	20	565.75	399.19	166.56	30.44	113.15
+10745	18	2	24	659.04	533.82	125.22	57.20	0.00
+10285	40	2	40	826.56	595.12	231.44	71.59	137.76
+10588	18	2	40	1262.40	852.12	410.28	25.10	210.40
+10273	40	2	60	1219.05	1003.10	215.95	78.00	58.05
+10658	40	2	70	1462.65	1128.33	334.32	31.17	69.65
+10263	30	2	60	1992.75	1377.39	615.36	30.64	398.55
+10962	13	2	77	1826.44	1610.92	215.52	24.88	0.00
+10845	58	2	60	3315.84	2658.70	657.14	47.94	301.44
+11025	1	2	10	215.05	180.17	34.88	61.15	19.55
+10320	71	2	30	942.60	814.41	128.19	44.05	0.00
+10333	71	2	40	1364.44	1071.71	292.73	56.23	124.04
+10583	69	2	10	22.20	15.63	6.56	62.91	2.90
+10333	21	2	10	115.50	99.10	16.40	56.23	10.50
+10583	60	2	24	141.31	99.53	41.78	62.91	18.43
+10266	12	2	12	128.02	105.34	22.68	32.72	6.10
+10270	43	2	25	326.50	282.10	44.40	21.29	0.00
+10583	29	2	10	1157.60	937.66	219.94	62.91	0.00
+10333	14	2	10	248.70	214.88	33.82	56.23	0.00
+10412	14	2	20	560.78	422.11	138.67	37.28	50.98
+10270	36	2	30	233.40	201.66	31.74	21.29	0.00
+11025	13	2	20	558.80	448.06	110.74	61.15	50.80
+10998	24	2	12	49.56	43.71	5.85	45.73	0.00
+10611	1	2	6	118.50	95.99	22.52	38.74	0.00
+10792	2	2	10	191.70	155.28	36.42	25.30	0.00
+10611	2	2	10	205.50	166.46	39.05	38.74	0.00
+10998	75	2	30	230.70	203.48	27.22	45.73	0.00
+10611	60	2	15	79.20	64.15	15.05	38.74	0.00
+10792	54	2	3	113.70	92.10	21.60	25.30	0.00
+10792	68	2	15	189.90	153.82	36.08	25.30	0.00
+10998	61	2	7	203.77	179.73	24.04	45.73	0.00
+11044	62	2	12	316.80	279.42	37.38	59.53	0.00
+10906	61	2	15	363.30	320.43	42.87	44.09	0.00
+10870	35	2	3	19.26	16.99	2.27	23.47	0.00
+10374	31	2	30	273.30	236.13	37.17	45.53	0.00
+10870	51	2	2	215.24	189.84	25.40	23.47	0.00
+10998	74	2	20	633.20	558.48	74.72	45.73	0.00
+10374	58	2	15	773.55	668.35	105.20	45.53	0.00
+10635	5	1	15	95.54	70.35	25.19	43.47	8.69
+10467	24	1	28	128.80	116.14	12.66	34.95	0.00
+10939	2	1	10	206.54	175.75	30.79	34.20	26.94
+10784	39	1	2	141.04	99.34	41.70	39.12	18.40
+10950	4	1	5	114.30	100.81	13.49	58.68	0.00
+10635	4	1	10	263.01	193.67	69.34	43.47	23.91
+10300	66	1	30	596.70	515.76	80.94	71.44	0.00
+10939	67	1	40	2723.66	2088.93	634.73	34.20	355.26
+10467	25	1	12	161.52	146.00	15.52	34.95	0.00
+10300	68	1	20	225.40	194.75	30.65	71.44	0.00
+10404	49	1	30	624.33	492.33	132.00	72.73	29.73
+10404	26	1	30	1068.80	842.82	225.97	72.73	50.90
+10784	72	1	30	387.44	272.89	114.55	39.12	50.54
+10818	32	1	20	410.40	365.83	44.57	58.64	0.00
+10635	22	1	40	129.20	104.65	24.55	43.47	0.00
+10404	42	1	40	561.54	442.81	118.73	72.73	26.74
+10754	40	1	3	51.63	41.82	9.81	38.01	0.00
+10818	41	1	20	206.00	166.86	39.14	58.64	0.00
+10784	36	1	30	238.20	192.94	45.26	39.12	0.00
+11060	77	1	10	131.10	115.63	15.47	73.95	0.00
+11060	60	1	4	19.84	17.50	2.34	73.95	0.00
+10710	19	1	5	42.25	34.22	8.03	21.49	0.00
+10422	26	1	2	56.66	46.91	9.75	65.54	0.00
+10753	45	1	4	35.88	29.06	6.82	52.47	0.00
+10710	47	1	5	131.55	106.56	24.99	21.49	0.00
+11026	51	1	10	929.80	820.08	109.72	73.39	0.00
+10753	74	1	5	163.80	132.68	31.12	52.47	0.00
+10807	40	1	1	20.11	17.41	2.70	47.88	0.00
+11026	18	1	8	214.88	189.52	25.36	73.39	0.00
+10275	24	2	12	51.91	46.05	5.86	29.81	2.47
+10387	24	2	15	72.75	65.56	7.19	37.76	0.00
+10900	70	2	3	115.35	81.39	33.96	32.36	23.07
+11077	75	2	14	114.66	101.13	13.53	64.93	0.00
+10443	11	2	6	192.31	132.70	59.62	76.16	32.05
+10787	2	2	15	301.30	251.15	50.14	23.04	14.35
+10951	75	2	50	379.58	318.84	60.73	30.61	18.08
+10387	71	2	15	434.85	360.06	74.79	37.76	0.00
+11077	2	2	24	545.18	400.71	144.47	64.93	90.86
+10393	2	2	25	599.06	410.22	188.84	70.25	119.81
+10889	11	2	40	1041.60	918.69	122.91	64.34	0.00
+11077	4	2	3	70.80	62.45	8.35	64.93	0.00
+11077	3	2	4	87.40	77.09	10.31	64.93	0.00
+11077	8	2	5	118.86	95.30	23.55	64.93	10.81
+11077	77	2	10	119.80	105.66	14.14	64.93	0.00
+10775	67	2	3	171.03	138.53	32.50	55.07	0.00
+11077	66	2	8	162.80	143.59	19.21	64.93	0.00
+10841	77	2	15	201.00	177.28	23.72	43.65	0.00
+11077	6	2	50	223.89	193.60	30.29	64.93	4.39
+10978	8	2	20	458.16	351.39	106.77	42.06	59.76
+10978	44	2	6	496.59	380.87	115.73	42.06	64.77
+10417	77	2	35	465.50	385.43	80.07	29.88	0.00
+11077	39	2	10	578.55	485.98	92.57	64.93	27.55
+10318	76	2	6	2214.96	1913.73	301.23	58.04	0.00
+11004	76	2	6	2377.44	2096.90	280.54	78.29	0.00
+10889	38	2	40	3511.60	3097.23	414.37	64.34	0.00
+10417	38	2	50	3960.50	3292.62	667.88	29.88	0.00
+10582	76	2	14	5523.28	4473.86	1049.42	32.96	0.00
+11077	60	2	8	45.20	37.61	7.59	64.93	2.56
+10368	21	2	5	57.92	45.49	12.43	67.63	5.27
+10275	59	2	6	56.20	46.24	9.95	29.81	2.68
+10341	59	2	9	85.59	64.31	21.29	30.83	11.16
+10393	25	2	7	126.18	83.58	42.60	70.25	25.24
+10387	59	2	12	106.44	88.13	18.31	37.76	0.00
+10803	59	2	15	130.10	100.36	29.74	36.49	6.20
+10802	62	2	5	175.31	114.08	61.23	74.76	35.06
+11074	16	2	14	142.88	120.02	22.86	66.20	6.80
+11004	26	2	6	178.08	157.07	21.01	78.29	0.00
+10803	25	2	15	223.18	172.17	51.01	36.49	10.63
+10803	19	2	24	233.86	180.40	53.45	36.49	11.14
+10341	33	2	8	211.60	182.82	28.78	30.83	0.00
+11077	55	2	5	210.55	193.35	17.20	64.93	0.00
+11077	16	2	25	266.51	228.22	38.30	64.93	7.76
+10642	21	2	30	381.24	257.34	123.90	42.65	63.54
+10892	59	2	40	350.28	294.24	56.04	40.44	16.68
+10951	33	2	15	373.59	313.82	59.77	30.61	17.79
+10978	21	2	40	460.92	353.51	107.41	42.06	60.12
+10417	68	2	36	565.20	374.39	190.81	29.88	113.04
+10841	59	2	50	431.50	380.58	50.92	43.65	0.00
+10642	61	2	20	643.92	434.65	209.27	42.65	107.32
+10314	62	2	25	864.33	678.89	185.44	49.41	78.58
+11077	20	2	15	1245.35	1056.15	189.20	64.93	47.90
+10802	55	2	60	2872.50	1861.38	1011.12	74.76	574.50
+10393	26	2	70	2749.25	1866.97	882.28	70.25	549.85
+11077	12	2	10	112.67	94.64	18.03	64.93	5.37
+11077	32	2	10	189.80	181.72	8.08	64.93	0.00
+10393	31	2	32	257.60	213.29	44.31	70.25	0.00
+10556	72	2	24	281.28	227.84	53.44	70.90	0.00
+11023	43	2	30	357.30	315.14	42.16	73.49	0.00
+10314	32	2	40	874.72	687.05	187.67	49.41	79.52
+10582	57	2	4	70.64	57.22	13.42	32.96	0.00
+11077	23	2	14	132.58	116.94	15.64	64.93	0.00
+10368	57	2	25	451.25	389.88	61.37	67.63	0.00
+11077	64	2	15	526.69	451.01	75.68	64.93	15.34
+11077	52	2	8	662.64	584.45	78.19	64.93	0.00
+10368	64	2	35	1245.09	977.96	267.13	67.63	113.19
+10841	56	2	30	1245.90	1098.88	147.02	43.65	0.00
+10787	29	2	20	2642.01	2038.12	603.89	23.04	125.81
+10802	51	2	30	4031.63	2612.49	1419.13	74.76	806.33
+11023	7	2	4	161.20	142.18	19.02	73.49	0.00
+10387	28	2	6	285.06	236.03	49.03	37.76	0.00
+10940	7	2	8	308.56	272.15	36.41	70.49	0.00
+10443	28	2	12	522.24	432.41	89.83	76.16	0.00
+11077	7	2	15	630.63	529.73	100.90	64.93	30.03
+10368	28	2	13	678.82	533.18	145.64	67.63	61.71
+10393	14	2	42	1146.08	759.16	386.91	70.25	229.22
+11077	14	2	50	1274.11	1091.03	183.08	64.93	37.11
+11077	73	2	5	6.11	5.84	0.27	64.93	0.06
+10417	46	2	2	31.55	20.90	10.65	29.88	6.31
+10775	10	2	6	38.82	31.66	7.16	55.07	0.00
+10951	41	2	6	60.10	50.49	9.62	30.61	2.86
+11077	41	2	8	69.76	61.53	8.23	64.93	0.00
+11077	46	2	8	94.90	82.06	12.84	64.93	1.86
+11077	10	2	15	98.55	86.92	11.63	64.93	0.00
+10841	10	2	16	101.28	89.33	11.95	43.65	0.00
+10978	40	2	10	182.90	161.32	21.58	42.06	0.00
+10318	41	2	20	191.20	165.20	26.00	58.04	0.00
+10669	36	2	30	241.80	195.86	45.94	33.74	0.00
+11077	13	2	10	264.30	233.11	31.19	64.93	0.00
+10940	13	2	20	465.60	410.66	54.94	70.49	0.00
+10802	30	2	25	812.19	574.14	238.05	74.76	162.44
+10314	58	2	30	1451.01	1139.70	311.31	49.41	131.91
+10363	75	2	12	96.72	83.57	13.15	36.54	0.00
+10538	70	2	7	212.52	172.14	40.38	28.79	0.00
+10824	70	2	9	278.91	263.49	15.42	26.47	0.00
+10258	5	2	65	478.14	344.26	133.88	68.14	79.69
+10797	11	2	20	584.20	473.20	111.00	79.24	0.00
+11008	71	2	21	617.40	544.55	72.85	39.69	0.00
+10264	2	2	35	719.25	621.43	97.82	54.09	0.00
+10258	2	2	50	1201.20	828.83	372.37	68.14	200.20
+10894	75	2	120	1064.70	894.35	170.35	42.05	50.70
+10735	77	2	2	27.61	20.33	7.28	42.52	2.51
+10827	39	2	21	1141.98	1007.23	134.75	59.59	0.00
+10825	53	2	20	1328.80	1172.00	156.80	60.79	0.00
+10363	76	2	12	5190.36	4735.04	455.32	36.54	0.00
+10916	16	2	6	60.66	53.50	7.16	72.45	0.00
+10706	59	2	8	68.24	55.27	12.97	43.08	0.00
+10894	69	2	50	113.40	95.26	18.14	42.05	5.40
+10706	16	2	20	179.20	145.15	34.05	43.08	0.00
+11036	59	2	30	247.80	218.56	29.24	46.78	0.00
+10825	26	2	12	342.60	302.17	40.43	60.79	0.00
+10603	49	2	25	507.41	391.43	115.98	28.49	24.16
+10735	61	2	20	570.46	420.07	150.39	42.52	51.86
+10538	72	2	1	11.58	9.38	2.20	28.79	0.00
+10258	32	2	6	139.32	100.31	39.01	68.14	23.22
+10916	32	2	6	123.54	108.96	14.58	72.45	0.00
+10776	31	2	16	133.56	110.56	23.00	45.01	6.36
+10363	31	2	20	186.00	174.01	11.99	36.54	0.00
+10706	43	2	24	281.76	228.23	53.53	43.08	0.00
+10547	32	2	24	492.38	346.81	145.57	72.72	64.22
+11008	34	2	90	771.12	647.74	123.38	39.69	36.72
+10603	22	2	48	159.84	129.47	30.37	28.49	0.00
+10776	42	2	12	186.73	144.05	42.68	45.01	8.89
+10916	57	2	20	381.60	336.57	45.03	72.45	0.00
+10793	52	2	8	675.92	547.50	128.42	66.11	0.00
+10776	45	2	27	258.27	199.24	59.03	45.01	12.30
+10776	51	2	120	11665.08	8998.78	2666.30	45.01	555.48
+11008	28	2	70	3123.02	2623.33	499.68	39.69	148.72
+11067	41	2	9	84.06	74.14	9.92	32.88	0.00
+10827	10	2	15	99.30	87.58	11.72	59.59	0.00
+10824	41	2	12	104.40	92.08	12.32	26.47	0.00
+10793	41	2	14	125.86	101.95	23.91	66.11	0.00
+11036	13	2	7	175.07	154.41	20.66	46.78	0.00
+10264	41	2	25	274.56	211.52	63.04	54.09	35.81
+10391	13	2	18	416.16	345.24	70.92	38.41	0.00
+10547	36	2	60	514.80	416.99	97.81	72.72	0.00
+10894	13	2	28	682.96	606.91	76.05	42.05	32.52
+\.
+
+
+--
+-- TOC entry 3498 (class 0 OID 17545)
+-- Dependencies: 225
+-- Data for Name: vendedores; Type: TABLE DATA; Schema: public; Owner: user
+--
+
+COPY public.vendedores (id, nome) FROM stdin;
+1	Gael Monfils
+2	Martina Hingis
+3	Yannick Sinner
+4	Patrick Mcenroe
+5	Stefanos Tsitsipas
+6	Alexander Zverev
+7	Helena Demetieva
+8	Simona Halep
+9	Cori Gauff
+\.
+
+
+--
+-- TOC entry 3518 (class 0 OID 0)
+-- Dependencies: 217
+-- Name: categorias_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user
+--
+
+SELECT pg_catalog.setval('public.categorias_id_seq', 1, false);
+
+
+--
+-- TOC entry 3519 (class 0 OID 0)
+-- Dependencies: 226
+-- Name: clientes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user
+--
+
+SELECT pg_catalog.setval('public.clientes_id_seq', 1, false);
+
+
+--
+-- TOC entry 3520 (class 0 OID 0)
+-- Dependencies: 219
+-- Name: fornecedores_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user
+--
+
+SELECT pg_catalog.setval('public.fornecedores_id_seq', 1, false);
+
+
+--
+-- TOC entry 3521 (class 0 OID 0)
+-- Dependencies: 228
+-- Name: pedidos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user
+--
+
+SELECT pg_catalog.setval('public.pedidos_id_seq', 1, false);
+
+
+--
+-- TOC entry 3522 (class 0 OID 0)
+-- Dependencies: 230
+-- Name: produtos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user
+--
+
+SELECT pg_catalog.setval('public.produtos_id_seq', 1, false);
+
+
+--
+-- TOC entry 3523 (class 0 OID 0)
+-- Dependencies: 222
+-- Name: transportadoras_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user
+--
+
+SELECT pg_catalog.setval('public.transportadoras_id_seq', 1, false);
+
+
+--
+-- TOC entry 3524 (class 0 OID 0)
+-- Dependencies: 224
+-- Name: vendedores_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user
+--
+
+SELECT pg_catalog.setval('public.vendedores_id_seq', 1, false);
+
+
+--
+-- TOC entry 3320 (class 2606 OID 17522)
+-- Name: categorias categorias_pkey; Type: CONSTRAINT; Schema: public; Owner: user
+--
+
+ALTER TABLE ONLY public.categorias
+    ADD CONSTRAINT categorias_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3330 (class 2606 OID 17559)
+-- Name: clientes clientes_pkey; Type: CONSTRAINT; Schema: public; Owner: user
+--
+
+ALTER TABLE ONLY public.clientes
+    ADD CONSTRAINT clientes_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3322 (class 2606 OID 17529)
+-- Name: fornecedores fornecedores_pkey; Type: CONSTRAINT; Schema: public; Owner: user
+--
+
+ALTER TABLE ONLY public.fornecedores
+    ADD CONSTRAINT fornecedores_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3324 (class 2606 OID 17536)
+-- Name: paises paises_pkey; Type: CONSTRAINT; Schema: public; Owner: user
+--
+
+ALTER TABLE ONLY public.paises
+    ADD CONSTRAINT paises_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3332 (class 2606 OID 17571)
+-- Name: pedidos pedidos_pkey; Type: CONSTRAINT; Schema: public; Owner: user
+--
+
+ALTER TABLE ONLY public.pedidos
+    ADD CONSTRAINT pedidos_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3334 (class 2606 OID 17588)
+-- Name: produtos produtos_pkey; Type: CONSTRAINT; Schema: public; Owner: user
+--
+
+ALTER TABLE ONLY public.produtos
+    ADD CONSTRAINT produtos_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3326 (class 2606 OID 17543)
+-- Name: transportadoras transportadoras_pkey; Type: CONSTRAINT; Schema: public; Owner: user
+--
+
+ALTER TABLE ONLY public.transportadoras
+    ADD CONSTRAINT transportadoras_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3336 (class 2606 OID 17603)
+-- Name: vendas vendas_pkey; Type: CONSTRAINT; Schema: public; Owner: user
+--
+
+ALTER TABLE ONLY public.vendas
+    ADD CONSTRAINT vendas_pkey PRIMARY KEY (pedido_id, produto_id);
+
+
+--
+-- TOC entry 3328 (class 2606 OID 17550)
+-- Name: vendedores vendedores_pkey; Type: CONSTRAINT; Schema: public; Owner: user
+--
+
+ALTER TABLE ONLY public.vendedores
+    ADD CONSTRAINT vendedores_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3337 (class 2606 OID 17560)
+-- Name: clientes clientes_pais_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: user
+--
+
+ALTER TABLE ONLY public.clientes
+    ADD CONSTRAINT clientes_pais_id_fkey FOREIGN KEY (pais_id) REFERENCES public.paises(id) ON DELETE CASCADE;
+
+
+--
+-- TOC entry 3338 (class 2606 OID 17572)
+-- Name: pedidos pedidos_cliente_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: user
+--
+
+ALTER TABLE ONLY public.pedidos
+    ADD CONSTRAINT pedidos_cliente_id_fkey FOREIGN KEY (cliente_id) REFERENCES public.clientes(id) ON DELETE CASCADE;
+
+
+--
+-- TOC entry 3339 (class 2606 OID 17577)
+-- Name: pedidos pedidos_vendedor_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: user
+--
+
+ALTER TABLE ONLY public.pedidos
+    ADD CONSTRAINT pedidos_vendedor_id_fkey FOREIGN KEY (vendedor_id) REFERENCES public.vendedores(id) ON DELETE CASCADE;
+
+
+--
+-- TOC entry 3340 (class 2606 OID 17594)
+-- Name: produtos produtos_categoria_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: user
+--
+
+ALTER TABLE ONLY public.produtos
+    ADD CONSTRAINT produtos_categoria_id_fkey FOREIGN KEY (categoria_id) REFERENCES public.categorias(id) ON DELETE CASCADE;
+
+
+--
+-- TOC entry 3341 (class 2606 OID 17589)
+-- Name: produtos produtos_fornecedor_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: user
+--
+
+ALTER TABLE ONLY public.produtos
+    ADD CONSTRAINT produtos_fornecedor_id_fkey FOREIGN KEY (fornecedor_id) REFERENCES public.fornecedores(id) ON DELETE CASCADE;
+
+
+--
+-- TOC entry 3342 (class 2606 OID 17604)
+-- Name: vendas vendas_pedido_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: user
+--
+
+ALTER TABLE ONLY public.vendas
+    ADD CONSTRAINT vendas_pedido_id_fkey FOREIGN KEY (pedido_id) REFERENCES public.pedidos(id);
+
+
+--
+-- TOC entry 3343 (class 2606 OID 17609)
+-- Name: vendas vendas_produto_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: user
+--
+
+ALTER TABLE ONLY public.vendas
+    ADD CONSTRAINT vendas_produto_id_fkey FOREIGN KEY (produto_id) REFERENCES public.produtos(id);
+
+
+--
+-- TOC entry 3344 (class 2606 OID 17614)
+-- Name: vendas vendas_transportadora_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: user
+--
+
+ALTER TABLE ONLY public.vendas
+    ADD CONSTRAINT vendas_transportadora_id_fkey FOREIGN KEY (transportadora_id) REFERENCES public.transportadoras(id);
+
+
+-- Completed on 2025-09-24 16:01:57 UTC
+
+--
+-- PostgreSQL database dump complete
+--
+
+\unrestrict eBgBcsCN9KUSzSTGYzsTrKGjaTuscOcYgqCgBfZFMu3I7rUv7AEDR5hUhVjeCg5
+

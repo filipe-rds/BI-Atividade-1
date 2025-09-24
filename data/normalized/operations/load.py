@@ -6,7 +6,7 @@ import os
 engine = create_engine('postgresql+psycopg://user:password@localhost:5432/mydatabase')
 
 # Caminho para o diretório que contém os arquivos CSV
-caminho_diretorio = 'data/normalized'
+caminho_diretorio = os.path.abspath(os.path.join(os.path.dirname(__file__), '..')) 
 
 # Lista dos arquivos CSV na ordem desejada
 arquivos_desejados = [

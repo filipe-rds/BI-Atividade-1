@@ -24,7 +24,7 @@ CREATE TABLE fornecedores (
 );
 
 CREATE TABLE paises (
-    id TEXT PRIMARY KEY,
+    id CHAR(3) PRIMARY KEY,
     nome VARCHAR(255) NOT NULL
 );
 
@@ -66,6 +66,7 @@ CREATE TABLE produtos (
 );
 
 CREATE TABLE vendas (
+    id SERIAL PRIMARY KEY,
     pedido_id INTEGER,
     produto_id INTEGER,
     transportadora_id INTEGER,
@@ -75,7 +76,6 @@ CREATE TABLE vendas (
     margem_bruta DECIMAL(10, 2),
     frete DECIMAL(10, 2),
     desconto DECIMAL(10, 2),
-    PRIMARY KEY (pedido_id, produto_id),  -- Chave composta
     FOREIGN KEY (pedido_id) REFERENCES pedidos(id),  -- Chave estrangeira referenciando a tabela pedidos
     FOREIGN KEY (produto_id) REFERENCES produtos(id),  -- Chave estrangeira referenciando a tabela produtos
     FOREIGN KEY (transportadora_id) REFERENCES transportadoras(id)  -- Chave estrangeira referenciando a tabela transportadoras

@@ -27,7 +27,8 @@ categorias.columns = ['id', 'nome', 'descricao']
 vendas = df[['PedidoID', 'ProdutoID', 'TransportadoraID', 'Qtde', 'Vendas', 'Vendas Custo', 'Margem Bruta', 'Frete', 'Desconto']].drop_duplicates()
 vendas.columns = ['pedido_id', 'produto_id', 'transportadora_id', 'quantidade', 'valor_vendas', 'custo_vendas', 'margem_bruta', 'frete', 'desconto']
 
-print(vendas)
+# Adicionar um ID único no início da tabela vendas
+vendas.insert(0, 'id', range(1, len(vendas) + 1))
 
 # Salvar os DataFrames em arquivos CSV
 pedidos.to_csv('pedidos.csv', index=False)

@@ -1,7 +1,10 @@
 import pandas as pd
+import os
 
 # Ler o arquivo CSV
-df = pd.read_csv('vendas_globais.csv')
+
+caminho = os.path.abspath(os.path.join(os.path.dirname(__file__), '../vendas_globais.csv')) 
+df = pd.read_csv(caminho)
 
 # Tabela 1: Pedidos
 pedidos = df[['PedidoID', 'ClienteID', 'VendedorID', 'Data']].drop_duplicates()
@@ -16,8 +19,8 @@ paises = df[['ClientePaísID', 'ClientePaís']].drop_duplicates()
 paises.columns = ['id', 'nome']
 
 # Tabela 4: Produtos
-produtos = df[['ProdutoID', 'ProdutoNome', 'FornecedorID', 'CategoriaID']].drop_duplicates()
-produtos.columns = ['id', 'nome', 'fornecedor_id', 'categoria_id']
+produtos = df[['ProdutoID', 'FornecedorID', 'CategoriaID', 'ProdutoNome']].drop_duplicates()
+produtos.columns = ['id', 'fornecedor_id', 'categoria_id', 'nome']
 
 # Tabela 5: Categorias
 categorias = df[['CategoriaID', 'CategoriaNome', 'CategoriaDescrição']].drop_duplicates()

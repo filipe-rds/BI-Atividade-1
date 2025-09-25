@@ -2,8 +2,6 @@
 -- PostgreSQL database dump
 --
 
-\restrict gi05fpeLq0gELAd8CwOg7Z86Avz4ndNUnqYxAmRLFlpXNcaJGd0mbBFldoWn2jf
-
 -- Dumped from database version 17.6 (Debian 17.6-1.pgdg13+1)
 -- Dumped by pg_dump version 17.6 (Debian 17.6-1.pgdg13+1)
 
@@ -3891,6 +3889,3 @@ ALTER TABLE ONLY public.vendas
 --
 -- PostgreSQL database dump complete
 --
-
-\unrestrict gi05fpeLq0gELAd8CwOg7Z86Avz4ndNUnqYxAmRLFlpXNcaJGd0mbBFldoWn2jf
-

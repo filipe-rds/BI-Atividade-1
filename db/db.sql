@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict MeWiGNgscBP3u63Cd1snykZc9CJvr0SE95xZ2bQXHdMTXTVc4QaS0YIG9hHg00B
+\restrict gi05fpeLq0gELAd8CwOg7Z86Avz4ndNUnqYxAmRLFlpXNcaJGd0mbBFldoWn2jf
 
 -- Dumped from database version 17.6 (Debian 17.6-1.pgdg13+1)
 -- Dumped by pg_dump version 17.6 (Debian 17.6-1.pgdg13+1)
@@ -183,9 +183,9 @@ ALTER SEQUENCE public.pedidos_id_seq OWNED BY public.pedidos.id;
 
 CREATE TABLE public.produtos (
     id integer NOT NULL,
-    nome character varying(255) NOT NULL,
     fornecedor_id integer,
-    categoria_id integer
+    categoria_id integer,
+    nome character varying(255) NOT NULL
 );
 
 
@@ -1407,84 +1407,84 @@ COPY public.pedidos (id, cliente_id, vendedor_id, data) FROM stdin;
 -- Data for Name: produtos; Type: TABLE DATA; Schema: public; Owner: user
 --
 
-COPY public.produtos (id, nome, fornecedor_id, categoria_id) FROM stdin;
-1	Lenin Jeansshorts	1	1
-15	Sumi Underwear	6	2
-44	Okkaba Skin Jackets	20	2
-67	X-Dress	16	2
-76	Minnki Pälsii	23	2
-25	Basket Vest	11	3
-55	Feiss Fleece Trousers	25	3
-62	Sheat Shoes	29	3
-43	Summer Shorts	20	4
-64	WFS shoes	12	5
-42	Balett Shoes	20	5
-28	RDL Suit	12	7
-36	Mehmet-Tröja	17	8
-13	Aino Shoes	6	8
-2	Mr X Trousers	1	1
-70	US-Master Jeans	7	1
-65	Stretch oui-pants	2	2
-33	Car Boots	15	3
-68	Cap	8	3
-54	Patamonia Fleece Jacket	25	3
-61	Adihash Running Shoe	29	3
-35	LA. Shorts	16	4
-72	Rossi Shorts	14	4
-52	Small Crocodile Boots	24	5
-48	Root Boot	22	6
-51	Snake Boots	24	6
-74	Nikee Running Shoes	4	7
-7	Conserve Shoes	3	7
-10	Sapporoo Gloves	4	8
-41	Duck Shirt	19	8
-46	Rodbye Troje	21	8
-75	Bow tie	12	1
-24	Samba Socker  Socks	10	1
-16	Wimbledon T-Shirt	7	3
-29	Davenport	12	6
-71	Atles Lussekofta	15	1
-11	Desperado Jeans	5	1
-6	Shagall Socks	3	2
-8	Tuxedo	3	2
-53	Jumpin Jack Flash Dress	24	2
-39	Terence Top	18	2
-3	Chantell Shirt	1	2
-77	Skirt	12	2
-4	Oyaki Kimono	2	2
-63	Serve-Shirt	7	2
-66	Langoste Shirt	2	2
-60	Game Over T-Shirt	28	3
-59	Rasta WCT	28	3
-69	Racing Truck  Socks	15	3
-19	Squash Shorts	8	3
-21	Basket Shoes	8	3
-50	Finnish Swimsuit	23	3
-26	Bike Helmet	11	3
-12	Tiny Winy Hot Bikini	5	4
-32	Rossi Bikkini	14	4
-31	Rossi Bermuda Shorts	14	4
-34	Baywatch Bikkini	16	4
-22	Ravellis Träskor	9	5
-23	DSW	9	5
-57	Burned Rubber Shoes	26	5
-56	High Heels Shoes	26	5
-17	TieBreak Tennis shoes	7	6
-45	Danske Treshoe	21	6
-9	Fuji Boots	4	6
-14	Kool Sunglasses	6	7
-73	Mehmet-Napp	17	8
-40	Duck Trousers	19	8
-18	Deuce shirt	7	8
-30	Baby Dark Lounge Suit	13	8
-58	Ga-Ga Dress	27	8
-38	Le Baby Dress	18	2
-49	Finnish Sport Blades	23	3
-5	O-Man Underwear	2	1
-20	Tennis Suit	8	3
-37	Mehmet-Skor	17	8
-47	Lundenhagen Boots	22	6
-27	Tracksuit	11	3
+COPY public.produtos (id, fornecedor_id, categoria_id, nome) FROM stdin;
+1	1	1	Lenin Jeansshorts
+15	6	2	Sumi Underwear
+44	20	2	Okkaba Skin Jackets
+67	16	2	X-Dress
+76	23	2	Minnki Pälsii
+25	11	3	Basket Vest
+55	25	3	Feiss Fleece Trousers
+62	29	3	Sheat Shoes
+43	20	4	Summer Shorts
+64	12	5	WFS shoes
+42	20	5	Balett Shoes
+28	12	7	RDL Suit
+36	17	8	Mehmet-Tröja
+13	6	8	Aino Shoes
+2	1	1	Mr X Trousers
+70	7	1	US-Master Jeans
+65	2	2	Stretch oui-pants
+33	15	3	Car Boots
+68	8	3	Cap
+54	25	3	Patamonia Fleece Jacket
+61	29	3	Adihash Running Shoe
+35	16	4	LA. Shorts
+72	14	4	Rossi Shorts
+52	24	5	Small Crocodile Boots
+48	22	6	Root Boot
+51	24	6	Snake Boots
+74	4	7	Nikee Running Shoes
+7	3	7	Conserve Shoes
+10	4	8	Sapporoo Gloves
+41	19	8	Duck Shirt
+46	21	8	Rodbye Troje
+75	12	1	Bow tie
+24	10	1	Samba Socker  Socks
+16	7	3	Wimbledon T-Shirt
+29	12	6	Davenport
+71	15	1	Atles Lussekofta
+11	5	1	Desperado Jeans
+6	3	2	Shagall Socks
+8	3	2	Tuxedo
+53	24	2	Jumpin Jack Flash Dress
+39	18	2	Terence Top
+3	1	2	Chantell Shirt
+77	12	2	Skirt
+4	2	2	Oyaki Kimono
+63	7	2	Serve-Shirt
+66	2	2	Langoste Shirt
+60	28	3	Game Over T-Shirt
+59	28	3	Rasta WCT
+69	15	3	Racing Truck  Socks
+19	8	3	Squash Shorts
+21	8	3	Basket Shoes
+50	23	3	Finnish Swimsuit
+26	11	3	Bike Helmet
+12	5	4	Tiny Winy Hot Bikini
+32	14	4	Rossi Bikkini
+31	14	4	Rossi Bermuda Shorts
+34	16	4	Baywatch Bikkini
+22	9	5	Ravellis Träskor
+23	9	5	DSW
+57	26	5	Burned Rubber Shoes
+56	26	5	High Heels Shoes
+17	7	6	TieBreak Tennis shoes
+45	21	6	Danske Treshoe
+9	4	6	Fuji Boots
+14	6	7	Kool Sunglasses
+73	17	8	Mehmet-Napp
+40	19	8	Duck Trousers
+18	7	8	Deuce shirt
+30	13	8	Baby Dark Lounge Suit
+58	27	8	Ga-Ga Dress
+38	18	2	Le Baby Dress
+49	23	3	Finnish Sport Blades
+5	2	1	O-Man Underwear
+20	8	3	Tennis Suit
+37	17	8	Mehmet-Skor
+47	22	6	Lundenhagen Boots
+27	11	3	Tracksuit
 \.
 
 
@@ -3892,5 +3892,5 @@ ALTER TABLE ONLY public.vendas
 -- PostgreSQL database dump complete
 --
 
-\unrestrict MeWiGNgscBP3u63Cd1snykZc9CJvr0SE95xZ2bQXHdMTXTVc4QaS0YIG9hHg00B
+\unrestrict gi05fpeLq0gELAd8CwOg7Z86Avz4ndNUnqYxAmRLFlpXNcaJGd0mbBFldoWn2jf
 

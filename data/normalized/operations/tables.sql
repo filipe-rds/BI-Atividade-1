@@ -58,9 +58,9 @@ CREATE TABLE pedidos (
 
 CREATE TABLE produtos (
     id SERIAL PRIMARY KEY,
-    nome VARCHAR(255) NOT NULL,
     fornecedor_id INT,
     categoria_id INT,
+    nome VARCHAR(255) NOT NULL,
     FOREIGN KEY (fornecedor_id) REFERENCES fornecedores(id) ON DELETE CASCADE,
     FOREIGN KEY (categoria_id) REFERENCES categorias(id) ON DELETE CASCADE
 );

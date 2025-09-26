@@ -76,7 +76,7 @@ CREATE TABLE vendas (
     margem_bruta DECIMAL(10, 2),
     frete DECIMAL(10, 2),
     desconto DECIMAL(10, 2),
-    FOREIGN KEY (pedido_id) REFERENCES pedidos(id),  -- Chave estrangeira referenciando a tabela pedidos
-    FOREIGN KEY (produto_id) REFERENCES produtos(id),  -- Chave estrangeira referenciando a tabela produtos
-    FOREIGN KEY (transportadora_id) REFERENCES transportadoras(id)  -- Chave estrangeira referenciando a tabela transportadoras
+    FOREIGN KEY (pedido_id) REFERENCES pedidos(id), 
+    FOREIGN KEY (produto_id) REFERENCES produtos(id),  
+    FOREIGN KEY (transportadora_id) REFERENCES transportadoras(id)  
 );

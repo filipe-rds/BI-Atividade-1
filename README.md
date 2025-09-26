@@ -220,7 +220,7 @@ docker-compose up -d
 | **transportadoras** | Logística             | 3         |
 | **vendedores**      | Equipe de vendas      | 9         |
 | **fornecedores**    | Parceiros             | 29        |
-| **vendas**          | Transações detalhadas | 2.181     |
+| **vendas**          | Transações detalhadas | 2.173     |
 
 ## Principais Insights
 

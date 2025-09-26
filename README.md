@@ -55,7 +55,7 @@ Análise de margem de lucro no segmento de vestuário feminino por fornecedor.
 
 ### 8. Evolução Temporal (2009-2012)
 
-**Conclusão**: O faturamento apresentou crescimento consistente no período analisado.
+Análise do histórico de vendas anuais no período de 2009 a 2012.
 
 ### 9. Calçados Masculinos em 2012
 
@@ -64,6 +64,8 @@ Análise detalhada por clientes e distribuição geográfica (cidades) em 2012.
 ### 10. Vendas na Europa por País
 
 Mapeamento completo do desempenho de vendas em países europeus.
+
+> 📚 **[Abrir Conclusões Finais](./assets/final-conclusions.pdf)** - Acesse todas as análises respondidas de forma direta em PDF
 
 ## Arquitetura da Solução
 

@@ -1,23 +1,25 @@
+<div align="center">
+
 # Análise de Vendas Globais - Business Intelligence
 
-## Equipe
+![Python](https://img.shields.io/badge/Python-3.12+-blue?style=flat-square&logo=python)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Latest-blue?style=flat-square&logo=postgresql)
+![Docker](https://img.shields.io/badge/Docker-Latest-blue?style=flat-square&logo=docker)
+![Jupyter](https://img.shields.io/badge/Jupyter-Lab-orange?style=flat-square&logo=jupyter)
+![Status](https://img.shields.io/badge/Status-Concluído-green?style=flat-square)
 
-- **Danillo Coelho**
-- **Filipe Rodrigues**
-- **Gabriel Macaúbas**
-- **Lucas Andrade**
+</div>
 
-## Descrição do Projeto
+## Sobre o Projeto
 
-Este projeto apresenta uma análise completa de vendas globais desenvolvida pela equipe de **Analistas de Sistemas** em resposta às demandas estratégicas do **Departamento de Vendas**. O objetivo é processar, analisar e visualizar dados de vendas para fornecer insights acionáveis que apoiem a tomada de decisão empresarial.
+Este projeto apresenta uma análise completa de vendas globais desenvolvida em resposta às demandas estratégicas do Departamento de Vendas. O objetivo é processar, analisar e visualizar dados de vendas para fornecer insights acionáveis que apoiem a tomada de decisão empresarial.
 
-## Objetivos
+### Objetivos
 
 - Processar e normalizar dados de vendas globais
 - Criar ambiente de análise robusto e escalável
 - Responder 10 perguntas estratégicas de negócio
 - Fornecer insights visuais através de gráficos e métricas
-- Identificar padrões de comportamento de vendas por região, cliente e produto
 
 ## Principais Análises Realizadas
 
@@ -106,27 +108,30 @@ BI-Atividade-1/
 
 1. **Clone e acesse o diretório**
 
-   ```bash
-   git clone <url-do-repositorio>
-   cd "BI-Atividade-1"
-   ```
+```bash
+git clone <url-do-repositorio>
+cd "BI-Atividade-1"
+```
 
 2. **Inicie os serviços**
 
-   ```bash
-   docker-compose up -d
-   ```
+```bash
+docker-compose up -d
+```
 
 3. **Acesse o Jupyter Lab**
 
-   - **URL**: `http://localhost:8888`
-   - **Token**: Removido para facilitar desenvolvimento
+- **URL**: http://localhost:8888
+- **Token**: Removido para facilitar desenvolvimento
 
-4. **Configuração do banco**
-   - **Host**: localhost:5432
-   - **User**: user
-   - **Password**: password
-   - **Database**: mydatabase
+4. **Configuração do Banco**
+
+| Parâmetro | Valor          |
+| --------- | -------------- |
+| Host      | localhost:5432 |
+| User      | user           |
+| Password  | password       |
+| Database  | mydatabase     |
 
 ## Modelo Lógico de Dados
 
@@ -206,14 +211,16 @@ BI-Atividade-1/
 
 ### Tabelas Principais
 
-- **clientes** - Dados de clientes (91 registros)
-- **paises** - Países (21 países)
-- **produtos** - Catálogo (77 produtos)
-- **categorias** - Segmentos (8 categorias)
-- **transportadoras** - Logística (3 transportadoras)
-- **vendedores** - Equipe de vendas (9 vendedores)
-- **fornecedores** - Parceiros (29 fornecedores)
-- **vendas** - Transações detalhadas (+51k registros)
+| Tabela              | Descrição             | Registros |
+| ------------------- | --------------------- | --------- |
+| **clientes**        | Dados de clientes     | 91        |
+| **paises**          | Países                | 23        |
+| **produtos**        | Catálogo              | 77        |
+| **categorias**      | Segmentos             | 8         |
+| **transportadoras** | Logística             | 3         |
+| **vendedores**      | Equipe de vendas      | 9         |
+| **fornecedores**    | Parceiros             | 29        |
+| **vendas**          | Transações detalhadas | 2.181     |
 
 ## Principais Insights
 
@@ -237,29 +244,46 @@ BI-Atividade-1/
 
 ## Stack Tecnológica
 
-| Tecnologia  | Versão | Propósito                 |
-| ----------- | ------ | ------------------------- |
-| Python      | 3.12+  | Processamento e análise   |
-| PostgreSQL  | Latest | Banco de dados relacional |
-| Jupyter Lab | Latest | Ambiente de análise       |
-| Docker      | Latest | Containerização           |
-| Pandas      | 2.3+   | Manipulação de dados      |
-| Matplotlib  | Latest | Visualizações estáticas   |
-| Seaborn     | Latest | Gráficos estatísticos     |
-| Plotly      | Latest | Visualizações interativas |
-| SQLAlchemy  | Latest | ORM Python-SQL            |
+| Tecnologia      | Versão | Propósito                 |
+| --------------- | ------ | ------------------------- |
+| **Python**      | 3.12+  | Processamento e análise   |
+| **PostgreSQL**  | Latest | Banco de dados relacional |
+| **Jupyter Lab** | Latest | Ambiente de análise       |
+| **Docker**      | Latest | Containerização           |
+| **Pandas**      | 2.3+   | Manipulação de dados      |
+| **Matplotlib**  | Latest | Visualizações estáticas   |
+| **Seaborn**     | Latest | Gráficos estatísticos     |
+| **Plotly**      | Latest | Visualizações interativas |
+| **SQLAlchemy**  | Latest | ORM Python-SQL            |
 
 ## Métricas do Projeto
 
-- **Datasets processados**: 9 tabelas normalizadas
-- **Análises realizadas**: 10 questões estratégicas
-- **Visualizações criadas**: 17 gráficos (estáticos + interativos)
-- **Registros analisados**: 2.181 transações de vendas
-- **Países cobertos**: 23 mercados globais
-- **Período analisado**: 2009-2012 (4 anos)
-- **Células de código**: 21 células analíticas
-- **Linhas de código**: 3.682 linhas no notebook principal
+| Métrica           | Valor  | Descrição                          |
+| ----------------- | ------ | ---------------------------------- |
+| **Datasets**      | 9      | Tabelas normalizadas               |
+| **Análises**      | 10     | Questões estratégicas              |
+| **Visualizações** | 17     | Gráficos (estáticos + interativos) |
+| **Registros**     | 2.173  | Transações de vendas               |
+| **Países**        | 23     | Mercados globais                   |
+| **Período**       | 4 anos | 2009-2012                          |
+| **Células**       | 21     | Células analíticas                 |
+| **Linhas**        | 3.682  | Linhas no notebook                 |
+
+## Equipe de Desenvolvimento
+
+| Nome                 | Função               |
+| -------------------- | -------------------- |
+| **Danillo Coelho**   | Analista de Sistemas |
+| **Filipe Rodrigues** | Analista de Sistemas |
+| **Gabriel Macaúbas** | Analista de Sistemas |
+| **Lucas Andrade**    | Analista de Sistemas |
 
 ---
 
-_Desenvolvido pela equipe de Business Intelligence_
+<div align="center">
+
+**Desenvolvido pela equipe de Business Intelligence**
+
+_Transformando dados em insights acionáveis_
+
+</div>
